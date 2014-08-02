@@ -1,5 +1,4 @@
 # General
-  - Разместить материалы курса отдельно от кодов студентов
   - Краткая заметка на Хабр (Coursera?)
   - Разобрать feedback от студентов:
     - <https://docs.google.com/spreadsheet/ccc?key=0AsBBkrQIoSbjdE8tZDJNRnBLNFdJcDlHdHY0UlRBNlE&usp=drive_web#gid=0>
@@ -55,35 +54,38 @@
     - Разобраться с русскими шрифтами
     - Insert G+, facebook like and other buttons
 
-# Лабораторные работы
-  - Придумать 4ю лабу (веб или Android)
-  - Тесты на `ViewModel` с логгером поместить в отдельный класс
-  - Rename `FakeLogger` в `MockLogger`
-  - Добавить пример на Observer в ViewModel
-  - `private JTextArea log;`
+# Содержание курса
+  - Добавить детальную лекцию про тестирование и мобульное тестирование
+    - Написание тестов
+    - Это кстати может быть лекция про TDD на Embedded C
+    - Какие бывают тесты: модульные, функциональные, приемочные,
+      инфраструктурные, smoke, stress
 
-  - Веб-интерфейс (посмотреть на <https://github.com/sander24/gradle-test-project>)
-  - Создать контрольные списки для проверки каждой лабы
-    - Никаких дурацких сокращений
-    - Чистые тесты, хорошие имена для них
-  - Вероятно "Задачи" стоит переименовать в требования
-    - Выбрать полезные требования из новостей
-  - С логированием все путаются. Нужно это все продумать и четко описать.
-    - При переключении типа логирования теряется собственно лог
-    - В файл сохраняют, но нельзя выбрать имя лога
+  - XP in images <http://www.threeriversinstitute.org/XPInPictures.html>
+  - <http://code.google.com/p/ndddsample/>
+  - <http://stackoverflow.com/questions/152120/are-there-any-open-source-projects-using-ddd-domain-driven-design>
+  - <http://vimeo.com/34365549>
+  - Hard Code book:
+    - p2: Agile works perfectly on the team level
 
-Optional
-  - Android клиент
-  - Возможно задания на лабу стоит оформить в виде историй, чтобы и поиграть, и
-    понятнее было
+# Видеокасты
 
-# Инфраструктура
-  - Подумать какие вещи можно проверять автоматически
-    - Включить проверку стиля (CPD), но нужно выбрать стиль
-    - Автоматический поиск дублирующегося кода (commit script to the repo)
-      - <http://docs.codehaus.org/display/GRADLE/Cookbook#Cookbook-usingPMD>
-    - PMD умеет огромную кучу всего
-    - Можно ли как-то запускать проверки, которые делает IDEA?
-      - Ее предложения по упрощению кода.
-      - Ненужные imports
-    - Проверить что нет неправильных зависимостей
+<https://tutsplus.com/2012/04/frequent-screencasting-pitfalls/>
+<https://tutsplus.com/2012/10/7-common-screencasting-techniques-that-drive-me-nuts/>
+<https://tutsplus.com/course/professional-screencasting-for-the-rest-of-us/>
+
+  - Нулевой лекцией можно показать результат, когда все настроено и работает
+  - Первая лекция должны быть про то, как сконфигурить Eclipse и все окружение
+    - Скачать нужную версию самого Eclipse
+    - Поставить нужные плагины: сейчас это инструменты Google
+    - Настроить текстовый редактор: включить номера строк, шрифт
+    - Создать простенький JUnit тест
+  - Поставить систему контроля версий и залиться
+    - Какие файлы нужно заливать, а какие нет
+  - Последней лекцией можно рассказать про реальную жизнь
+    - Почитать пример Contacts от Google
+    - Показать код на C#
+    - Все-таки выбирая между C#, Java, Python или Ruby ты сразу ограничиваешь себя
+    - GWT is meant for applications rather than websites. Generally with the
+      intent of developing a desktop replacement webapp.
+  - Стоит опубликовать на YouTube и подумать про публикацию на Хабре
