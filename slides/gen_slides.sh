@@ -1,18 +1,28 @@
+set -e
+
+# Get the Git root
+root="$(git rev-parse --show-toplevel)"
+cd $root/slides
+
+# Create directory for rendered slides
+rendered_slides_dir="$root/slides-rendered"
+mkdir -p $rendered_slides_dir
+
 # Generating HTML
 for dir in $(ls -d [0-9]*/);
 do
     echo "dir = $dir"
     cd $dir
-    for f in ./*.markdown
+    for f in ./*.md
     do
         echo "Processing $f"
         filename=$(basename "$f")
         filename="${filename%.*}"
-        exported_filename="../$filename.html"
+        rendered="$rendered_slides_dir/$filename.html"
 
-        if [ $f -nt $exported_filename ]; then
-            echo "Writing to $exported_filename"
-            pandoc -t slidy --self-contained -c ../style/slidy.css $f -o $exported_filename
+        if [ $f -nt $rendered ]; then
+            echo "Writing to $rendered"
+            pandoc -t slidy -c ../style/slidy.css --self-contained -o $rendered $f
         else
             echo "Nothing new to generate..."
         fi
