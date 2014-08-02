@@ -1,6 +1,0 @@
-  - [[Контрольные вопросы|Контрольные-вопросы]] (летучки)
-  - Лабораторные работы
-    - 0. [[Настройка окружения|Lab-0-Environment-Setup]]
-    - 1. [[Test-Driven Development|Lab-1-Test-Driven-Development]]
-    - 2. [[Mode-View-ViewModel|Lab-2-Model-View-ViewModel]]
-    - 3. [[Logging|Lab-3-Logging]]
