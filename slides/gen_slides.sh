@@ -1,5 +1,5 @@
 # Generating HTML
-for dir in $(ls -d [0-9]*/); 
+for dir in $(ls -d [0-9]*/);
 do
     echo "dir = $dir"
     cd $dir
@@ -9,7 +9,7 @@ do
         filename=$(basename "$f")
         filename="${filename%.*}"
         exported_filename="../$filename.html"
-        
+
         if [ $f -nt $exported_filename ]; then
             echo "Writing to $exported_filename"
             pandoc -t slidy --self-contained -c ../style/slidy.css $f -o $exported_filename

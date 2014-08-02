@@ -1,6 +1,6 @@
 # Clean Code
 
-Евгений Сорокин,  
+Евгений Сорокин,
 Кирилл Корняков
 
 Сентябрь 2013
@@ -48,7 +48,7 @@
 
 # Основные принципы
 
-Код должен быть простым и понятным с первого взгляда! 
+Код должен быть простым и понятным с первого взгляда!
 
 * DRY: Don't repeat yourself
 * KISS: keep it simple, stupid
@@ -56,38 +56,38 @@
 * Write clearly - don't be too cleaver.
 * Write clearly - don't sacrifice clarity for "efficiency".
 
-# Именование 
+# Именование
 
 # Именование типов
 
 <font face="Courier New">
-public class IncompleteOrder {}  
-public int currentPosition = -1;  
+public class IncompleteOrder {}
+public int currentPosition = -1;
 private bool isBlocked // can, is, has
 
 <font color=red>
-public class incompleteOrder {}  
+public class incompleteOrder {}
 private bool Blocked
 
-public const int NUMBEROFCONTEXTS = 10;  
-private int collectionsize;  
-private string m_strName;  
-private byte _array;  
+public const int NUMBEROFCONTEXTS = 10;
+private int collectionsize;
+private string m_strName;
+private byte _array;
 </font>
 </font>
 
 # Аббревиатуры
 
 <font face="Courier New">
-int firstValidInvoicePosition;  
-private string DBProvider;  
-private string SqlStatement;  
-string orderId;  
+int firstValidInvoicePosition;
+private string DBProvider;
+private string SqlStatement;
+string orderId;
 
 <font color=red>
-int fstIvPos;  
-private IConnection ODBCConnection;  
-string deliveryNoteId;  
+int fstIvPos;
+private IConnection ODBCConnection;
+string deliveryNoteId;
 </font>
 </font>
 
@@ -110,7 +110,7 @@ FindById(InternalKey id)
     var data = new ExperimentalData();
     foreach (var command in commands) {
        command.Run(data);
-    } 
+    }
 ```
 
 # Наследованные классы
@@ -149,23 +149,23 @@ public class CustomerCollection : CollectionsBase {}
 * Плохие имена <= Вы не понимаете предметную область вашего приложения
 
 <font face="Courier New" color=red>
-void DoStuff();  
-void SpecificMethod1();  
+void DoStuff();
+void SpecificMethod1();
 List\<PECustomerDetailsData\> RetrieveValidateAndConvertCustomerSpecificDataIntoPresentationEntities();
 </font>
 
-# Функции 
+# Функции
 
 Какова нормальная длина функции?
 
 <!-- TBD: вставить оригинальную картинку -->
 
-    { 
-      { 
-        while (.. ){ 
+    {
+      {
+        while (.. ){
           if (..){
               }
-          for (.. ){ 
+          for (.. ){
               }
              .... (just putting in the control flow here, imagine another few hundred ifs)
           if(..)   {
@@ -181,14 +181,14 @@ List\<PECustomerDetailsData\> RetrieveValidateAndConvertCustomerSpecificDataInto
 
 # Оптимальное количество параметров функции
 
-    int OverlayFlatVideos(int numberOfFlatVideos, 
+    int OverlayFlatVideos(int numberOfFlatVideos,
                           int currentFrameIdx,
                           OverlayAllVideosParams^ previewParams,
                           std::vector<bool>& StreamProcessed,
                           std::vector<acvCapture*>& flatVideoReaders,
-                          std::vector<double>& fpsFlatVideos, 
+                          std::vector<double>& fpsFlatVideos,
                           bool sharedReflection,
-                          std::vector<CvMat*>& reflectionsFlatToDome, 
+                          std::vector<CvMat*>& reflectionsFlatToDome,
                           CvSize& fullDomeSize,
                           std::vector<IplImage*>& masks,
                           std::vector<IplImage*>& borderSmoothImage,
@@ -201,19 +201,19 @@ List\<PECustomerDetailsData\> RetrieveValidateAndConvertCustomerSpecificDataInto
                           IplImage*& imageFullDomeCopy,
                           InterpolationMethod inMethod)
 
-# Функции 
+# Функции
 
     public ComplexNumber Add(ComplexNumber summand){
       var real = this.Real + summand.Real;
       var imaginary = Imaginary + summand.Imaginary;
       return new ComplexNumber(real, imaginary);
     }
-    
+
     public void Add(OrderItem item){
       items.Add(item);
     }
 
-# Функции 
+# Функции
 
 ``
 
@@ -238,12 +238,12 @@ List\<PECustomerDetailsData\> RetrieveValidateAndConvertCustomerSpecificDataInto
     void GetSupportDocFilePath(out string supportDocFilePath) {
         supportDocFilePath = new ConfigurationHelper().SupportFilePath;
     }
-    
+
     public static string GetSupportDocFilePath() {
         return new ConfigurationHelper().SupportFilePath;
     }
 
-# Условия 
+# Условия
 
 ``
 
@@ -294,13 +294,13 @@ List\<PECustomerDetailsData\> RetrieveValidateAndConvertCustomerSpecificDataInto
 
 # Функции: резюме
 
-> "Functions should do one thing.  
-   They should do it well.  
+> "Functions should do one thing.
+   They should do it well.
    They should do it only."
 
 Robert Martin
 
-# Комментарии 
+# Комментарии
 
     // When I wrote this, only God and I understood what I was doing
     // Now, God only knows
@@ -342,7 +342,7 @@ Robert Martin
     FetchCrmDetails();
     ...
 
-# Избыточный комментарий 
+# Избыточный комментарий
 
     // If the server variable is empty , throw the error
     message
@@ -375,7 +375,7 @@ TBD
 
 TBD
 
-# Дезинформация 
+# Дезинформация
 
     /*Auxiliary method: returns control if this.closed is true.
     Throws exception when timeout is reached*/
