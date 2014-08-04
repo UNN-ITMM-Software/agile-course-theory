@@ -166,7 +166,8 @@ Copyright 2008, Scott W. Ambler <www.ambysoft.com/surveys/>
 
 # Гибкие методологии
 
-* Особенность гибких (agile) методологий – ориентация на **адаптивность** вместо предсказуемости.
+* Особенность гибких (agile) методологий – ориентация на **адаптивность** вместо
+  предсказуемости.
 
 ![](./images/shoot-aim.png)
 
@@ -179,17 +180,19 @@ Copyright 2008, Scott W. Ambler <www.ambysoft.com/surveys/>
 | * Responding to change         |      | * Following a plan              |
 +--------------------------------+------+---------------------------------+
 
-That is, while there is value in the items on the right, we value the items on the left more.
+That is, while there is value in the items on the right, we value the items on
+the left more.
 
 # Major Principles of Agile Software
 
   * Working software is the primary measure of progress.
   * Simplicity – the art of maximizing the amount of work not done.
-  * The most efficient and effective method of conveying information to and within a development
-    team is face-to-face conversation.
-  * The best architectures, requirements, and designs emerge from self-organizing teams.
-  * At regular intervals, the team reflects on how to become more effective, then tunes and adjusts
-    its behavior accordingly.
+  * The most efficient and effective method of conveying information to and
+    within a development team is face-to-face conversation.
+  * The best architectures, requirements, and designs emerge from self-
+    organizing teams.
+  * At regular intervals, the team reflects on how to become more effective,
+    then tunes and adjusts its behavior accordingly.
 
 # 4 переменные
 
