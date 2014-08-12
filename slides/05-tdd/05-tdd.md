@@ -28,11 +28,10 @@
   * Методология **разработки**
   * Практика **дизайна**
 
-  <!-- TDD - это легковесная методология программирования, которая основана на написании тестов до кода. -->
-  <!-- TDD - это не методолгия тестирования. Это методология разработки ПО. -->
-  <!-- Главная цель TDD - не покрытие тестами. Это побочный эффект. -->
-
-  <!-- Главная цель TDD - помочь разработчикам и заказчикам разрабатывать ПО в условиях изменяющихся требований. -->
+<!-- TDD - это легковесная методология программирования, которая основана на написании тестов до кода. -->
+<!-- TDD - это не методолгия тестирования. Это методология разработки ПО. -->
+<!-- Главная цель TDD - не покрытие тестами. Это побочный эффект. -->
+<!-- Главная цель TDD - помочь разработчикам и заказчикам разрабатывать ПО в условиях изменяющихся требований. -->
 
 # Что это даёт?
   * Актуальное описание намерений, дизайна и использования системы
@@ -60,7 +59,7 @@
 
  ![](./images/tdd_3.jpg)
 
-# 
+#
 
 ## Что тестировать?
 
@@ -77,7 +76,7 @@
 # Вещи, которые нужно делать всегда
   * Сначала тест, потом код
   * Список to-do
-  * Новый код только если есть красный тест
+  * Новый код только, если есть красный тест
   * Запускать все тесты
   * Поддерживать качество кода тестов
   * Рефакторинг
@@ -119,28 +118,35 @@
 
 ![](./images/tdd_8.jpg)
 
-# TDD patterns 
-  * Isolated test <!-- How should the running of tests affect each other? Not at all. -->
-  * Test list <!-- What should you test? Before you begin, write a list of all the tests you know you will have to write. -->
-  * Test First <!-- When should you write your tests? Before you write the code that is to be tested. -->
-  * Assert First <!-- When should you write the asserts? Try writing them first. -->
-  * Test Data <!-- What data do you use for test-first tests? Use data that makes the tests easy to read and follow. -->
-  * Evident Data <!-- How do you represent the intent of the data? Include expected and actual results in the test itself, and try to make their relationship apparent. -->
+# TDD patterns
+  * Isolated test
+  * Test list
+  * Test First
+  * Assert First
+  * Test Data
+  * Evident Data
+
+<!-- Isolated test: how should the running of tests affect each other? Not at all. -->
+<!-- Test list: what should you test? Before you begin, write a list of all the tests you know you will have to write. -->
+<!-- Test First: when should you write your tests? Before you write the code that is to be tested. -->
+<!-- Assert First: when should you write the asserts? Try writing them first. -->
+<!-- Test Data: what data do you use for test-first tests? Use data that makes the tests easy to read and follow. -->
+<!-- Evident Data: how do you represent the intent of the data? Include expected and actual results in the test itself, and try to make their relationship apparent. -->
 
 # Green Test Patterns
   * <font color=green>Fake it</font>
   * <font color=green>Obvious implementation</font>
   * <font color=green>Triangulation</font>
 
-  <!-- Fake It -->
-  <!-- What is your first implementation once you have a broken test? Return a constant. Once you have the test running, gradually transform the constant into an expression using variables. -->
+<!-- Fake It -->
+<!-- What is your first implementation once you have a broken test? Return a constant. Once you have the test running, gradually transform the constant into an expression using variables. -->
 
-  <!-- Obvious Implementation -->
-  <!-- How do you implement simple operations? Just implement them. One to Many How do you implement an operation that works with collections of objects? --> 
-  <!-- Implement it without the collections first, then make it work with collections. -->
+<!-- Obvious Implementation -->
+<!-- How do you implement simple operations? Just implement them. One to Many How do you implement an operation that works with collections of objects? -->
+<!-- Implement it without the collections first, then make it work with collections. -->
 
-  <!-- Triangulation -->
-  <!-- How do you most conservatively drive abstraction with tests? Only abstract when you have two or more examples. -->
+<!-- Triangulation -->
+<!-- How do you most conservatively drive abstraction with tests? Only abstract when you have two or more examples. -->
 
 # Red test Patters
   * <font color=red>One Step Test</font>
@@ -172,7 +178,7 @@
   1. "У меня нет на это времени"
   1. Начинает писать юнит тесты и писать в блоге, как это здорова и что каждый должен следовать TDD
   1. Тестирует всё подряд - private, get, set. Доводит покрытие до 100%. Злоупотребляет атрибудтом InternalsVsibleTo
-  1. Пишет хрупкие тесты, по сути являющиеся интешрационными
+  1. Пишет хрупкие тесты, по сути являющиеся интеграционными
   1. Открывает для себя средства, облегчающие тестирование
   1. Подменяет абсолютно всё, что можно подменить
   1. Начинает писать эффективные юнит тесты
