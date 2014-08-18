@@ -2,12 +2,11 @@
 
 [![Build Status](https://travis-ci.org/UNN-VMK-Software/agile-course-theory.svg?branch=master)](https://travis-ci.org/UNN-VMK-Software/agile-course-theory)
 
-**License**: Creative Commons Attribution-Share Alike 3.0
-([CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/))
+ - **License**: Creative Commons Attribution-Share Alike 3.0
+   ([CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/))
+ - **Copyright**: `COPYRIGHT.md`
 
-**Copyright**: `COPYRIGHT.md`
-
-Нижегородский Государственный Университет им. Н.И. Лобачевского
+Нижегородский Государственный Университет им. Н.И. Лобачевского  
 Факультет ВМК, каф. МО ЭВМ
 
 ## Ресурсы
