@@ -61,46 +61,56 @@
 # Именование типов
 
 <font face="Courier New">
-public class IncompleteOrder {}
-public int currentPosition = -1;
-private bool isBlocked // can, is, has
+public class IncompleteOrder {} \
+public int currentPosition = -1; \
+private bool isBlocked // can, is, hass  \ \ \
 
 <font color=red>
-public class incompleteOrder {}
-private bool Blocked
+public class incompleteOrder {} \
+private bool Blocked \
 
-public const int NUMBEROFCONTEXTS = 10;
-private int collectionsize;
-private string m_strName;
-private byte _array;
+public const int NUMBEROFCONTEXTS = 10; \
+private int collectionsize; \
+private string m_strName; \
+private byte _array; \
 </font>
 </font>
 
 # Аббревиатуры
 
 <font face="Courier New">
-int firstValidInvoicePosition;
-private string DBProvider;
-private string SqlStatement;
-string orderId;
+int firstValidInvoicePosition; \
+private string DBProvider; \
+private string SqlStatement; \
+string orderId; \ \
 
 <font color=red>
-int fstIvPos;
-private IConnection ODBCConnection;
-string deliveryNoteId;
+int fstIvPos; \
+private IConnection ODBCConnection; \
+string deliveryNoteId; \
 </font>
 </font>
 
 # Классы и методы
 
-```
-public PayableOrder
-FindById(InternalKey id)
+<font face="Courier New">
+<font color=red>
+  private bool Blocked
+</font>
+
+<font color=green>
+  private bool isBlocked
+</font>
+</font>
+
+
+``` java
+public PayableOrder FindById(InternalKey id)
 ```
 
 # Паттерн "Команда"
 
-```
+``` java
     var commands = new List<ICommand> {
        new CompareImages(diff4Big),
        new ExcludeFailedContainers(),
@@ -115,7 +125,7 @@ FindById(InternalKey id)
 
 # Наследованные классы
 
-```
+``` java
 public class SpecializedAttribute : Attribute {}
 public class CustomerCollection : CollectionsBase {}
 ```
@@ -124,14 +134,34 @@ public class CustomerCollection : CollectionsBase {}
 
 # Контекст
 
-  * customer.Name
-  * customer.CustomerName
+
+<font face="Courier New">
+<font color=red>
+  customer.CustomerName \
+  customer.CustomerAddress
+</font>
+
+<font color=green>
+  customer.Name
+</font>
+ \
+ \
+Application "Gas Station Deluxe"
+ \
+<font color=red>
+  GSDAccountAddress
+</font>
+
+
+</font>
+
+
 
 # Magic numbers
 
 Не используйте их!
 
-```
+``` java
     int dailyPay = hourlyRate * 8;
     double milesWalked = feetWalked / 5280;
     int step = width * 4;
@@ -148,11 +178,11 @@ public class CustomerCollection : CollectionsBase {}
 * Хорошие имена => самодокументированный код
 * Плохие имена <= Вы не понимаете предметную область вашего приложения
 
-<font face="Courier New" color=red>
+``` java
 void DoStuff();
 void SpecificMethod1();
-List\<PECustomerDetailsData\> RetrieveValidateAndConvertCustomerSpecificDataIntoPresentationEntities();
-</font>
+List<PECustomerDetailsData> RetrieveValidateAndConvertCustomerSpecificDataIntoPresentationEntities();
+```
 
 # Функции
 
@@ -160,6 +190,7 @@ List\<PECustomerDetailsData\> RetrieveValidateAndConvertCustomerSpecificDataInto
 
 <!-- TBD: вставить оригинальную картинку -->
 
+``` c
     {
       {
         while (.. ){
@@ -176,11 +207,13 @@ List\<PECustomerDetailsData\> RetrieveValidateAndConvertCustomerSpecificDataInto
                            }
                       }
              } //endif
+```
 
   * The endif showed up around line 800)
 
 # Оптимальное количество параметров функции
 
+``` cpp
     int OverlayFlatVideos(int numberOfFlatVideos,
                           int currentFrameIdx,
                           OverlayAllVideosParams^ previewParams,
@@ -200,9 +233,11 @@ List\<PECustomerDetailsData\> RetrieveValidateAndConvertCustomerSpecificDataInto
                           IplImage*& imageReflected,
                           IplImage*& imageFullDomeCopy,
                           InterpolationMethod inMethod)
+```
 
 # Функции
 
+``` java
     public ComplexNumber Add(ComplexNumber summand){
       var real = this.Real + summand.Real;
       var imaginary = Imaginary + summand.Imaginary;
@@ -212,28 +247,28 @@ List\<PECustomerDetailsData\> RetrieveValidateAndConvertCustomerSpecificDataInto
     public void Add(OrderItem item){
       items.Add(item);
     }
+```
 
 # Функции
 
-``
-
+``` java
     public List<Document> GetDocuments(Customer customer);
     public List<Customer> FetchCustomers();
     public List<Order> RetrieveOrders();
     public List<CustomerData> LoadDetails(Customer customer);
+```
 
 # Флаги - как параметры
 
-``
-
+``` java
     public FileStream Open(string path, bool readOnly) {
     //...
     }
+```
 
 # Выходные параметры
 
-``
-
+``` java
     public static
     void GetSupportDocFilePath(out string supportDocFilePath) {
         supportDocFilePath = new ConfigurationHelper().SupportFilePath;
@@ -242,11 +277,33 @@ List\<PECustomerDetailsData\> RetrieveValidateAndConvertCustomerSpecificDataInto
     public static string GetSupportDocFilePath() {
         return new ConfigurationHelper().SupportFilePath;
     }
+```
+
+# Убийственная сложность
+
+``` c
+float _______ ( float number )
+{
+  long i;
+  float x2, y;
+  const float threehalfs = 1.5F;
+
+  x2 = number * 0.5F;
+  y  = number;
+  i  = * ( long * ) &y;                       // evil floating point bit level hacking
+  i  = 0x5f3759df - ( i >> 1 );               // what the fuck?
+  y  = * ( float * ) &i;
+  y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
+//      y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
+  return y;
+}
+```
+
+ftp://ftp.idsoftware.com/idstuff/source/quake3-1.32b-source.zip
 
 # Условия
 
-``
-
+``` java
     if (splitParameters->projectorVideos == nullptr ||
     System::String::IsNullOrEmpty(splitParameters->splitSettings) ||
     splitParameters->projectorWidth <= 0 ||
@@ -257,11 +314,11 @@ List\<PECustomerDetailsData\> RetrieveValidateAndConvertCustomerSpecificDataInto
 
     if(isValid == false) {}
     if(!canEditPrice) {}
+```
 
 # Избегайте коды ошибок
 
-``
-
+``` java
     public void SendShutDown() {
         var handle = GetHandle(device);
         if (handle != DeviceHandle.INVALID) {
@@ -272,11 +329,11 @@ List\<PECustomerDetailsData\> RetrieveValidateAndConvertCustomerSpecificDataInto
             device.ToSting());
         }
     }
+```
 
 # Только одна операция !!!
 
-``
-
+``` java
     public void SendShutDown() {
         try {
             TryToShutDown();
@@ -289,8 +346,15 @@ List\<PECustomerDetailsData\> RetrieveValidateAndConvertCustomerSpecificDataInto
         var handle = GetHandle(device);
         ...
     }
+```
 
 # Мертвый код
+
+``` java
+public static bool IsAccountNameExists() {
+  return IsAccountNameExists();
+}
+```
 
 # Функции: резюме
 
@@ -302,9 +366,39 @@ Robert Martin
 
 # Комментарии
 
+
+
+# Комментарии
+
     // When I wrote this, only God and I understood what I was doing
     // Now, God only knows
+
     ...
+
+    // Magic. Do not touch.
+
+    ...
+
+    // sometimes I believe compiler ignores all my comments
+
+    ...
+
+    // I'm sorry.
+
+    ...
+
+    //This code sucks, you know it and I know it.
+    //Move on and call me an idiot later.
+
+    ...
+
+    // I am not sure if we need this, but too scared to delete.
+
+``` java
+Catch (Exception e) {
+    //who cares?
+}
+```
 
 # Комментарии
 
@@ -319,6 +413,7 @@ Robert Martin
 
 # Неактуальная информация, Большой header
 
+``` java
     /*---------------------------------------------------------------
     -----------------------
     Created by: NANDA
@@ -333,26 +428,31 @@ Robert Martin
     public BEMenuList FetchMenuItems(LoginEntity user) {
     ...
     }
+```
 
 # Устаревший комментарий
 
+``` java
     ...
     // Gets the login user id
     // Gets the CRM details
     FetchCrmDetails();
     ...
+```
 
 # Избыточный комментарий
 
-    // If the server variable is empty , throw the error
-    message
+``` java
+    // If the server variable is empty, throw the error message
     if (loginUserId == null)
     {
-    throw new Exception(“No User Id”);
+        throw new Exception(“No User Id”);
     }
+```
 
 # Плохой комментарий
 
+``` java
     public void LoadProperties() {
         try
         {
@@ -366,27 +466,30 @@ Robert Martin
             //default settings are loaded
         }
     }
+```
 
 # Закоментированный код
 
-TBD
+![](./images/commented_code.png)
 
 # Еще хуже
 
-TBD
+![](./images/commented_code2.png)
 
 # Дезинформация
 
-    /*Auxiliary method: returns control if this.closed is true.
-    Throws exception when timeout is reached*/
-    public void WaitForClose(long timeoutMillis) {
-        if (!closed) {
-            Wait(timeoutMillis);
-                if (!closed) {
-                    throw new Exception("ResponseSender could not be closed");
-                }
-        }
-    }
+* Never rely on a comment ...
+
+``` java
+/**
+ * Always returns true.
+ */
+public boolean isAvailable()
+{
+    return false;
+}
+```
+
 
 # Позволительные комментарии
 
@@ -414,9 +517,185 @@ Pattern timeMatcher = Pattern.Compile("\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
 B. Kernighan, P. Plauger
 The Elements of Programming Style
 
-# Контрольные вопросы
+# Форматирование
 
-TBD
+# Horizontal spacing
+``` java
+customer.CalculateCredit ( fromDate );
+customer.CalculateCredit(fromDate , toDate);
+if ( IsValid ) i ++
+```
+
+``` java
+if(customer.IsValid && customer.Credit == 0.0)
+position = new Location(position.x + 10, position.y);
+Return IsValid ? cdd : DateTime.MaxDate;
+```
+
+# Vertical spacing
+
+``` java
+using MVCS.Diff4Big.Domain.ImageEntities;
+using MVCS.Diff4Big.Domain.Specifications;
+namespace MVCS.Diff4Big.Domain.Comparison.FT {
+    public class ByteByByte : ITileComparator {
+        private readonly LengthBased lengthBased = new LengthBased();
+        public IDeltaContainer Compare(IContentTile tile1, IContentTile tile2, ChangeType changeType) {
+            var bytesRangeEqualsSpecification = new BytesRangeEquals(tile1.Content);
+            var baseResult = lengthBased.Compare(tile1, tile2, changeType);
+            if (baseResult != null) return baseResult;
+            if (bytesRangeEqualsSpecification.IsSatisfiedBy(tile2.Content)) return null;
+            if (changeType == ChangeType.ImageThematicalTile) {
+                return new ThematicalTileContainer((ThematicalBig1Tile) tile2.Clone());}
+            return new TileContainer((IContentTile) tile2.Clone(), changeType);
+        }
+    }
+}
+```
+
+# Vertical spacing
+
+``` java
+using MVCS.Diff4Big.Domain.ImageEntities;
+using MVCS.Diff4Big.Domain.Specifications;
+
+namespace MVCS.Diff4Big.Domain.Comparison.FT {
+
+    public class ByteByByte : ITileComparator {
+        private readonly LengthBased lengthBased = new LengthBased();
+
+        public IDeltaContainer Compare(IContentTile tile1, IContentTile tile2, ChangeType changeType) {
+            var bytesRangeEqualsSpecification = new BytesRangeEquals(tile1.Content);
+
+            var baseResult = lengthBased.Compare(tile1, tile2, changeType);
+            if (baseResult != null) return baseResult;
+
+            if (bytesRangeEqualsSpecification.IsSatisfiedBy(tile2.Content)) return null;
+
+            if (changeType == ChangeType.ImageThematicalTile) {
+                return new ThematicalTileContainer((ThematicalBig1Tile) tile2.Clone());
+            }
+            return new TileContainer((IContentTile) tile2.Clone(), changeType);
+        }
+    }
+}
+```
+
+# unit tests
+
+# unit tests
+
+``` java
+[TestMethod]
+public void FetchUsingCreatedBySpecification() {
+            var user1 = new User(new Distributor("", "2"));
+            var user2 = new User(new Distributor("", "3"));
+            var user3 = new User("", "3", Role.Administrator);
+
+            var distributor1 = new Distributor { CreatedBy = user1 };
+            var distributor2 = new Distributor { CreatedBy = user2 };
+            var distributor3 = new Distributor { CreatedBy = user3 };
+
+            var specification = new CreatedBy<Distributor>(user1);
+
+            Assert.IsTrue(specification.IsSatisfiedBy(distributor1));
+            Assert.IsFalse(specification.IsSatisfiedBy(distributor2));
+            Assert.IsFalse(specification.IsSatisfiedBy(distributor3));
+}
+```
+
+# unit tests
+
+``` java
+[TestMethod]
+public void FetchUsingCreatedBySpecification() {
+            var john = new User(new Distributor("", "john"));
+            var mike = new User(new Distributor("", "mike"));
+            var bob = new User("", "bob", Role.Administrator);
+
+            var sonOfJohn = new Distributor {CreatedBy = john};
+            var sonOfMike = new Distributor {CreatedBy = mike};
+            var daughterOfBob = new Distributor {CreatedBy = bob};
+
+            var createdByJohn = new CreatedBy<Distributor>(john);
+
+            Assert.IsTrue(createdByJohn.IsSatisfiedBy(sonOfJohn));
+            Assert.IsFalse(createdByJohn.IsSatisfiedBy(sonOfMike));
+            Assert.IsFalse(createdByJohn.IsSatisfiedBy(daughterOfBob));
+}
+```
+
+# unit tests
+
+``` java
+new DateTime(2009, 11, 12)
+
+public static DateTime of2009(this double ddMM) {
+   var day = (int) Math.Round(ddMM, 0);
+   var month = (int) Math.Round(ddMM*100, 0) - day * 100;
+   return new DateTime(2009, month, day);
+}
+
+12.11.of2009();
+
+```
+
+# unit tests
+
+``` java
+var customer = new Customer();
+customer.Name = "Vasya Pupkin";
+var order = new  Order();
+order.Customer = customer;
+order.Date = new DateTime(2009, 10, 11);
+var orderItem = new orderItem();
+orderItem.Product = new Product("Lays");
+orderItem.Amount = 3;
+orderItem.Price = 45.30;
+order.Items.Add(orderItem);
+orderItem.Product = new Product("Beer");
+orderItem.Amount = 3;
+orderItam.Price = 20.50;
+order.Items.Add(orderItem)
+```
+
+# unit tests
+
+``` java
+var order = new  OrderBuilder()
+    .WithCustomer(“Vasya Pupkin”)
+    .WithDate(11.10.of2009())
+    .WithLineItem()
+        .WithProduct(“Lays”)
+        .WithAmount(3)
+        .WithPrice(45.30)
+    .WithLineItem()
+        .WithProduct(“Beer”)
+        .WithAmount(3)
+        .WithPrice(20.50)
+    .GetResult();
+```
+
+# Подведение итогов
+
+# What is good and what is bad?
+
+* Hungary notation
+* Global variables
+* Code optimization
+* Assembler language
+* Hacks
+* Comments
+
+# Tools
+
+* Use refactoring tools
+
+# Boy Scout Rule
+
+* "Always leave the campground cleaner than you found it."
+
+![](./images/bs.png)
 
 # Спасибо за внимание!
 
