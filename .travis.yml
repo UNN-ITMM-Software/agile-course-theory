@@ -2,7 +2,7 @@ language: cpp
 before_script:
   - sudo apt-get install pandoc
 script:
- - "! git grep ' $' -- '*.md'" # check for trailing whitespaces
+ - "! git grep -n ' $' -- '*.md'" # check for trailing whitespaces
  - ./slides/gen_slides.sh # render HTML slides using Pandoc
 notifications:
   email: false
