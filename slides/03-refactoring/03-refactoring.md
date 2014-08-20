@@ -81,22 +81,24 @@
 
 # Что побуждает нас рефакторить?
 
-* Упростить добавление нового кода
-* Улучшить дизайн существующего кода
-* Достичь лучшего понимания кода
+  - Упростить добавление нового кода
+  - Улучшить дизайн существующего кода
+  - Достичь лучшего понимания кода
 
 # Долги проектирования
 
 ![](./images/debt.png)
 
 # Процесс рефакторинга
-* Удаление дублирования
-* Упрощение сложной логики
-* Прояснение непонятного кода
+
+  - Удаление дублирования
+  - Упрощение сложной логики
+  - Прояснение непонятного кода
 
 # Помощники
-* Автоматические тесты
-* Маленькие шаги
+
+  - Автоматические тесты
+  - Маленькие шаги
 
 # Code Smells
 
@@ -111,13 +113,14 @@
 ![](./images/refactoring_catalog.png)
 
 # Любимые рефакторинги
-* Rename Method
-* Extract Method
-* Extract Class
-* Extract Interface
-* Extract Superclass
-* Move Method
-* Decompose Conditional
+
+  - Rename Method
+  - Extract Method
+  - Extract Class
+  - Extract Interface
+  - Extract Superclass
+  - Move Method
+  - Decompose Conditional
 
 # Удобочитаемый код (DSL)
 
@@ -145,10 +148,10 @@ internal static class Oct {
         get { return new CalendarMonth(2009, 10); }
     }
 }
-
 ```
 
 # Удобочитаемый код
+
 ``` java
 var customer = new Customer();
 customer.Name = “Vasya Pupkin”;
@@ -167,26 +170,27 @@ order.Items.Add(orderItem);
 ```
 
 # Удобочитаемый код
+
 ``` java
 var order = new OrderBuilder()
-.WithCustomer(“Vasya Pupkin”)
-.WithDate(11.10.of2009())
-.WithLineItem()
-.WithProduct(“Lays”)
-.WithAmount(3)
-.WithPrice(45.30)
-.WithLineItem()
-.WithProduct(“Beer”)
-.WithAmount(3)
-.WithPrice(20.50)
-.GetResult();
+    .WithCustomer(“Vasya Pupkin”)
+    .WithDate(11.10.of2009())
+    .WithLineItem()
+        .WithProduct(“Lays”)
+        .WithAmount(3)
+        .WithPrice(45.30)
+    .WithLineItem()
+        .WithProduct(“Beer”)
+        .WithAmount(3)
+        .WithPrice(20.50)
+    .GetResult();
 ```
 
 # Книги
 
-* Martin Fowler - Refactoring: Improving the Design of Existing Code
-* Joshua Kerievsky - Refactoring to Patterns
-* Martin Fowler - Patterns of Enterprise Application Architecture
+  - Martin Fowler - Refactoring: Improving the Design of Existing Code
+  - Joshua Kerievsky - Refactoring to Patterns
+  - Martin Fowler - Patterns of Enterprise Application Architecture
 
 # Контрольные вопросы
 
