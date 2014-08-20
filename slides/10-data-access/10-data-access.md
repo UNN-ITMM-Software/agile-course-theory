@@ -185,7 +185,7 @@
     CatRepository.Save(cat);
 
 # Пример структуры Data Access
-    
+
   ![](./images/07-data-access.png)
 
 # Пример с фасадом
