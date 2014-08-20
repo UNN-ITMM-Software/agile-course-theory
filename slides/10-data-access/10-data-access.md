@@ -94,9 +94,14 @@
   * Entity Framework
   * LINQ to SQL
   * etc
-# NHibernate
 
 # NHibernate
+
+  ![](./images/03-data-access.png)
+
+# NHibernate
+
+  ![](./images/04-data-access.png)
 
     <?xml version="1.0" encoding="utf-8" ?>
     <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
@@ -150,6 +155,8 @@
 
 # Entity Framework
 
+  ![](./images/05-data-access.png)
+
 # Пример с Entity Framework
     Cat princess = new Cat();
     princess.Name = "Princess";
@@ -168,14 +175,20 @@
 
 # Пример структуры Data Access
 
+  ![](./images/06-data-access.png)
+
 # Пример с репозиториями
     var cat = CatRepository.FindByName(“Барсик”);
     cat.Eat();
     cat.Weight = cat.Weight + 0.5;
     cat.Miaow();
     CatRepository.Save(cat);
-    Пример структуры Data Access
-    Пример с фасадом
+
+# Пример структуры Data Access
+    
+  ![](./images/07-data-access.png)
+
+# Пример с фасадом
     var cat = Facade.Get<Cat>(
        _ => _.Name == “Барсик”);
     cat.Eat();
@@ -184,6 +197,8 @@
     Facade.Save(cat);
 
 # Роль Data Access
+
+  ![](./images/08-data-access.png)
 
 # Резюме
   * Без слоя Data Access плохо 
