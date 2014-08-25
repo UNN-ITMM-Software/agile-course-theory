@@ -2,60 +2,58 @@
 
 Антон Бевзюк
 
-(Intel)
+# Повестка
+  - В чем проблема?
+  - Разные Data Access’ы
+  - Паттерны
 
-## Повестка
-  * В чем проблема?
-  * Разные Data Access’ы
+# В чем проблема?
 
-  * Паттерны
+![](./images/01-data-access.png)
 
-## В чем проблема?
-  ![](./images/01-data-access.png)
+# Active Record
 
-## Active Record
-```C#
+```csharp
 part = Part.FindFirst("name", "gearbox")
 part.Name = "Sample part"
 part.Price = 123.45
 part.Save()
 ```
+
 ```sql
 SELECT * FROM parts WHERE name = 'gearbox'
 INSERT INTO parts (name, price) VALUES ('Sample part', 123.45)
 ```
 
-
-## Примеры Active Record
+# Примеры Active Record
   * Castle (.Net)
   * Simple.Data (.Net)
   * ActiveRecord (Ruby)
   * Active JDBC, jOOQ (Java)
 
+# Есть ли жизнь без слоя Data Access?
 
-## Есть ли жизнь без слоя Data Access?
-  * Бизнес-логика зависит от платформы
-    * Смена технологии – проблема
-
-  * Структура данных диктует дизайн бизнес-объектов
-    * Плохой дизайн
-
-  * Смешение бизнес-логики и логики хранения
-    * Сложно тестировать и сопровождать
-
-  ![](./images/02-data-access.jpeg)
++----------------------------------------------------+-----------------------------------+
+|  * Бизнес-логика зависит от платформы              | ![](./images/02-data-access.jpeg) |
+|     * Смена технологии – проблема                  |                                   |
+|  * Структура данных диктует дизайн бизнес-объектов |                                   |
+|     * Плохой дизайн                                |                                   |
+|  * Смешение бизнес-логики и логики хранения        |                                   |
+|     * Сложно тестировать и сопровождать            |                                   |
++----------------------------------------------------+-----------------------------------+
 
 # А как?
 
-## Data Access-ы бывают разные
+# Data Access-ы бывают разные
   * Прямой доступ
   * Автогенерённые классы
   * Active Record
   * ORM
   * Custom (ручками)
 
-## Прямой доступ
-```C#
+# Прямой доступ
+
+```csharp
 var commandText = "SELECT OrderID, CustomerID FROM dbo.Orders;";
 using (var connection = new SqlConnection(connectionString)) {
     using (var command = new SqlCommand(commandText, connection)) {
@@ -69,8 +67,9 @@ using (var connection = new SqlConnection(connectionString)) {
 }
 ```
 
-## Прокси-классы
-```C#
+# Прокси-классы
+
+```csharp
 internal sealed class pr_chnl_prog_geo_get_by_geo {
     internal const string ProcName = "dbo.pr_chnl_prog_geo_get_by_geo";
     private DBCommandWrapper command;
@@ -93,6 +92,7 @@ internal sealed class pr_chnl_prog_geo_get_by_geo {
     }
 }
 ```
+
 # ORM - Object-Relational Mapping
   * NHibernate
   * Entity Framework
@@ -101,11 +101,11 @@ internal sealed class pr_chnl_prog_geo_get_by_geo {
 
 # NHibernate
 
-  ![](./images/03-data-access.png)
+![](./images/03-data-access.png)
 
-## NHibernate
+# NHibernate
 
-  ![](./images/04-data-access.png)
+![](./images/04-data-access.png)
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -121,7 +121,7 @@ internal sealed class pr_chnl_prog_geo_get_by_geo {
             <generator class="uuid.hex" />
         </id>
 
-	     <property name="Name">
+	      <property name="Name">
             <column name="Name" length="16" not-null="true" />
         </property>
         <property name="Sex" />
@@ -131,8 +131,9 @@ internal sealed class pr_chnl_prog_geo_get_by_geo {
 </hibernate-mapping>
 ```
 
-## Пример с NHibernate
-```C#
+# Пример с NHibernate
+
+```csharp
 Cat princess = new Cat();
 princess.Name = "Princess";
 princess.Sex = 'F';
@@ -144,35 +145,34 @@ session.Save(princess);
 tx.Commit();
 NHibernateHelper.CloseSession();
 ```
-## Паттерны слоя Data Access
+
+# Паттерны слоя Data Access
   * Identity Map
   * Unit of Work
 
-## Identity Map
+# Identity Map
   * Связь объект - ID
-  * Объекты читаются 1 раз
+  * Объекты читаются один раз
   * Производительность
   * Корректное сохранение
 
-## Unit of Work
+# Unit of Work
   * Список объектов
   * Транзакционность
   * Меньше конфликтов при записи
   * Нет частых обращений к БД
 
-## Entity Framework
+# Entity Framework
 
-  ![](./images/05-data-access.png)
+![](./images/05-data-access.png)
 
-## Пример с Entity Framework
-```C#
+# Пример с Entity Framework
+
+```csharp
 Cat princess = new Cat();
 princess.Name = "Princess";
 princess.Sex = 'F';
 princess.Weight = 7.4f;
-
-
-
 
 var context = new DataContext();
 var catDataObject = CatTranslator.Persist(princess);
@@ -180,14 +180,15 @@ context.Cats.Add(catDataObject);
 context.SaveChanges();
 ```
 
-# Когда и ORM не спасает ...
+# Когда и ORM не спасает...
 
-## Пример структуры Data Access
+# Пример структуры Data Access
 
-  ![](./images/06-data-access.png)
+![](./images/06-data-access.png)
 
-## Пример с репозиториями
-```C#
+# Пример с репозиториями
+
+```csharp
 var cat = CatRepository.FindByName(“Барсик”);
 cat.Eat();
 cat.Weight = cat.Weight + 0.5;
@@ -195,38 +196,38 @@ cat.Miaow();
 CatRepository.Save(cat);
 ```
 
-## Пример структуры Data Access
+# Пример структуры Data Access
 
-  ![](./images/07-data-access.png)
+![](./images/07-data-access.png)
 
-## Пример с фасадом
-```C#
-var cat = Facade.Get<Cat>(
-   _ => _.Name == “Барсик”);
+# Пример с фасадом
+
+```csharp
+var cat = Facade.Get<Cat>( _ => _.Name == “Барсик” );
 cat.Eat();
 cat.Weight = cat.Weight + 0.5;
 cat.Miaow();
+
 Facade.Save(cat);
 ```
 
-## Роль Data Access
+# Роль Data Access
 
-  ![](./images/08-data-access.png)
+![](./images/08-data-access.png)
 
-## Резюме
-  * Без слоя Data Access плохо 
-  * Разные подходы
-  * Прямой доступ
-  * Автогенерённые классы
-  * Active Record
-  * ORM
-  * Custom
-  * Паттерны
+# Резюме
+  - Без слоя Data Access плохо
+  - Разные подходы
+  - Прямой доступ
+  - Автосгенерированные классы
+  - Active Record
+  - ORM
+  - Custom
+  - Паттерны
 
-
-## Преимущества Data Access Layer
-  * Отделение от бизнес-логики
-  * SRP
-  * Независимые модели
-  * Оптимизация
-  * Кеширование
+# Преимущества Data Access Layer
+  - Отделение от бизнес-логики
+  - SRP
+  - Независимые модели
+  - Оптимизация
+  - Кеширование
