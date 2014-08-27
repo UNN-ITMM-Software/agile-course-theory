@@ -28,7 +28,7 @@ done
 echo "checking the existence of spaces"
 for f in `find . -name '*.md'`;
 do 
-    if [ -n "$(grep -n ' $' -- $f)" ]
+    if grep -n ' $' -- $f;
     then 
         
         echo "error: $f has spaces in the end of line:"
@@ -41,7 +41,7 @@ done
 echo "checking the existence of tabs"
 for f in `find . -name '*.md'`;
 do 
-    if [ -n "$(grep -n $'\t' -- $f)" ]
+    if grep -n $'\t' -- $f;
     then 
         echo "error: $f has tabs:"
         echo "$(grep -n $'\t' -- $f)"
@@ -53,10 +53,16 @@ done
 echo "checking the existence of images"
 for f in `find . -name '*.md'`;
 do 
-    images="$(egrep -o '!\[\]\([^)]*\)' -- $f)"
-    for i in $images;
+
+    if ! egrep -q -o '!\[\]\([^)]*\)' -- $f;
+    then
+        continue
+    fi
+
+    for i in `egrep -o '!\[\]\([^)]*\)' -- $f`;
     do
-        folder="$(echo "$f" | egrep -o '/.*/')"
+
+        folder=$(echo "$f" | egrep -o '/.*/')
         img="${folder:1:${#folder}-2}/${i:6:${#i}-7}"
 
         if [ ! -f $img ]; then
