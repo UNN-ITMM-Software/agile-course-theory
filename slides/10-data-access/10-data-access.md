@@ -121,7 +121,7 @@ internal sealed class pr_chnl_prog_geo_get_by_geo {
             <generator class="uuid.hex" />
         </id>
 
-	      <property name="Name">
+        <property name="Name">
             <column name="Name" length="16" not-null="true" />
         </property>
         <property name="Sex" />

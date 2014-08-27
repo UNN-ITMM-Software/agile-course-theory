@@ -1,5 +1,8 @@
 set -e
+
+OK=0
 ERROR=1
+
 echo "Start checking Markdown slides"
 
 # Get the Git root
@@ -11,8 +14,8 @@ cd $root/slides
 echo "checking sizeof files ..."
 MAX_SIZE=524288 # in bytes 512kb
 
-for f in `find . -name '*'`; 
-do 
+for f in `find . -name '*'`;
+do
     size=`stat -c%s $f`;
     if [ $size -ge $MAX_SIZE ]
     then
@@ -20,3 +23,28 @@ do
         exit $ERROR
     fi
 done
+
+echo "checking the existence of spaces"
+for f in `find . -name '*.md'`;
+do 
+    if [ -n "$(grep -n ' $' -- $f)" ]
+    then 
+        
+        echo "error: $f has spaces in the end of line:"
+        echo "$(grep -n ' $' -- $f)"
+        exit $ERROR
+    fi
+done
+
+echo "checking the existence of tabs"
+for f in `find . -name '*.md'`;
+do 
+    if [ -n "$(grep -n $'\t' -- $f)" ]
+    then 
+        echo "error: $f has tabs:"
+        echo "$(grep -n $'\t' -- $f)"
+        exit $ERROR
+    fi
+done
+
+exit $OK
