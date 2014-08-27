@@ -24,6 +24,7 @@ do
     fi
 done
 
+
 echo "checking the existence of spaces"
 for f in `find . -name '*.md'`;
 do 
@@ -36,6 +37,7 @@ do
     fi
 done
 
+
 echo "checking the existence of tabs"
 for f in `find . -name '*.md'`;
 do 
@@ -45,6 +47,23 @@ do
         echo "$(grep -n $'\t' -- $f)"
         exit $ERROR
     fi
+done
+
+
+echo "checking the existence of images"
+for f in `find . -name '*.md'`;
+do 
+    images="$(egrep -o '!\[\]\([^)]*\)' -- $f)"
+    for i in $images;
+    do
+        folder="$(echo "$f" | egrep -o '/.*/')"
+        img="${folder:1:${#folder}-2}/${i:6:${#i}-7}"
+
+        if [ ! -f $img ]; then
+            echo "error: $img not exists"
+            exit $ERROR
+        fi
+    done
 done
 
 exit $OK
