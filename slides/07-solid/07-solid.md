@@ -47,6 +47,10 @@
 
 # Open/Closed Principle
 
+![](./images/ocp.jpg)
+
+# Open/Closed Principle
+
 > "Программные сущности должны быть открыты для расширения, но закрыты для
 > изменения."
 
@@ -144,7 +148,7 @@ void Copy(Writer writer) {
 
 # Liskov Substitution Principle
 
-![](./images/lsp.png)
+![](./images/lsp.jpg)
 
 # Liskov Substitution Principle
 
@@ -314,7 +318,7 @@ Object-Oriented Architecture\
 
 # Применяй S.O.L.I.D.!
 
-![](./images/use_solid.png)
+![](./images/use_solid.jpg)
 
 # Спасибо!
 
