@@ -495,14 +495,14 @@ public boolean isAvailable()
 
 * Пояснения в **нетривиальных** случаях
 
-```
+``` java
 // format matched kk:mm:ss EEE, MMM dd, yyyy
 Pattern timeMatcher = Pattern.Compile("\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
 ```
 
 * Заметки разработчика (желательно избегать)
 
-```
+``` c
     //TODO: ...
     //FIXME: ...
     //HACK, NOTE, WARNING

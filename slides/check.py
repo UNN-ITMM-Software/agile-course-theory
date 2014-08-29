@@ -91,6 +91,23 @@ def check_no_trailing_spaces():
     return err
 
 
+def check_use_highlighting():
+    who_am_i()
+    err = False
+    global root
+    files = gglob(root, "*.md")
+    for f in files:
+        p = re.compile(".*```\n[^`]*```\n.*")
+        text = ''.join(cat(f))
+        m = p.findall(text)
+        if m:
+            print('error: {} has block code without highlighting:'.format(f))
+            for b in m:
+                print('\n{}\n'.format(b))
+            err = True
+    return err
+
+
 def check_all_file_size(max_size):
     who_am_i()
     err = False
@@ -161,6 +178,7 @@ def main():
     print("Starting validation process:")
     err = False
 
+    err = err or check_use_highlighting()
     err = err or check_no_trailing_spaces()
     err = err or check_no_tabs()
     err = err or check_empty_line_before_eof()
