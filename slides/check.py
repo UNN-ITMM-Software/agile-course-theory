@@ -3,12 +3,12 @@ import os
 import glob
 import re
 import subprocess
+import traceback
 
 root = os.path.join(subprocess.getoutput('git rev-parse --show-toplevel'), 'slides')
 
 def cat(name):
     return open(name, 'r').readlines()
-
 
 def grep(text, pattern):
     p = re.compile(pattern)
@@ -19,7 +19,6 @@ def grep(text, pattern):
         if p.match(l):
             lines += [i]
     return lines
-
 
 def get_grep(text, pattern):
     p = re.compile(pattern)
@@ -32,7 +31,6 @@ def get_grep(text, pattern):
             out += [m.groups()[0]]
     return out
 
-
 def gglob(path, f):
     l = glob.glob(os.path.join(path, f))
     for folder in os.listdir(path):
@@ -41,14 +39,19 @@ def gglob(path, f):
             l += gglob(full_path, f)
     return l
 
-
 def check_size(name, size):
     return True if os.path.getsize(name) < size else False
 
+def who_am_i():
+   stack = traceback.extract_stack()
+   filename, codeline, callerName, text = stack[-2]
+
+   print(" - " + callerName)
 
 # ---------------------------------------------------------
 
-def check_all_file_tab():
+def check_no_tabs():
+    who_am_i()
     err = False
     global root
     files = gglob(root, "*.md")
@@ -60,18 +63,20 @@ def check_all_file_tab():
     return err
 
 
-def check_all_file_end_empty_lines():
+def check_empty_line_before_eof():
+    who_am_i()
     err = False
     global root
     files = gglob(root, "*.md")
     for f in files:
-        if cat(f)[-1][-1] == '\n':
-            print('error: in {} has space in the end of file'.format(f))
+        if cat(f)[-1][-1] != '\n':
+            print('error: in {} has no line break in the end of file'.format(f))
             err = True
     return err
 
 
-def check_all_file_end_space():
+def check_no_trailing_spaces():
+    who_am_i()
     err = False
     global root
     files = gglob(root, "*.md")
@@ -84,6 +89,7 @@ def check_all_file_end_space():
 
 
 def check_all_file_size(max_size):
+    who_am_i()
     err = False
     global root
     files = gglob(root, "*")
@@ -95,6 +101,7 @@ def check_all_file_size(max_size):
 
 
 def check_all_file_name():
+    who_am_i()
     err = False
     global root
     files = os.listdir(root)
@@ -108,7 +115,8 @@ def check_all_file_name():
     return err
 
 
-def check_all_images_exists():
+def check_all_images_exist():
+    who_am_i()
     err = False
     global root
     files = gglob(root, "*.md")
@@ -122,19 +130,23 @@ def check_all_images_exists():
                 err = True
     return err
 
-
 def main():
+    print("Starting validation process:")
     err = False
+
+    err = err or check_no_trailing_spaces()
+    err = err or check_no_tabs()
+    err = err or check_empty_line_before_eof()
     err = err or check_all_file_size(512 * 1024)
     err = err or check_all_file_name()
-    err = err or check_all_file_tab()
-    err = err or check_all_file_end_space()
-    err = err or check_all_file_end_empty_lines()
-    err = err or check_all_images_exists()
+    err = err or check_all_images_exist()
 
-    return 1 if err else 0
-
+    if err:
+        print("FAIL: validation finished with errors")
+        return 1
+    else:
+        print("SUCCESS: validation finished without errors")
+        return 0
 
 if __name__ == '__main__':
     exit(main())
-
