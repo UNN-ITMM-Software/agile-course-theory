@@ -122,7 +122,52 @@
   - Move Method
   - Decompose Conditional
 
-# Удобочитаемый код (DSL)
+
+# unit tests
+
+# unit tests
+
+``` java
+[TestMethod]
+public void FetchUsingCreatedBySpecification() {
+            var user1 = new User(new Distributor("", "2"));
+            var user2 = new User(new Distributor("", "3"));
+            var user3 = new User("", "3", Role.Administrator);
+
+            var distributor1 = new Distributor { CreatedBy = user1 };
+            var distributor2 = new Distributor { CreatedBy = user2 };
+            var distributor3 = new Distributor { CreatedBy = user3 };
+
+            var specification = new CreatedBy<Distributor>(user1);
+
+            Assert.IsTrue(specification.IsSatisfiedBy(distributor1));
+            Assert.IsFalse(specification.IsSatisfiedBy(distributor2));
+            Assert.IsFalse(specification.IsSatisfiedBy(distributor3));
+}
+```
+
+# unit tests
+
+``` java
+[TestMethod]
+public void FetchUsingCreatedBySpecification() {
+            var john = new User(new Distributor("", "john"));
+            var mike = new User(new Distributor("", "mike"));
+            var bob = new User("", "bob", Role.Administrator);
+
+            var sonOfJohn = new Distributor {CreatedBy = john};
+            var sonOfMike = new Distributor {CreatedBy = mike};
+            var daughterOfBob = new Distributor {CreatedBy = bob};
+
+            var createdByJohn = new CreatedBy<Distributor>(john);
+
+            Assert.IsTrue(createdByJohn.IsSatisfiedBy(sonOfJohn));
+            Assert.IsFalse(createdByJohn.IsSatisfiedBy(sonOfMike));
+            Assert.IsFalse(createdByJohn.IsSatisfiedBy(daughterOfBob));
+}
+```
+
+# unit tests
 
 ``` java
 new DateTime(2009, 11, 12)
@@ -134,9 +179,9 @@ public static DateTime of2009(this double ddMM) {
 }
 
 12.11.of2009();
+
 ```
 
-# Удобочитаемый код
 
 ``` java
 var month = new CalendarMonth(2009, 10);
@@ -150,12 +195,12 @@ internal static class Oct {
 }
 ```
 
-# Удобочитаемый код
+# unit tests
 
 ``` java
 var customer = new Customer();
-customer.Name = “Vasya Pupkin”;
-var order = new Order();
+customer.Name = "Vasya Pupkin";
+var order = new  Order();
 order.Customer = customer;
 order.Date = new DateTime(2009, 10, 11);
 var orderItem = new orderItem();
@@ -166,13 +211,13 @@ order.Items.Add(orderItem);
 orderItem.Product = new Product("Beer");
 orderItem.Amount = 3;
 orderItam.Price = 20.50;
-order.Items.Add(orderItem);
+order.Items.Add(orderItem)
 ```
 
-# Удобочитаемый код
+# unit tests
 
 ``` java
-var order = new OrderBuilder()
+var order = new  OrderBuilder()
     .WithCustomer(“Vasya Pupkin”)
     .WithDate(11.10.of2009())
     .WithLineItem()
