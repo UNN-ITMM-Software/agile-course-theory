@@ -124,10 +124,10 @@ Copyright 2008, Scott W. Ambler <www.ambysoft.com/surveys/>
   * Каждая фаза полностью документируется
 
 # Стоимость внесения изменений
-![](./images/cost_of_change.png)
+![](./images/cost_of_change.svg)
 
 # Стоимость внесения изменений
-![](./images/cost_of_change_vs_time.png)
+![](./images/cost_of_change_vs_time.svg)
 
 # Итеративная модель
 ![](./images/msf.png)
@@ -196,14 +196,14 @@ the left more.
 
 # 4 переменные
 
-![](./images/3comp.png)
+![](./images/3comp.svg)
 
 Заказчик определяет значения только двух переменных,
 величину третьей определяет команда разработчиков.
 
 # 4 переменные
 
-![SCOPE + ](./images/3comp.png)
+![SCOPE + ](./images/3comp.svg)
 
   * Первые три переменные фиксируются.
   * Scope – число функций системы.
