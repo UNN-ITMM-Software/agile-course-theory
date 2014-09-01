@@ -470,11 +470,48 @@ Catch (Exception e) {
 
 # Закоментированный код
 
-![](./images/commented_code.png)
+``` java
+//#region ShowHyperLink
+///// <summary>
+///// Show the hyperlink controls
+///// </summary>
+//private void ShowHyperLink()
+//{
+//  asphypCreateAccounts.Visible = true;
+//  asphypCreateAccounts.NavigateUrl = "CreateAccount.aspx";
+//  asphypCreateAccounts.Text = WebConstants.CreateAccountHyperLink;
+//  asphypCreateExtUser.Visible = true;
+//  asphypCreateExtUser.NavigateUrl = "ManageExternalUsers.aspx";
+//  asphypCreateExtUser.Text = WebConstants.ExternalUserHyperLink;
+//}
+//#endregion
+```
 
 # Еще хуже
 
-![](./images/commented_code2.png)
+``` java
+asplblAcceptDeclineDate.Text = contractHistoryList[0].AcceptedDate.ToString();
+if (contractHistoryList[0].IsMultiple)
+{
+    asplblMultiplePublish.Text = "Yes";
+}
+else
+{
+    asplblMultiplePublish.Text = "No";
+}
+//if (contractHistoryList[0].IsLegalApprovalRequierd == true)
+//{
+//  asplblLegalApproval.Text = "Yes";
+//}
+//else
+//{
+//  asplblLegalApproval.Text = "No";
+//}
+asphdnFileGuid.Value = contractHistoryList[0].FileGuid.ToString();
+//int contractRefNo = Convert.ToInt32(asphdnFileMasterld.Value.ToString());
+//Session(WebConstants.CONTRACT_REF_NO_SESSION_KEY] = contractRefNo;
+asptxtReasonForRejection.Text = string.Empty;
+```
 
 # Дезинформация
 
