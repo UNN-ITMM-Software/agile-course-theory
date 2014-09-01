@@ -7,8 +7,10 @@ import traceback
 
 root = os.path.join(subprocess.getoutput('git rev-parse --show-toplevel'), 'slides')
 
+
 def cat(name):
     return open(name, 'r').readlines()
+
 
 def grep(text, pattern):
     p = re.compile(pattern)
@@ -20,16 +22,14 @@ def grep(text, pattern):
             lines += [i]
     return lines
 
+
 def get_grep(text, pattern):
     p = re.compile(pattern)
     out = []
-    i = 0
     for l in text:
-        i += 1
-        m = p.match(l)
-        if m:
-            out += [m.groups()[0]]
+        out += p.findall(l)
     return out
+
 
 def gglob(path, f):
     l = glob.glob(os.path.join(path, f))
@@ -39,14 +39,17 @@ def gglob(path, f):
             l += gglob(full_path, f)
     return l
 
+
 def check_size(name, size):
     return True if os.path.getsize(name) < size else False
 
-def who_am_i():
-   stack = traceback.extract_stack()
-   filename, codeline, callerName, text = stack[-2]
 
-   print(" - " + callerName)
+def who_am_i():
+    stack = traceback.extract_stack()
+    _, _, caller_name, _ = stack[-2]
+
+    print(" - " + caller_name)
+
 
 # ---------------------------------------------------------
 
@@ -88,6 +91,23 @@ def check_no_trailing_spaces():
     return err
 
 
+def check_use_highlighting():
+    who_am_i()
+    err = False
+    global root
+    files = gglob(root, "*.md")
+    for f in files:
+        p = re.compile(".*```\n[^`]*```\n.*")
+        text = ''.join(cat(f))
+        m = p.findall(text)
+        if m:
+            print('error: {} has block code without highlighting:'.format(f))
+            for b in m:
+                print('\n{}\n'.format(b))
+            err = True
+    return err
+
+
 def check_all_file_size(max_size):
     who_am_i()
     err = False
@@ -115,6 +135,29 @@ def check_all_file_name():
     return err
 
 
+def check_all_images_is_used():
+    who_am_i()
+    err = False
+    global root
+    files = gglob(root, "*.md")
+    for f in files:
+        path = os.path.dirname(os.path.abspath(f))
+        all_images = gglob(path, "*.png") + gglob(path, "*.jpg") + gglob(path, "*.jpeg") + gglob(path, "*.gif") + gglob(
+            path, "*.svg")
+        m = get_grep(cat(f), "!\[\]\(([^)]*)\)")
+        for img in m:
+            full_path = os.path.join(path, img).replace('/./', '/')
+            if os.path.exists(full_path) and (full_path in all_images):
+                all_images.remove(full_path)
+
+        if len(all_images) > 0:
+            print("images is not used: ")
+            for i in all_images:
+                print('      - {}'.format(i))
+            err = False  # change to do error
+    return err
+
+
 def check_all_images_exist():
     who_am_i()
     err = False
@@ -130,16 +173,19 @@ def check_all_images_exist():
                 err = True
     return err
 
+
 def main():
     print("Starting validation process:")
     err = False
 
+    err = err or check_use_highlighting()
     err = err or check_no_trailing_spaces()
     err = err or check_no_tabs()
     err = err or check_empty_line_before_eof()
     err = err or check_all_file_size(512 * 1024)
     err = err or check_all_file_name()
     err = err or check_all_images_exist()
+    err = err or check_all_images_is_used()
 
     if err:
         print("FAIL: validation finished with errors")
@@ -147,6 +193,7 @@ def main():
     else:
         print("SUCCESS: validation finished without errors")
         return 0
+
 
 if __name__ == '__main__':
     exit(main())
