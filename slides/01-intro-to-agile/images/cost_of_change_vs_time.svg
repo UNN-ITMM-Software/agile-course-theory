@@ -9,8 +9,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="372.04724"
-   height="262.20471"
+   width="744.09448"
+   height="524.40942"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
@@ -22,9 +22,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.7674523"
-     inkscape:cx="181.66639"
-     inkscape:cy="154.45508"
+     inkscape:zoom="1.2497775"
+     inkscape:cx="347.89885"
+     inkscape:cy="265.30536"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -60,52 +60,53 @@
      id="layer1"
      inkscape:groupmode="layer"
      inkscape:label="Layer 1"
-     transform="translate(0,-790.15721)">
+     transform="translate(0,-527.95247)">
     <text
        xml:space="preserve"
-       style="font-size:15.22464085px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="171.00819"
-       y="1041.7124"
+       style="font-size:31.13931465px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="343.38721"
+       y="1041.5051"
        id="text2996"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan2998"
-         x="171.00819"
-         y="1041.7124"
-         style="font-size:14px">Time</tspan></text>
+         x="343.38721"
+         y="1041.5051"
+         style="font-size:28.63452721px">Время</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:1.45644987px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 24.557027,802.51267 336.752083,0 0,220.76603 -336.752083,0 z"
+       style="fill:none;stroke:#000000;stroke-width:2.97891092px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 43.847199,552.26437 688.766911,0 0,451.53793 -688.766911,0 z"
        id="path3234"
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="159.5517"
-       y="155.27113"
+       style="font-size:81.81293488px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="319.95496"
+       y="844.57312"
        id="text3240"
-       sodipodi:linespacing="125%"
-       transform="translate(0,790.15721)"><tspan
+       sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         id="tspan3242" /></text>
+         id="tspan3242"
+         x="319.95496"
+         y="844.57312" /></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:1.0572201px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 31.712632,1016.6888 c 15.665892,-55.46583 34.19521,-46.37454 142.876398,-49.68439 127.71792,-3.88959 134.44439,-2.36871 180.13025,-4.15006"
+       style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 58.482725,990.32382 C 90.52454,876.87826 128.42299,895.47289 350.71116,888.70317 c 261.22445,-7.95547 274.98225,-4.84478 368.42461,-8.48821"
        id="path3246"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="csc" />
     <text
        xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="-956.14105"
-       y="16.739962"
+       style="font-size:81.81293488px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-868.88452"
+       y="31.059341"
        id="text2999"
        sodipodi:linespacing="125%"
        transform="matrix(0,-1,1,0,0,0)"><tspan
          sodipodi:role="line"
          id="tspan3001"
-         x="-956.14105"
-         y="16.739962"
-         style="font-size:14px">Cost of Change</tspan></text>
+         x="-868.88452"
+         y="31.059341"
+         style="font-size:28.63452721px">Цена изменений</tspan></text>
   </g>
 </svg>
