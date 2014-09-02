@@ -37,17 +37,17 @@
     распределенных проектах.
   * _Отдельные практики гибких методологий проникли во все другие методологии._
 
-# Adoption Rate of Agile Technique
+# Скорость восприятия Agile
 
-Copyright 2008, Scott W. Ambler <www.ambysoft.com/surveys/>
+Copyright 2008, Scott W. Ambler (www.ambysoft.com/surveys/)
 
 ![](./images/adoption_rate_of_agile_techniques.png)
 
-# How Have Agile Approaches Affected the Quality of Systems Deployed?
+# Как изменилось качество ПО после применения Agile
 
-Copyright 2008, Scott W. Ambler <www.ambysoft.com/surveys/>
+Copyright 2008, Scott W. Ambler (www.ambysoft.com/surveys/)
 
-![](./images/how_have_agile_approaches_affected_the_quality_of_systems_deployed.png)
+![](./images/how_have_agile_approaches_affected_the_quality_of_systems_deployed.svg)
 
 # Содержание
 
