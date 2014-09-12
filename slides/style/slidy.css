@@ -140,6 +140,21 @@ div.slide h1 {
   background: transparent;
 }
 
+div.slide h2 {
+  padding-left: 0;
+  padding-right: 20pt;
+  padding-top: 4pt;
+  padding-bottom: 4pt;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 60pt;
+  margin-bottom: 0.5em;
+  display: block;
+  font-size: 120%;
+  line-height: 1.2em;
+  background: transparent;
+}
+
 @media screen and (max-device-width: 1024px)
 {
   div.slide { font-size: 100%; }
