@@ -8,7 +8,7 @@
    http://www.w3.org/Consortium/Legal/copyright-software
 */
 html {
-  background-image: url("cardboard_@2X.png");
+  /*background-image: url("cardboard_@2X.png");*/
   background-size: 600px 600px;
 }
 
@@ -19,9 +19,9 @@ body
   width: 100%;
   height: 100%;
   color: black;
-  background-color: blue;
-  /*font-family: "Verdana", "Verdana", Verdana, sans-serif;*/
-  font-family: "Trebuchet MS", "Trebuchet MS", TrebuchetMS, sans-serif;
+  background-color: white;
+  font-family: "Verdana", "Verdana", Verdana, sans-serif;
+  /*font-family: "Trebuchet MS", "Trebuchet MS", TrebuchetMS, sans-serif;*/
   font-size: 14pt;
 }
 

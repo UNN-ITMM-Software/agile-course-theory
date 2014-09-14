@@ -1,18 +1,20 @@
 # Clean Code
 
-Евгений Сорокин,
-Кирилл Корняков
-
-Сентябрь 2013
+Кирилл Корняков, Андрей Морозов\
+Сентябрь 2014
 
 <!-- TOOD
 
  - Вставить пример на полиморфизм с камерой
  - Уточнить пример с булевским флагом
  - Идеальный код, ИКР, примеры
+
  - Зачем писать код: чтобы быстро разбираться и фиксить проблемы,
+
    когда это нужно будет сделать срочно
 -->
+
+<!--
 
 # Содержание
 
@@ -26,6 +28,8 @@
     - юнит тесты
   * Заключение
 
+-->
+
 # Зачем?
 
 > "Зачем? Наши клиенты не смотрят на исходный код. Почему мы должны держать его в чистоте?."
@@ -33,130 +37,98 @@
   Генеральный директор компании по разработке ПО,
   Нижний Новгород, Август 2010
 
-# Что такое качество кода?
+<br><br><br><br><br><br>
 
-![](./images/quality.jpg)
+> * Зачем ??? <br> "Чукча — не читатель, Чукча — писатель."
 
-# Ключевые понятия
+# Почему код становится плохим ?
 
- - Дублирование
- - Шум
- - Единообразие (единый стиль)
- - Принцип единой ответственности
- - Ортогональность
- - Уровни абстракции
 
-# Основные принципы
 
-Код должен быть простым и понятным с первого взгляда!
+# Кто виноват ?
 
-* DRY: Don't repeat yourself
-* KISS: keep it simple, stupid
-* Say what you mean, simply and directly.
-* Write clearly - don't be too cleaver.
-* Write clearly - don't sacrifice clarity for "efficiency".
+> * начальник/менеджер
+> * типы из отдела маркетинга
 
-# Именование
+<br><br>
 
-# Именование типов
+> * "главный по коду" - <font size=32 color=red> ВЫ !!!! </font>
 
-<font face="Courier New">
-public class IncompleteOrder {} \
-public int currentPosition = -1; \
-private bool isBlocked // can, is, hass  \ \ \
+<br>
 
-<font color=red>
-public class incompleteOrder {} \
-private bool Blocked \
+> * <font size=14 color=blue>Что делать ?</font>
 
-public const int NUMBEROFCONTEXTS = 10; \
-private int collectionsize; \
-private string m_strName; \
-private byte _array; \
-</font>
-</font>
 
-# Аббревиатуры
+# Содержательные имена
 
-<font face="Courier New">
-int firstValidInvoicePosition; \
-private string DBProvider; \
-private string SqlStatement; \
-string orderId; \ \
+<br> <br>
 
-<font color=red>
-int fstIvPos; \
-private IConnection ODBCConnection; \
-string deliveryNoteId; \
-</font>
-</font>
+>Программист не стал выдумывать и назвал детей \
+новый сын(1) и новый сын(2)
 
-# Классы и методы
+# Содержательные имена
 
-<font face="Courier New">
-<font color=red>
-  private bool Blocked
-</font>
-
-<font color=green>
-  private bool isBlocked
-</font>
-</font>
-
+<br>
+Что делает следующий фрагмент?
+<br>
 
 ``` java
-public PayableOrder FindById(InternalKey id)
+public List<int[]> getThem() {
+  List<int[]> list1 = new ArrayList<int[]>();
+  for (int[] x: theList) {
+    if (x[0] == 4)
+      list1.add(x);
+  }
+  return list1;
+}
 ```
+# Содержательные имена
 
-# Паттерн "Команда"
+Это же игра "Сапер"
+<br>
 
 ``` java
-    var commands = new List<ICommand> {
-       new CompareImages(diff4Big),
-       new ExcludeFailedContainers(),
-       new ReportResults()
-    };
-
-    var data = new ExperimentalData();
-    foreach (var command in commands) {
-       command.Run(data);
-    }
+public List<int[]> getFlaggedCells() {
+  List<int[]> flaggedCells = new ArrayList<int[]>();
+  for (int[] cell: gameBoard) {
+    if (cell[STATUS_VALUE] == FLAGGED)
+      flaggedCells.add(cell);
+  }
+  return flaggedCells;
+}
 ```
+# Содержательные имена
 
-# Наследованные классы
+Немного улучшим код:
+<br>
 
 ``` java
-public class SpecializedAttribute : Attribute {}
-public class CustomerCollection : CollectionsBase {}
+public List<Cell> getFlaggedCells() {
+  List<Cell> flaggedCells = new ArrayList<Cell>();
+
+  for (Cell cell: gameBoard) {
+    if (cell.isFlagged())
+      flaggedCells.add(cell);
+  }
+
+  return flaggedCells;
+}
 ```
 
-Это соответствует проверке "Is A".
+# Никакой информации ...
 
-# Контекст
+``` java
 
-
-<font face="Courier New">
-<font color=red>
-  customer.CustomerName \
-  customer.CustomerAddress
-</font>
-
-<font color=green>
-  customer.Name
-</font>
- \
- \
-Application "Gas Station Deluxe"
- \
-<font color=red>
-  GSDAccountAddress
-</font>
+public static Matrix createMatrix(int a1, int a2) {
+  // ...
+}
 
 
-</font>
+public static Matrix createMatrix(int width, int height) {
+  // ...
+}
 
-
-
+```
 # Magic numbers
 
 Не используйте их!
@@ -173,43 +145,158 @@ Application "Gas Station Deluxe"
   - `FEET_PER_MILE`
   - `sizeof(int)`
 
-# Имена
-
-* Хорошие имена => самодокументированный код
-* Плохие имена <= Вы не понимаете предметную область вашего приложения
+# Шум !
 
 ``` java
-void DoStuff();
-void SpecificMethod1();
-List<PECustomerDetailsData> RetrieveValidateAndConvertCustomerSpecificDataIntoPresentationEntities();
+public class Part {
+  private String m_dsc;
+  void setName(String name) {
+    m_dsc = name;
+  }
+}
+
 ```
+<br><br><br>
+
+``` java
+public class Part {
+  private String description;
+  void setDescription(String description) {
+    this.description = description;
+  }
+}
+```
+
+# Одно слово для каждой концепции
+
+> - fetch
+  - retrieve
+  - get
+
+<br>
+
+> - controller
+  - manager
+  - driver
+
+<br><br><br>
+
+> - DeviceManager vs ProtocolController
+
+# Имена классов
+
+Имена классов и объектов должны представлять собой существительные и их комбинации:
+
+
+<font color=green>хорошо</font>:
+
+ - Customer
+ - WikiPage
+ - Account
+
+<br>
+
+<font color=red>плохо</font>:
+
+ - Manager
+ - Processor
+ - Data
+ - Info
+
+
+# Имена методов
+
+Имена методов представляют собой глаголы или глагольные словосочетания:
+
+``` java
+String name = employee.getName();
+customer.setName("Mike");
+if (paycheck.isPosted()) ...
+```
+<br>
+
+<font color=green>хорошо</font>:
+``` java
+Complex point = Complex.FromRealNumber(23.0);
+```
+
+<font color=red>плохо</font>:
+``` java
+Complex point = new Complex(23.0);
+```
+
+# Именование типов
+
+<font color=green>хорошо</font>:
+
+``` java
+public class IncompleteOrder {}
+public int currentPosition = -1;
+const int WORK_HOURS_PER_DAY = 8;
+private bool isBlocked // can, is
+```
+<br>
+<font color=red>плохо</font>:
+
+``` java
+public class incompleteOrder {}
+private bool flag;
+
+public const int NUMBEROFCONTEXTS = 10;
+private int collectionsize;
+private string m_strName;
+private byte _array;
+List<PECustomerDetailsData> retrieveValidateAndConvertCustomerSpecificDataIntoPresentationEntities() {}
+
+
+customer.customerName = "Inc";
+```
+
+# Итого.Имена
+
+ * Хорошие имена => Самодокументированный код
+ * Плохие имена <= Вы не понимаете предметную область вашего приложения
+
+<br>
+
+ - осмысленное название
+ - легко читаются
+ - быстро ищутся
+ - не содержат шум
+ - не дезинформируют
+
+# Функции
 
 # Функции
 
 Какова нормальная длина функции?
 
-<!-- TBD: вставить оригинальную картинку -->
+// in a completely uncommented 2000 line method
 
 ``` c
     {
       {
-        while (.. ){
+        while (.. ) {
           if (..){
-              }
-          for (.. ){
-              }
+
+          }
+
+          for (.. ) {
+
+          }
              .... (just putting in the control flow here, imagine another few hundred ifs)
-          if(..)   {
-                if(..)     {
-                       if(..)   {
+          if(..) {
+                if(..) {
+                    if(..) {
                     ...
                     (another few hundred brackets)
-                           }
-                      }
-             } //endif
+                    }
+                }
+          } //endif
+          ...
 ```
 
-  * The endif showed up around line 800)
+* The endif showed up around line 800)
 
 # Оптимальное количество параметров функции
 
@@ -235,46 +322,33 @@ List<PECustomerDetailsData> RetrieveValidateAndConvertCustomerSpecificDataIntoPr
                           InterpolationMethod inMethod)
 ```
 
-# Функции
+# Еще пример: WinApi C++
 
-``` java
-    public ComplexNumber Add(ComplexNumber summand){
-      var real = this.Real + summand.Real;
-      var imaginary = Imaginary + summand.Imaginary;
-      return new ComplexNumber(real, imaginary);
-    }
-
-    public void Add(OrderItem item){
-      items.Add(item);
-    }
+``` cpp
+        hThreadArray[i] = CreateThread(
+            NULL,                   // default security attributes
+            0,                      // use default stack size
+            MyThreadFunction,       // thread function name
+            pDataArray[i],          // argument to thread function
+            0,                      // use default creation flags
+            &dwThreadIdArray[i]);   // returns the thread identifier
 ```
+ <br> <br> <br>
 
-# Функции
-
-``` java
-    public List<Document> GetDocuments(Customer customer);
-    public List<Customer> FetchCustomers();
-    public List<Order> RetrieveOrders();
-    public List<CustomerData> LoadDetails(Customer customer);
+``` cpp
+    wnd.CreateWnd(hInstance, wcname, NULL, WS_VISIBLE|WS_OVERLAPPEDWINDOW,
+        NWin::SRect(NWin::SPoint(CW_USEDEFAULT,CW_USEDEFAULT),
+        NWin::SSize(600,400)), NULL,
+        LoadMenu(hInstance, resWapp), NULL);
 ```
-
-# Флаги - как параметры
-
-``` java
-    public FileStream Open(string path, bool readOnly) {
-    //...
-    }
-```
-
-# Выходные параметры
+# Выходные параметра функции
 
 ``` java
-    public static
-    void GetSupportDocFilePath(out string supportDocFilePath) {
+    static void GetSupportDocFilePath(out string supportDocFilePath) {
         supportDocFilePath = new ConfigurationHelper().SupportFilePath;
     }
 
-    public static string GetSupportDocFilePath() {
+    static string GetSupportDocFilePath() {
         return new ConfigurationHelper().SupportFilePath;
     }
 ```
@@ -322,7 +396,13 @@ ftp://ftp.idsoftware.com/idstuff/source/quake3-1.32b-source.zip
     public void SendShutDown() {
         var handle = GetHandle(device);
         if (handle != DeviceHandle.INVALID) {
-            ...
+            var err = OpenDevice(handle);
+            if (err == NULL) {
+              //
+            }
+            else {
+              Logger.Log("Can't open device. Error: " + err.ToSting());
+            }
         }
         else {
             Logger.Log("Invalid handle for: " +
@@ -331,41 +411,33 @@ ftp://ftp.idsoftware.com/idstuff/source/quake3-1.32b-source.zip
     }
 ```
 
-# Только одна операция !!!
+# Отделяем мух от котлет
 
 ``` java
-    public void SendShutDown() {
+    public void TrySendShutDown() {
         try {
-            TryToShutDown();
+          SendShutDown();
         }
-        catch (DeviceShutDownError e) {
-            logger.Log(e);
-        }
+        catch() {
+        // ...
+      }
     }
-    private void TryToShutDown() {
-        var handle = GetHandle(device);
-        ...
+
+    public void SendShutDown() {
+      var handle = GetHandle(device);
+      OpenDevice(handle);
+      //...
     }
 ```
 
-# Мертвый код
+# Итого.Функции
 
-``` java
-public static bool IsAccountNameExists() {
-  return IsAccountNameExists();
-}
-```
-
-# Функции: резюме
-
-> "Functions should do one thing.
-   They should do it well.
-   They should do it only."
-
-Robert Martin
-
-# Комментарии
-
+ - Оптимальная длина функции (1 - экран ~ 25 - 50 строк)
+ - Оптимальное кол-во параметров (0 - отлично, 1-2 - хорошо, 3+ - ужасно)
+ - 0/1 - выходной параметр
+ - Функция должна выполнять только одну операцию.
+ Она должна выполнять ее хорошо.
+ И ничего другого она делать не должна.
 
 
 # Комментарии
@@ -387,11 +459,6 @@ Robert Martin
 
     ...
 
-    //This code sucks, you know it and I know it.
-    //Move on and call me an idiot later.
-
-    ...
-
     // I am not sure if we need this, but too scared to delete.
 
 ``` java
@@ -407,7 +474,7 @@ Catch (Exception e) {
   * Неактуальная информация
   * Устаревшие комментарий
   * Избыточный комментарий
-  * Плохой комментарий
+  * Запутывающий комментарий
   * Закоментированный код
   * Дезинформация
 
@@ -429,7 +496,6 @@ Catch (Exception e) {
     ...
     }
 ```
-
 # Устаревший комментарий
 
 ``` java
@@ -446,11 +512,11 @@ Catch (Exception e) {
     // If the server variable is empty, throw the error message
     if (loginUserId == null)
     {
-        throw new Exception(“No User Id”);
+        throw new Exception("No User Id");
     }
 ```
 
-# Плохой комментарий
+# Запутывающий комментарий
 
 ``` java
     public void LoadProperties() {
@@ -513,6 +579,7 @@ asphdnFileGuid.Value = contractHistoryList[0].FileGuid.ToString();
 asptxtReasonForRejection.Text = string.Empty;
 ```
 
+
 # Дезинформация
 
 * Never rely on a comment ...
@@ -526,7 +593,6 @@ public boolean isAvailable()
     return false;
 }
 ```
-
 
 # Позволительные комментарии
 
@@ -554,9 +620,10 @@ Pattern timeMatcher = Pattern.Compile("\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
 B. Kernighan, P. Plauger
 The Elements of Programming Style
 
+
 # Форматирование
 
-# Horizontal spacing
+# Горизонтальное выравнивание
 ``` java
 customer.CalculateCredit ( fromDate );
 customer.CalculateCredit(fromDate , toDate);
@@ -566,10 +633,10 @@ if ( IsValid ) i ++
 ``` java
 if(customer.IsValid && customer.Credit == 0.0)
 position = new Location(position.x + 10, position.y);
-Return IsValid ? cdd : DateTime.MaxDate;
+return IsValid ? cdd : DateTime.MaxDate;
 ```
 
-# Vertical spacing
+# Вертикальное выравнивание
 
 ``` java
 using MVCS.Diff4Big.Domain.ImageEntities;
@@ -590,7 +657,7 @@ namespace MVCS.Diff4Big.Domain.Comparison.FT {
 }
 ```
 
-# Vertical spacing
+# Вертикальное выравнивание
 
 ``` java
 using MVCS.Diff4Big.Domain.ImageEntities;
@@ -618,26 +685,40 @@ namespace MVCS.Diff4Big.Domain.Comparison.FT {
 }
 ```
 
-# Подведение итогов
+# Главное это интерфейс
 
-# What is good and what is bad?
+``` java
+  public void do();
 
-* Hungary notation
-* Global variables
-* Code optimization
-* Assembler language
-* Hacks
-* Comments
+  private int i1;
+  //..
+```
 
-# Tools
+# Рекомендация
 
-* Use refactoring tools
+``` java
+  if (a == 0);
+    a++;
 
-# Boy Scout Rule
+  while(a++ != magic_number);
+    a = a << 2;
+```
+<br><br>
 
-* "Always leave the campground cleaner than you found it."
+``` java
+  if (a == 0){
+    a++;
+  }
 
-![](./images/bs.png)
+  while(a++ != magic_number) {}
+    a = a << 2;
+```
+
+# Правило бой скаута
+
+* "Всегда оставляй лагерь чище, чем ты его нашел."
+
+![](./images/bs.jpg)
 
 # Спасибо за внимание!
 
