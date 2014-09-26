@@ -125,9 +125,9 @@ Copyright 2008, Scott W. Ambler (<http://www.ambysoft.com/surveys/>)
 Включает дисциплины:
 
 +------------------------+------------------------------+
-| * управление проектами | * написание кода             |
-| * анализ требований    | * интеграция и тестирование  |
-| * проектирование       | * контроль качества          |
+| - управление проектами | - написание кода             |
+| - анализ требований    | - интеграция и тестирование  |
+| - проектирование       | - контроль качества          |
 +------------------------+------------------------------+
 
 <!--
@@ -172,54 +172,74 @@ Copyright 2008, Scott W. Ambler (<http://www.ambysoft.com/surveys/>)
   - Velocity tracking
 
 # Agile Methodology Most Closely Followed
+
 ![](./images/agile_methodology_most_closely_followed.png)
 
 # Содержание
 
-  * Agile сегодня
-  * История и предпосылки возникновения
-  * <font color=red>Общая характеристика Agile</font>
+  - Agile сегодня
+  - История и предпосылки возникновения
+  - <font color=red>Общая характеристика Agile</font>
 
 # Agile Manifesto (2001)
 
 +--------------------------------+------+---------------------------------+
-| * Individuals and interactions | over | * Processes and tools           |
-| * Working software             |      | * Comprehensive documentation   |
-| * Customer collaboration       |      | * Contract negotiation          |
-| * Responding to change         |      | * Following a plan              |
+| - Individuals and interactions | over | - Processes and tools           |
+| - Working software             |      | - Comprehensive documentation   |
+| - Customer collaboration       |      | - Contract negotiation          |
+| - Responding to change         |      | - Following a plan              |
 +--------------------------------+------+---------------------------------+
 
 That is, while there is value in the items on the right,\
 we value the items on the left more.
 
-# Major Principles of Agile Software
+# Twelve Principles of Agile Software
 
-  * Working software is the primary measure of progress.
-  * Simplicity – the art of maximizing the amount of work not done.
-  * The most efficient and effective method of conveying information to and
-    within a development team is face-to-face conversation.
-  * The best architectures, requirements, and designs emerge from self-
-    organizing teams.
-  * At regular intervals, the team reflects on how to become more effective,
-    then tunes and adjusts its behavior accordingly.
+ - Our highest priority is to satisfy the customer through early and continuous
+   delivery of valuable software.
+ - Welcome changing requirements, even late in development. Agile processes
+   harness change for the customer's competitive advantage.
+ - Deliver working software frequently, from a couple of weeks to a couple of
+   months, with a preference to the shorter timescale.
+ - Business people and developers must work together daily throughout the
+   project.
+ - Build projects around motivated individuals. Give them the environment and
+   support they need, and trust them to get the job done.
+ - The most efficient and effective method of conveying information to and
+   within a development team is face-to-face conversation.
 
-# 4 переменные
+# Twelve Principles of Agile Software
 
-![](./images/3comp.svg)
+ - Working software is the primary measure of progress.
+ - Agile processes promote sustainable development. The sponsors, developers,
+   and users should be able to maintain a constant pace indefinitely.
+ - Continuous attention to technical excellence and good design enhances
+   agility.
+ - Simplicity — the art of maximizing the amount of work not done — is essential.
+ - The best architectures, requirements, and designs emerge from self-organizing
+   teams.
+ - At regular intervals, the team reflects on how to become more effective, then
+   tunes and adjusts its behavior accordingly.
 
-> - Заказчик определяет значения только двух переменных,\
-    величину третьей определяет команда разработчиков.
-  - Быстро, дешево, качественно — выбери любые два.
+# Project Management Triangle
 
-# 4 переменные
++-------------------------------+----------------------------------------------------------+
+| ![](./images/pm-triangle.gif) | > - "Быстро, дешево, качественно — выбери любые два."    |
+|                               |   - Заказчик определяет значения только двух переменных, |
+|                               |     величину третьей определяет команда разработчиков.   |
++-------------------------------+----------------------------------------------------------+
 
-## SCOPE +\
-![](./images/3comp.svg)
+# Scope
 
-  * Первые три переменные фиксируются.
-  * Scope — число функций системы (features).
-  * Scope корректируется с учетом обстоятельств.
-  * Самое важное в первую очередь!
+  - Понятие Quality расщепляется на два
+    - Quality как надежность, устойчивость, корректность
+    - Scope — функциональность, богатство возможностей
+
+![](./images/agile-contracts-3.png)
+
+> - Time, Cost, Quality фиксируются.
+  - Scope корректируется с учетом обстоятельств.
+  - Самое важное в первую очередь!
 
 # Основные черты: Итеративный процесс
 
