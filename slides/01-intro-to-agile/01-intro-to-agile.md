@@ -5,6 +5,11 @@
 Кирилл Корняков\
 Сентябрь 2014
 
+<!--
+TODO
+  - Обновить контрольные вопросы (убедиться что дается ответ на них)
+-->
+
 # Содержание
 
   - Agile сегодня
@@ -66,9 +71,9 @@ Copyright 2008, Scott W. Ambler (<http://www.ambysoft.com/surveys/>)
 
 # Содержание
 
-  * Agile сегодня
-  * <font color=red>История и предпосылки возникновения</font>
-  * Общая характеристика Agile
+  - Agile сегодня
+  - <font color=red>История и предпосылки возникновения</font>
+  - Общая характеристика Agile
 
 # Предпосылки и история
 
@@ -119,15 +124,27 @@ Copyright 2008, Scott W. Ambler (<http://www.ambysoft.com/surveys/>)
 
 # Методология разработки
 
-**Методология разработки** — описание того, как в целом организована разработка
-ПО.
+> __Методология программирования__ — совокупность методов, применяемых на
+различных стадиях жизненного цикла программного обеспечения и имеющих общий
+философский подход.
 
-Включает дисциплины:
+Каждая методология характеризуется своим:
+
+  - Философским подходом или основными _принципами_. Эти принципы, от которых
+    зависит эффективность всей методологии, обычно можно кратко сформулировать и
+    легко объяснить;
+  - Согласованным множеством моделей _методов_, которые реализуют данную
+    методологию;
+  - _Концепциями_ (понятиями), позволяющими более точно определить методы.
+
+# Методология разработки
+
+Включает ряд дисциплин, например такие как:
 
 +------------------------+------------------------------+
-| * управление проектами | * написание кода             |
-| * анализ требований    | * интеграция и тестирование  |
-| * проектирование       | * контроль качества          |
+| - управление проектами | - написание кода             |
+| - анализ требований    | - интеграция и тестирование  |
+| - проектирование       | - контроль качества          |
 +------------------------+------------------------------+
 
 <!--
@@ -138,14 +155,17 @@ Copyright 2008, Scott W. Ambler (<http://www.ambysoft.com/surveys/>)
 
 # Методологии разработки
 
-Проекты отличаются по масштабам, бюджету, срокам, сложности и критичности.\
-**Нет методологии, подходящей сразу для всех проектов.**
+Проекты отличаются по масштабам, бюджету, срокам, сложности и критичности.
+
+В настоящее время существует огромное разнообразие методологий:
 
   - ISO
   - CMM, CMMI
   - MSF - Microsoft Solution Framework
   - RUP - Rational Unified Process
   - Agile Methodologies
+
+**Нет методологии, подходящей сразу для всех проектов.**
 
 # Ниша Agile
 
@@ -172,70 +192,83 @@ Copyright 2008, Scott W. Ambler (<http://www.ambysoft.com/surveys/>)
   - Velocity tracking
 
 # Agile Methodology Most Closely Followed
+
 ![](./images/agile_methodology_most_closely_followed.png)
 
 # Содержание
 
-  * Agile сегодня
-  * История и предпосылки возникновения
-  * <font color=red>Общая характеристика Agile</font>
+  - Agile сегодня
+  - История и предпосылки возникновения
+  - <font color=red>Общая характеристика Agile</font>
 
 # Agile Manifesto (2001)
 
 +--------------------------------+------+---------------------------------+
-| * Individuals and interactions | over | * Processes and tools           |
-| * Working software             |      | * Comprehensive documentation   |
-| * Customer collaboration       |      | * Contract negotiation          |
-| * Responding to change         |      | * Following a plan              |
+| - Individuals and interactions | over | - Processes and tools           |
+| - Working software             |      | - Comprehensive documentation   |
+| - Customer collaboration       |      | - Contract negotiation          |
+| - Responding to change         |      | - Following a plan              |
 +--------------------------------+------+---------------------------------+
 
 That is, while there is value in the items on the right,\
 we value the items on the left more.
 
-# Major Principles of Agile Software
+# Project Management Triangle
 
-  * Working software is the primary measure of progress.
-  * Simplicity – the art of maximizing the amount of work not done.
-  * The most efficient and effective method of conveying information to and
-    within a development team is face-to-face conversation.
-  * The best architectures, requirements, and designs emerge from self-
-    organizing teams.
-  * At regular intervals, the team reflects on how to become more effective,
-    then tunes and adjusts its behavior accordingly.
++-------------------------------+----------------------------------------------------------+
+| ![](./images/pm-triangle.gif) | > - "Быстро, дешево, качественно — выбери любые два."    |
+|                               |   - Заказчик определяет значения только двух переменных, |
+|                               |     величину третьей определяет команда разработчиков.   |
++-------------------------------+----------------------------------------------------------+
 
-# 4 переменные
+# Scope
 
-![](./images/3comp.svg)
+  - Понятие Quality расщепляется на два
+    - Quality как надежность, устойчивость, корректность
+    - Scope — функциональность, богатство возможностей
 
-> - Заказчик определяет значения только двух переменных,\
-    величину третьей определяет команда разработчиков.
-  - Быстро, дешево, качественно — выбери любые два.
+![](./images/agile-contracts-3.png)
 
-# 4 переменные
+> - Time, Cost, Quality фиксируются.
+  - Scope корректируется с учетом обстоятельств.
+  - Самое важное в первую очередь!
 
-## SCOPE +\
-![](./images/3comp.svg)
+# Twelve Principles of Agile Software
 
-  * Первые три переменные фиксируются.
-  * Scope — число функций системы (features).
-  * Scope корректируется с учетом обстоятельств.
-  * Самое важное в первую очередь!
+ - Our highest priority is to satisfy the customer through early and continuous
+   delivery of valuable software.
+ - Welcome changing requirements, even late in development. Agile processes
+   harness change for the customer's competitive advantage.
+ - Deliver working software frequently, from a couple of weeks to a couple of
+   months, with a preference to the shorter timescale.
+ - Business people and developers must work together daily throughout the
+   project.
+ - Build projects around motivated individuals. Give them the environment and
+   support they need, and trust them to get the job done.
+ - The most efficient and effective method of conveying information to and
+   within a development team is face-to-face conversation.
+
+# Twelve Principles of Agile Software
+
+ - Working software is the primary measure of progress.
+ - Agile processes promote sustainable development. The sponsors, developers,
+   and users should be able to maintain a constant pace indefinitely.
+ - Continuous attention to technical excellence and good design enhances
+   agility.
+ - Simplicity — the art of maximizing the amount of work not done — is essential.
+ - The best architectures, requirements, and designs emerge from self-organizing
+   teams.
+ - At regular intervals, the team reflects on how to become more effective, then
+   tunes and adjusts its behavior accordingly.
 
 # Основные черты: Итеративный процесс
 
   - Выпуск новой версии как минимум каждые 2-4 недели
   - На выходе каждой итерации — **рабочий продукт**
   - Минимум необходимого
-      - Планирования
-      - Проектирования
-      - Документации
-
-# Основные черты: Команды разработчиков
-
-  - Самостоятельно организуют свою работу
-  - Располагаются в общем открытом офисе
-  - Ежедневные stand-up meeting
-  - Тесная связь с заказчиком
+    - Планирования
+    - Проектирования
+    - Документации
 
 # Основные черты: Отношение к документам
 
@@ -244,16 +277,23 @@ we value the items on the left more.
       - Общение внутри команды
   - Документация либо не пишется совсем, либо необходимый минимум
 
+# Основные черты: Команды разработчиков
+
+  - Самостоятельно организуют свою работу
+  - Располагаются в общем открытом офисе
+  - Ежедневные stand-up meeting
+  - Тесная связь с заказчиком
+
 # Сравнение основ
 
-+--------------------------------------+------------------------------------+
-| **Методики с четким планированием**  | **Гибкие методики**                |
-|                                      |                                    |
-|   - Типовые проекты                  |   - Уникальные продукты            |
-|   - Требования фиксированы           |   - Частая смена требований        |
-|   - Большое количество разработчиков |   - Небольшое число разработчиков  |
-|   - Крупные проекты                  |   - Небольшие и средние проекты    |
-+--------------------------------------+------------------------------------+
++--------------------------------------+-----------------------------------+
+| **Методики с четким планированием**  | **Гибкие методики**               |
+|                                      |                                   |
+|   - Типовые проекты                  |   - Уникальные продукты           |
+|   - Требования фиксированы           |   - Частая смена требований       |
+|   - Крупные проекты                  |   - Небольшие и средние проекты   |
+|   - Большое количество разработчиков |   - Небольшое число разработчиков |
++--------------------------------------+-----------------------------------+
 
 # Препятствия при внедрения гибких методик:
 
@@ -266,8 +306,9 @@ we value the items on the left more.
 
   1. Какие факторы повлияли на содержание первых методологий разработки
   1. Достоинства и недостатки каскадной модели
-  1. Манифест ГТР
+  1. Определение методологии программирования
   1. Определение ГТР (XP)
+  1. Манифест ГТР
   1. Основные черты гибких методологий разработки
   1. Факторы, противодействующие внедрению ГТР
 
