@@ -1,7 +1,5 @@
 # Clean Code
 
-![](./images/ioccc-akari-downsampler.jpg)
-
 Кирилл Корняков, Андрей Морозов\
 Сентябрь 2014
 
@@ -10,6 +8,7 @@ TODO
   - Формальные оценки сложности (complexity)
   - Правила от Agile чуваков (типа не надо else...)
   - Кирилл: добавить еще одно понятие
+  - Пример про комплексное число слабый
 -->
 
 # Содержание
@@ -46,11 +45,12 @@ TODO
   - Низкая культура (уход от ответственности)
   - Унаследованный / сторонний код
 
+\
 Кто же виноват?
 
 > - Руководство (заказчик, менеджер)
   - Коллеги
-  - На самом деле: **Вы**!
+  - На самом деле: __Вы__!
 
 # Как результат...
 
@@ -59,7 +59,7 @@ TODO
 # Содержание
 
   - Зачем?
-  - **Ключевые понятия**
+  - __Ключевые понятия__
   - Чистый код
     - Именование
     - Функции/методы
@@ -90,6 +90,32 @@ TODO
  - Ортогональность (Orthogonality)
  - Уровни абстракции (Levels of abstraction)
  - Единообразие (Uniformity)
+
+# API — самое важное
+
+  - Нужно проектировать в первую очередь
+  - Уделять особое внимание при рецензии кода
+  - Интерфейс должен быть понятным
+
+```java
+Matrix createMatrix(int a1, int a2);
+Matrix createMatrix(int width, int height);
+List<PECustomerDetailsData> retrieveValidateAndConvertCustomerSpecificDataIntoPresentationEntities();
+```
+
+  - Избегайте тавтологии
+
+```java
+customer.customerName = "Bill";
+```
+
+  - Сортируйте члены по важности для пользователя
+
+```java
+  public void do(); // up
+
+  private int i1;   // down
+```
 
 # Содержание
 
@@ -181,21 +207,8 @@ public List<Cell> getFlaggedCells() {
 }
 ```
 
-# Никакой информации...
-
-``` java
-public static Matrix createMatrix(int a1, int a2) {
-  // ...
-}
-
-public static Matrix createMatrix(int width, int height) {
-  // ...
-}
-```
-
 # Magic numbers
 
-Не используйте их!
 
 ``` java
     int dailyPay = hourlyRate * 8;
@@ -203,7 +216,9 @@ public static Matrix createMatrix(int width, int height) {
     int step = width * 4;
 ```
 
-Используйте:
+Не используйте их!
+
+Вместо этого используйте:
 
 > - `WORK_HOURS_PER_DAY`
   - `FEET_PER_MILE`
@@ -220,7 +235,9 @@ public class Part {
 }
 
 ```
-<br><br><br>
+\
+\
+\
 
 ``` java
 public class Part {
@@ -233,72 +250,61 @@ public class Part {
 
 # Одно слово для каждой концепции
 
-> - fetch
-  - retrieve
-  - get
-
-<br>
-
-> - controller
-  - manager
-  - driver
-
-<br><br><br>
-
-> - DeviceManager vs ProtocolController
+> - fetch, retrieve, get
+  - read, load
+  - controller, manager, driver
 
 # Имена классов
 
-Имена классов и объектов должны представлять собой существительные и их комбинации:
+> Имена классов и объектов должны представлять собой __существительные__ и их
+комбинации.
 
-<font color=green>хорошо</font>:
+<font color=green>Хорошо</font>
 
- - Customer
- - WikiPage
- - Account
+ - `Customer`
+ - `WikiPage`
+ - `Account`
 
-<br>
+<font color=red>Плохо</font>
 
-<font color=red>плохо</font>:
-
- - Manager
- - Processor
- - Data
- - Info
+ - `Manager` -> `AccountManager`
+ - `Processor` -> `JobProcessor`
+ - `Data` -> `Order`
+ - `Info` -> `HelpMessage`
 
 # Имена методов
 
-Имена методов представляют собой глаголы или глагольные словосочетания:
+> Имена методов представляют собой __глаголы__ или глагольные словосочетания.
 
-``` java
+```java
 String name = employee.getName();
 customer.setName("Mike");
 if (paycheck.isPosted()) ...
 ```
-<br>
 
-<font color=green>хорошо</font>:
-``` java
-Complex point = Complex.FromRealNumber(23.0);
+<font color=green>Xорошо</font>
+```java
+Complex z = Complex.FromRealNumber(23.0);
 ```
 
-<font color=red>плохо</font>:
-``` java
-Complex point = new Complex(23.0);
+<font color=red>Плохо</font>
+```java
+Complex z = new Complex(23.0);
 ```
 
-# Именование типов
+# Именование переменных и членов класса
 
-<font color=green>хорошо</font>:
+<font color=green>Хорошо</font>
 
-``` java
+```java
 public class IncompleteOrder {}
 public int currentPosition = -1;
 const int WORK_HOURS_PER_DAY = 8;
 private bool isBlocked // can, is, has
 ```
-<br>
-<font color=red>плохо</font>:
+\
+
+<font color=red>Плохо</font>
 
 ``` java
 public class incompleteOrder {}
@@ -308,34 +314,29 @@ public const int NUMBEROFCONTEXTS = 10;
 private int collectionsize;
 private string m_strName;
 private byte _array;
-List<PECustomerDetailsData> retrieveValidateAndConvertCustomerSpecificDataIntoPresentationEntities() {}
-
-
-customer.customerName = "Inc";
 ```
 
 # Итого. Именование
 
  - Хорошие имена => Самодокументированный код
- - Плохие имена <= Вы не понимаете предметную область вашего приложения
+ - Плохие имена <= Вы не понимаете предметную область
 
-\
-Советы
+## Советы
 
- - Достаточная длина
- - Осмысленное название
+ - Передает назначение
+ - Разумная длина
  - Легко читаются
- - Быстро ищутся
+ - Быстро вспоминаются => ищутся
  - Не содержат шум
  - Не дезинформируют
 
 # Содержание
 
   - Зачем?
-  - **Ключевые понятия**
+  - Ключевые понятия
   - Чистый код
     - Именование
-    - Функции/методы
+    - __Функции/методы__
     - Комментарии
     - Форматирование
   - Заключение
@@ -344,20 +345,16 @@ customer.customerName = "Inc";
 
 Какова нормальная длина функции?
 
-// in a completely uncommented 2000 line method
+In a completely uncommented 2000 line method:
 
-``` c
+```c
     {
       {
-        while (.. ) {
+        while (..) {
           if (..){
-
           }
 
-          for (.. ) {
-
-          }
-             .... (just putting in the control flow here, imagine another few hundred ifs)
+          ... (just putting in the control flow here, imagine another few hundred ifs)
           if(..) {
                 if(..) {
                     if(..) {
@@ -369,9 +366,9 @@ customer.customerName = "Inc";
           ...
 ```
 
-* The endif showed up around line 800)
+- The `endif` showed up around line 800!
 
-# Оптимальное количество параметров функции
+# Оптимальное количество аргументов
 
 ``` cpp
     int OverlayFlatVideos(int numberOfFlatVideos,
@@ -395,9 +392,9 @@ customer.customerName = "Inc";
                           InterpolationMethod inMethod)
 ```
 
-# Еще пример: WinApi C++
+# WinApi C++
 
-``` cpp
+```cpp
         hThreadArray[i] = CreateThread(
             NULL,                   // default security attributes
             0,                      // use default stack size
@@ -406,7 +403,9 @@ customer.customerName = "Inc";
             0,                      // use default creation flags
             &dwThreadIdArray[i]);   // returns the thread identifier
 ```
- <br> <br> <br>
+\
+\
+\
 
 ``` cpp
     wnd.CreateWnd(hInstance, wcname, NULL, WS_VISIBLE|WS_OVERLAPPEDWINDOW,
@@ -414,7 +413,8 @@ customer.customerName = "Inc";
         NWin::SSize(600,400)), NULL,
         LoadMenu(hInstance, resWapp), NULL);
 ```
-# Выходные параметра функции
+
+# Выходные параметры функции
 
 ``` java
     static void GetSupportDocFilePath(out string supportDocFilePath) {
@@ -428,7 +428,7 @@ customer.customerName = "Inc";
 
 # Убийственная сложность
 
-``` c
+```c
 float _______ ( float number )
 {
   long i;
@@ -446,26 +446,27 @@ float _______ ( float number )
 }
 ```
 
-ftp://ftp.idsoftware.com/idstuff/source/quake3-1.32b-source.zip
+  - Приведена оригинальная версия кода
+  - <ftp://ftp.idsoftware.com/idstuff/source/quake3-1.32b-source.zip>
 
 # Условия
 
-``` java
+```java
     if (splitParameters->projectorVideos == nullptr ||
-    System::String::IsNullOrEmpty(splitParameters->splitSettings) ||
-    splitParameters->projectorWidth <= 0 ||
-    splitParameters->projectorHeight <= 0) {}
+        System::String::IsNullOrEmpty(splitParameters->splitSettings) ||
+        splitParameters->projectorWidth <= 0 ||
+        splitParameters->projectorHeight <= 0)
 
-    if (timer.HasExpired() && !timer.IsRecurrent()) {}
+    if (timer.HasExpired() && !timer.IsRecurrent())
     if (ShouldBeDeleted(timer)) {}
 
     if(isValid == false) {}
     if(!canEditPrice) {}
 ```
 
-# Избегайте коды ошибок
+# Предпочитайте исключения кодам ошибок
 
-``` java
+```java
     public void SendShutDown() {
         var handle = GetHandle(device);
         if (handle != DeviceHandle.INVALID) {
@@ -484,9 +485,9 @@ ftp://ftp.idsoftware.com/idstuff/source/quake3-1.32b-source.zip
     }
 ```
 
-# Решение
+# С использованием исключений
 
-``` java
+```java
     public void TrySendShutDown() {
         try {
           SendShutDown();
@@ -503,28 +504,31 @@ ftp://ftp.idsoftware.com/idstuff/source/quake3-1.32b-source.zip
     }
 ```
 
-# Итого.Функции
+# Итого. Функции
 
- - Оптимальная длина функции (1 - экран ~ 25 - 50 строк)
- - Оптимальное кол-во параметров (0 - отлично, 1-2 - хорошо, 3+ - ужасно)
- - 0/1 - выходной параметр
- - Функция должна выполнять только одну операцию.
- Она должна выполнять ее хорошо.
- И ничего другого она делать не должна.
+ - Оптимальная длина функции (Один экран ~25-50 строк)
+ - Оптимальное количество параметров
+   - 0 — отлично, 1-2 — хорошо, 3 и более — ужасно
+ - 0/1 выходной параметр
+ - Резюме
+    - Функция должна выполнять только одну операцию.
+    - Она должна выполнять ее хорошо.
+    - И ничего другого она делать не должна.
 
 # Содержание
 
-  * Зачем?
-  * Ключевые понятия
-  * Чистый код
-    - наименование
-    - функции/методы
-    - **коментарии**
-    - форматирование
-  * Заключение
+  - Зачем?
+  - Ключевые понятия
+  - Чистый код
+    - Именование
+    - Функции/методы
+    - __Комментарии__
+    - Форматирование
+  - Заключение
 
 # Комментарии
 
+```java
     // When I wrote this, only God and I understood what I was doing
     // Now, God only knows
 
@@ -543,8 +547,9 @@ ftp://ftp.idsoftware.com/idstuff/source/quake3-1.32b-source.zip
     ...
 
     // I am not sure if we need this, but too scared to delete.
+```
 
-``` java
+```java
 Catch (Exception e) {
     //who cares?
 }
@@ -552,18 +557,18 @@ Catch (Exception e) {
 
 # Комментарии
 
-**Они полезны?**
+  - Неактуальная информация
+  - Устаревший комментарий
+  - Избыточный комментарий
+  - Запутывающий комментарий
+  - Закоментированный код
+  - Дезинформация
 
-  * Неактуальная информация
-  * Устаревшие комментарий
-  * Избыточный комментарий
-  * Запутывающий комментарий
-  * Закоментированный код
-  * Дезинформация
+__Они полезны?__
 
-# Неактуальная информация, Большой header
+# Неактуальная информация, большой header
 
-``` java
+```java
     /*---------------------------------------------------------------
     -----------------------
     Created by: NANDA
@@ -579,6 +584,7 @@ Catch (Exception e) {
     ...
     }
 ```
+
 # Устаревший комментарий
 
 ``` java
@@ -662,10 +668,9 @@ asphdnFileGuid.Value = contractHistoryList[0].FileGuid.ToString();
 asptxtReasonForRejection.Text = string.Empty;
 ```
 
-
 # Дезинформация
 
-* Never rely on a comment ...
+  - Никогда не доверяйте комментариям!
 
 ``` java
 /**
@@ -679,14 +684,14 @@ public boolean isAvailable()
 
 # Позволительные комментарии
 
-* Пояснения в **нетривиальных** случаях
+ - Пояснения в __нетривиальных__ случаях
 
 ``` java
 // format matched kk:mm:ss EEE, MMM dd, yyyy
 Pattern timeMatcher = Pattern.Compile("\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
 ```
 
-* Заметки разработчика (желательно избегать)
+ - Заметки разработчика (желательно избегать)
 
 ``` c
     //TODO: ...
@@ -694,25 +699,40 @@ Pattern timeMatcher = Pattern.Compile("\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
     //HACK, NOTE, WARNING
 ```
 
-* API (doxygen)
-    - doctest(python)
+  - API
+    - Doxygen
+    - Javadoc
+    - Doctest (Python)
 
-# Комментарии: резюме
+# Итого. Комментарии
+
+  - Комментарии не компилируются
+    - Корректность комментариев нельзя проверить автоматически / программно
+  - Комментарии должны объяснять "Зачем" что-то делается, а не "Как"
+  - Комментарии считаются одним из code smells (признаков плохого кода)
+\
+\
+
 
 > "Don’t comment bad code — rewrite it!"
 
-B. Kernighan, P. Plauger
-The Elements of Programming Style
+B. Kernighan, P. Plauger "The Elements of Programming Style"
 
 # Форматирование
 
+![](./images/ioccc-akari-downsampler.jpg)
+
 # Горизонтальное выравнивание
+
+<font color=red>Плохо</font>
 
 ``` java
 customer.CalculateCredit ( fromDate );
 customer.CalculateCredit(fromDate , toDate);
 if ( IsValid ) i ++
 ```
+
+<font color=green>Хорошо</font>
 
 ``` java
 if(customer.IsValid && customer.Credit == 0.0)
@@ -769,15 +789,6 @@ namespace MVCS.Diff4Big.Domain.Comparison.FT {
 }
 ```
 
-# Главное это интерфейс
-
-``` java
-  public void do(); // up
-
-  private int i1;   // down
-  //..
-```
-
 # Рекомендация
 
 ``` java
@@ -790,7 +801,7 @@ namespace MVCS.Diff4Big.Domain.Comparison.FT {
 <br><br>
 
 ``` java
-  if (a == 0){
+  if (a == 0) {
     a++;
   }
 
@@ -798,17 +809,22 @@ namespace MVCS.Diff4Big.Domain.Comparison.FT {
     a = a << 2;
 ```
 
-# Ключевые принципы
+# Ключевые принципы (фольклор)
 
- - Не повторяйся. (DRY: Don't repeat yourself)
- - Как можно проще и глупее. (KISS: keep it simple, stupid)
- - Скажите, что вы имеете в виду, просто и прямо. (Say what you mean, simply and
-   directly)
- - Пишите понятно — не умничайте. (Write clearly — don't be too clever)
- - Пишите понятно — не жертвуйте ясностью во имя эффективности. (Write clearly —
-   don't sacrifice clarity for "efficiency")
+ - DRY: Don't repeat yourself
+    - Не повторяйся
+ - KISS: keep it simple, stupid
+    - Сохраняй это простым и понятным
+ - YAGNI: you aren't gonna need it
+    - Тебе это не понадобится
+ - Say what you mean, simply and directly
+    - Говорите что имеете в виду, просто и прямо
+ - Write clearly — don't be too clever
+    - Пишите просто — не умничайте
+ - Write clearly — don't sacrifice clarity for "efficiency"
+    - Пишите просто — не жертвуйте ясностью во имя эффективности
 
-# Заключение: Правило бой скаута
+# Заключение: Правило бойскаута
 
 > Всегда оставляй лагерь чище, чем ты его нашел.
 
@@ -816,7 +832,7 @@ namespace MVCS.Diff4Big.Domain.Comparison.FT {
 
 # Ключевые моменты
 
- - Некачественный код — окостенение и смерть ПО
+ - Некачественный код — окостенение и смерть проекта
  - Качество кода — это __ответственность разработчика__
  - Чистка кода — __непрерывная__ активность
     - Нет смысла делать периодически (нужно делать постоянно)
@@ -827,8 +843,11 @@ namespace MVCS.Diff4Big.Domain.Comparison.FT {
 
 # Контрольные вопросы
 
+ 1. Признаки хорошего и плохого кода
  1. Ключевые понятия при разговоре о чистоте кода
- 1. Рекомендации по поддержанию чистого кода (именование, форматирование)
+ 1. Рекомендации по
+    - Именованию
+    - Оформлению функций
  1. Комментарии и чистый код
  1. Ключевые принципы
 
