@@ -182,7 +182,7 @@ def main():
     err = err or check_no_trailing_spaces()
     err = err or check_no_tabs()
     err = err or check_empty_line_before_eof()
-    err = err or check_all_file_size(512 * 1024)
+    err = err or check_all_file_size(2500 * 1024)
     err = err or check_all_file_name()
     err = err or check_all_images_exist()
     err = err or check_all_images_is_used()
