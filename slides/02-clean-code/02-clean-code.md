@@ -1,15 +1,11 @@
 # Clean Code
 
-Кирилл Корняков, Андрей Морозов\
-Сентябрь 2014
+![](./images/good-bad-code.jpg)
 
-<!--
-TODO
-  - Формальные оценки сложности (complexity)
-  - Правила от Agile чуваков (типа не надо else...)
-  - Кирилл: добавить еще одно понятие
-  - Пример про комплексное число слабый
--->
+Кирилл Корняков, Андрей Морозов
+\
+\
+Сентябрь 2014
 
 # Содержание
 
@@ -283,15 +279,6 @@ customer.setName("Mike");
 if (paycheck.isPosted()) ...
 ```
 
-<font color=green>Xорошо</font>
-```java
-Complex z = Complex.FromRealNumber(23.0);
-```
-
-<font color=red>Плохо</font>
-```java
-Complex z = new Complex(23.0);
-```
 
 # Именование переменных и членов класса
 
@@ -390,7 +377,7 @@ In a completely uncommented 2000 line method:
                           int& numberOfVideoReaders,
                           IplImage*& imageReflected,
                           IplImage*& imageFullDomeCopy,
-                          InterpolationMethod inMethod)
+                          InterpolationMethod inMethod) // 19
 ```
 
 # WinApi C++
@@ -509,7 +496,7 @@ float _______ ( float number )
 
  - Оптимальная длина функции (один экран ~25-50 строк)
  - Оптимальное количество параметров
-   - 0 — отлично, 1-2 — хорошо, 3 и более — ужасно
+    - 0 — отлично, 1-2 — хорошо, 3 и более — ужасно
  - 0/1 выходной параметр
  - Резюме
     - Функция должна выполнять только одну операцию.
@@ -551,7 +538,7 @@ float _______ ( float number )
 ```
 
 ```java
-Catch (Exception e) {
+catch (Exception e) {
     //who cares?
 }
 ```
@@ -588,7 +575,7 @@ __Они полезны?__
 
 # Устаревший комментарий
 
-``` java
+```java
     ...
     // Gets the login user id
     // Gets the CRM details
@@ -598,7 +585,7 @@ __Они полезны?__
 
 # Избыточный комментарий
 
-``` java
+```java
     // If the server variable is empty, throw the error message
     if (loginUserId == null)
     {
@@ -608,7 +595,7 @@ __Они полезны?__
 
 # Запутывающий комментарий
 
-``` java
+```java
     public void LoadProperties() {
         try
         {
@@ -626,7 +613,7 @@ __Они полезны?__
 
 # Закоментированный код
 
-``` java
+```java
 //#region ShowHyperLink
 ///// <summary>
 ///// Show the hyperlink controls
@@ -645,7 +632,7 @@ __Они полезны?__
 
 # Еще хуже
 
-``` java
+```java
 asplblAcceptDeclineDate.Text = contractHistoryList[0].AcceptedDate.ToString();
 if (contractHistoryList[0].IsMultiple)
 {
@@ -673,7 +660,7 @@ asptxtReasonForRejection.Text = string.Empty;
 
   - Никогда не доверяйте комментариям!
 
-``` java
+```java
 /**
  * Always returns true.
  */
@@ -710,7 +697,7 @@ Pattern timeMatcher = Pattern.Compile("\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
   - Комментарии не компилируются
     - Корректность комментариев нельзя проверить автоматически / программно
   - Комментарии должны объяснять "Зачем" что-то делается, а не "Как"
-  - Комментарии считаются одним из code smells (признаков плохого кода)
+  - Комментарии считаются одним из признаков плохого кода (code smells)
 \
 \
 
@@ -719,9 +706,22 @@ Pattern timeMatcher = Pattern.Compile("\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
 
 B. Kernighan, P. Plauger "The Elements of Programming Style"
 
+# Содержание
+
+  - Зачем?
+  - Ключевые понятия
+  - Чистый код
+    - Именование
+    - Функции/методы
+    - Комментарии
+    - __Форматирование__
+  - Заключение
+
 # Форматирование
 
 ![](./images/ioccc-akari-downsampler.jpg)
+
+<http://www.ioccc.org/2011/akari/hint.html>
 
 # Горизонтальное выравнивание
 
@@ -743,7 +743,7 @@ return IsValid ? cdd : DateTime.MaxDate;
 
 # Вертикальное выравнивание
 
-``` java
+```java
 using MVCS.Diff4Big.Domain.ImageEntities;
 using MVCS.Diff4Big.Domain.Specifications;
 namespace MVCS.Diff4Big.Domain.Comparison.FT {
@@ -810,6 +810,17 @@ namespace MVCS.Diff4Big.Domain.Comparison.FT {
     a = a << 2;
 ```
 
+# Содержание
+
+  - Зачем?
+  - Ключевые понятия
+  - Чистый код
+    - Именование
+    - Функции/методы
+    - Комментарии
+    - Форматирование
+  - __Заключение__
+
 # Ключевые принципы (фольклор)
 
  - DRY: Don't repeat yourself
@@ -825,12 +836,6 @@ namespace MVCS.Diff4Big.Domain.Comparison.FT {
  - Write clearly — don't sacrifice clarity for "efficiency"
     - Пишите просто — не жертвуйте ясностью во имя эффективности
 
-# Заключение: Правило бойскаута
-
-> Всегда оставляй лагерь чище, чем ты его нашел.
-
-![](./images/bs.jpg)
-
 # Ключевые моменты
 
  - Некачественный код — окостенение и смерть проекта
@@ -841,6 +846,12 @@ namespace MVCS.Diff4Big.Domain.Comparison.FT {
  - Обязательная проверка кода __до__ момента интеграции
     - Инспекция кода (peer review)
     - Автоматическая проверка (continuous integration)
+
+# Заключение: Правило бойскаута
+
+> Всегда оставляй лагерь чище, чем ты его нашел.
+
+![](./images/bs.jpg)
 
 # Контрольные вопросы
 
