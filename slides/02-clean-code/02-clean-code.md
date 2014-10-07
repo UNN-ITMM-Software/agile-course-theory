@@ -1,165 +1,210 @@
 # Clean Code
 
-Евгений Сорокин,
-Кирилл Корняков
+![](./images/good-bad-code.jpg)
 
-Сентябрь 2013
-
-<!-- TOOD
-
- - Вставить пример на полиморфизм с камерой
- - Уточнить пример с булевским флагом
- - Идеальный код, ИКР, примеры
- - Зачем писать код: чтобы быстро разбираться и фиксить проблемы,
-   когда это нужно будет сделать срочно
--->
+Кирилл Корняков, Андрей Морозов
+\
+\
+Сентябрь 2014
 
 # Содержание
 
-  * Зачем?
-  * Ключевые понятия
-  * Чистый код
-    - наименование
-    - функции/методы
-    - коментарии
-    - форматирование
-    - юнит тесты
-  * Заключение
+  - Зачем?
+  - Ключевые понятия
+  - Чистый код
+    - Именование
+    - Функции/методы
+    - Комментарии
+    - Форматирование
+  - Заключение
 
 # Зачем?
 
-> "Зачем? Наши клиенты не смотрят на исходный код. Почему мы должны держать его в чистоте?."
+> "Наши клиенты не смотрят на исходный код.\
+Почему мы должны держать его в чистоте?"
 
-  Генеральный директор компании по разработке ПО,
-  Нижний Новгород, Август 2010
+Генеральный директор компании по разработке ПО,\
+Нижний Новгород, Август 2010
+
+# Преимущества чистого кода
+
+  - Программист в основном не пишет, а читает код
+  - Быстрое понимание кода => быстрое решение задач
+     - Добавление новых возможностей
+     - Поиск и устранение проблем
+
+# Откуда берется плохой код?
+
+  - Нехватка времени
+  - Отсутствие стандартов кодирования
+  - Различная квалификация сотрудников
+  - Низкая культура (уход от ответственности)
+  - Унаследованный / сторонний код
+
+\
+Кто же виноват?
+
+> - Руководство (заказчик, менеджер)
+  - Коллеги
+  - На самом деле: __Вы__!
+
+# Как результат...
+
+![](./images/fast_solution.gif)
+
+# Содержание
+
+  - Зачем?
+  - __Ключевые понятия__
+  - Чистый код
+    - Именование
+    - Функции/методы
+    - Комментарии
+    - Форматирование
+  - Заключение
 
 # Что такое качество кода?
 
 ![](./images/quality.jpg)
 
+# Признаки качества кода
+
++-----------------------------------------+----------------------------------------------+
+| ## Хорошо                               | ## Плохо                                     |
++-----------------------------------------+----------------------------------------------+
+|  - Простой, логичный, понятный          |  - Непонятный, заумный, сложный              |
+|  - Чистый, структурированный            |  - Запутанный, шумный, визуально нагруженный |
+|  - Краткий, лаконичный                  |  - Длинный, повторяющийся                    |
+|  - Единообразный (стилистически единый) |  - Беспорядочный, пестрый                    |
++-----------------------------------------+----------------------------------------------+
+
 # Ключевые понятия
 
- - Дублирование
- - Шум
- - Единообразие (единый стиль)
- - Принцип единой ответственности
- - Ортогональность
- - Уровни абстракции
+ - Дублирование (Duplication)
+ - Шум (Noise)
+ - Принцип единой ответственности (Single Responsibility Principle - SRP)
+ - Ортогональность (Orthogonality)
+ - Уровни абстракции (Levels of abstraction)
+ - Единообразие (Uniformity)
 
-# Основные принципы
+# API — самое важное
 
-Код должен быть простым и понятным с первого взгляда!
+  - Нужно проектировать в первую очередь
+  - Уделять особое внимание при рецензии кода
+  - Интерфейс должен быть понятным
 
-* DRY: Don't repeat yourself
-* KISS: keep it simple, stupid
-* Say what you mean, simply and directly.
-* Write clearly - don't be too cleaver.
-* Write clearly - don't sacrifice clarity for "efficiency".
-
-# Именование
-
-# Именование типов
-
-<font face="Courier New">
-public class IncompleteOrder {} \
-public int currentPosition = -1; \
-private bool isBlocked // can, is, hass  \ \ \
-
-<font color=red>
-public class incompleteOrder {} \
-private bool Blocked \
-
-public const int NUMBEROFCONTEXTS = 10; \
-private int collectionsize; \
-private string m_strName; \
-private byte _array; \
-</font>
-</font>
-
-# Аббревиатуры
-
-<font face="Courier New">
-int firstValidInvoicePosition; \
-private string DBProvider; \
-private string SqlStatement; \
-string orderId; \ \
-
-<font color=red>
-int fstIvPos; \
-private IConnection ODBCConnection; \
-string deliveryNoteId; \
-</font>
-</font>
-
-# Классы и методы
-
-<font face="Courier New">
-<font color=red>
-  private bool Blocked
-</font>
-
-<font color=green>
-  private bool isBlocked
-</font>
-</font>
-
-
-``` java
-public PayableOrder FindById(InternalKey id)
+```java
+Matrix createMatrix(int a1, int a2);
+Matrix createMatrix(int width, int height);
+List<PECustomerDetailsData> retrieveValidateAndConvertCustomerSpecificDataIntoPresentationEntities();
 ```
 
-# Паттерн "Команда"
+  - Избегайте тавтологии
+
+```java
+customer.customerName = "Bill";
+```
+
+  - Сортируйте члены по важности для пользователя
+
+```java
+  public void do(); // up
+
+  private int i1;   // down
+```
+
+# Содержание
+
+  - Зачем?
+  - Ключевые понятия
+  - Чистый код
+    - __Именование__
+    - Функции/методы
+    - Комментарии
+    - Форматирование
+  - Заключение
+
+# Важность именования
+
+> Программист не стал выдумывать и назвал детей\
+> новый сын(1) и новый сын(2)
+
+# Небрежное именование
+
+Что делает следующий фрагмент?
+
+```java
+public List<int[]> getThem() {
+  List<int[]> list1 = new ArrayList<int[]>();
+  for (int[] x: theList) {
+    if (x[0] == 4)
+      list1.add(x);
+  }
+  return list1;
+}
+```
+
+# Осмысленные имена
+
+А теперь?
+
+```java
+public List<int[]> getFlaggedCells() {
+  List<int[]> flaggedCells = new ArrayList<int[]>();
+  for (int[] cell: gameBoard) {
+    if (cell[STATUS_VALUE] == FLAGGED)
+      flaggedCells.add(cell);
+  }
+  return flaggedCells;
+}
+```
+> - Это же игра "Сапер"!
+
+# Следим за уровнем абстракции
 
 ``` java
-    var commands = new List<ICommand> {
-       new CompareImages(diff4Big),
-       new ExcludeFailedContainers(),
-       new ReportResults()
-    };
+public List<Cell> getFlaggedCells() {
+  List<Cell> flaggedCells = new ArrayList<Cell>();
 
-    var data = new ExperimentalData();
-    foreach (var command in commands) {
-       command.Run(data);
+  for (Cell cell: gameBoard) {
+    if (cell.isFlagged()) {
+      flaggedCells.add(cell);
     }
+  }
+
+  return flaggedCells;
+}
 ```
 
-# Наследованные классы
+# Сравним...
+
+```java
+public List<int[]> getThem() {
+  List<int[]> list1 = new ArrayList<int[]>();
+  for (int[] x: theList) {
+    if (x[0] == 4)
+      list1.add(x);
+  }
+  return list1;
+}
+```
 
 ``` java
-public class SpecializedAttribute : Attribute {}
-public class CustomerCollection : CollectionsBase {}
+public List<Cell> getFlaggedCells() {
+  List<Cell> flaggedCells = new ArrayList<Cell>();
+
+  for (Cell cell: gameBoard) {
+    if (cell.isFlagged()) {
+      flaggedCells.add(cell);
+    }
+  }
+
+  return flaggedCells;
+}
 ```
-
-Это соответствует проверке "Is A".
-
-# Контекст
-
-
-<font face="Courier New">
-<font color=red>
-  customer.CustomerName \
-  customer.CustomerAddress
-</font>
-
-<font color=green>
-  customer.Name
-</font>
- \
- \
-Application "Gas Station Deluxe"
- \
-<font color=red>
-  GSDAccountAddress
-</font>
-
-
-</font>
-
-
 
 # Magic numbers
 
-Не используйте их!
 
 ``` java
     int dailyPay = hourlyRate * 8;
@@ -167,51 +212,151 @@ Application "Gas Station Deluxe"
     int step = width * 4;
 ```
 
-Используйте:
+Не используйте их!
+
+Вместо этого используйте:
 
 > - `WORK_HOURS_PER_DAY`
   - `FEET_PER_MILE`
   - `sizeof(int)`
 
-# Имена
-
-* Хорошие имена => самодокументированный код
-* Плохие имена <= Вы не понимаете предметную область вашего приложения
+# Шум!
 
 ``` java
-void DoStuff();
-void SpecificMethod1();
-List<PECustomerDetailsData> RetrieveValidateAndConvertCustomerSpecificDataIntoPresentationEntities();
+public class Part {
+  private String m_dsc;
+  void setName(String name) {
+    m_dsc = name;
+  }
+}
+
 ```
+\
+\
+\
+
+``` java
+public class Part {
+  private String description;
+  void setDescription(String description) {
+    this.description = description;
+  }
+}
+```
+
+# Одно слово для каждой концепции
+
+> - fetch, retrieve, get
+  - read, load
+  - controller, manager, driver
+
+# Имена классов
+
+> Имена классов и объектов должны представлять собой\
+__существительные__ и их комбинации.
+
+<font color=green>Хорошо</font>
+
+ - `Customer`
+ - `WikiPage`
+ - `Account`
+
+<font color=red>Плохо</font>
+
+ - `Manager` -> `AccountManager`
+ - `Processor` -> `JobProcessor`
+ - `Data` -> `Order`
+ - `Info` -> `HelpMessage`
+
+# Имена методов
+
+> Имена методов представляют собой\
+__глаголы__ или глагольные словосочетания.
+
+```java
+String name = employee.getName();
+customer.setName("Mike");
+if (paycheck.isPosted()) ...
+```
+
+
+# Именование переменных и членов класса
+
+<font color=green>Хорошо</font>
+
+```java
+public class IncompleteOrder {}
+public int currentPosition = -1;
+const int WORK_HOURS_PER_DAY = 8;
+private bool isBlocked // can, is, has
+```
+\
+
+<font color=red>Плохо</font>
+
+``` java
+public class incompleteOrder {}
+private bool flag;
+
+public const int NUMBEROFCONTEXTS = 10;
+private int collectionsize;
+private string m_strName;
+private byte _array;
+```
+
+# Итого. Именование
+
+ - Хорошие имена => Самодокументированный код
+ - Плохие имена <= Вы не понимаете предметную область
+
+## Советы
+
+ - Передает назначение
+ - Разумная длина
+ - Легко читаются
+ - Быстро вспоминаются => ищутся
+ - Не содержат шум
+ - Не дезинформируют
+
+# Содержание
+
+  - Зачем?
+  - Ключевые понятия
+  - Чистый код
+    - Именование
+    - __Функции/методы__
+    - Комментарии
+    - Форматирование
+  - Заключение
 
 # Функции
 
 Какова нормальная длина функции?
 
-<!-- TBD: вставить оригинальную картинку -->
+In a completely uncommented 2000 line method:
 
-``` c
+```c
     {
       {
-        while (.. ){
+        while (..) {
           if (..){
-              }
-          for (.. ){
-              }
-             .... (just putting in the control flow here, imagine another few hundred ifs)
-          if(..)   {
-                if(..)     {
-                       if(..)   {
+          }
+
+          ... (just putting in the control flow here, imagine another few hundred ifs)
+          if(..) {
+                if(..) {
+                    if(..) {
                     ...
                     (another few hundred brackets)
-                           }
-                      }
-             } //endif
+                    }
+                }
+          } //endif
+          ...
 ```
 
-  * The endif showed up around line 800)
+- The `endif` showed up around line 800!
 
-# Оптимальное количество параметров функции
+# Оптимальное количество аргументов
 
 ``` cpp
     int OverlayFlatVideos(int numberOfFlatVideos,
@@ -232,56 +377,46 @@ List<PECustomerDetailsData> RetrieveValidateAndConvertCustomerSpecificDataIntoPr
                           int& numberOfVideoReaders,
                           IplImage*& imageReflected,
                           IplImage*& imageFullDomeCopy,
-                          InterpolationMethod inMethod)
+                          InterpolationMethod inMethod) // 19
 ```
 
-# Функции
+# WinApi C++
 
-``` java
-    public ComplexNumber Add(ComplexNumber summand){
-      var real = this.Real + summand.Real;
-      var imaginary = Imaginary + summand.Imaginary;
-      return new ComplexNumber(real, imaginary);
-    }
+```cpp
+        hThreadArray[i] = CreateThread(
+            NULL,                   // default security attributes
+            0,                      // use default stack size
+            MyThreadFunction,       // thread function name
+            pDataArray[i],          // argument to thread function
+            0,                      // use default creation flags
+            &dwThreadIdArray[i]);   // returns the thread identifier
+```
+\
+\
+\
 
-    public void Add(OrderItem item){
-      items.Add(item);
-    }
+``` cpp
+    wnd.CreateWnd(hInstance, wcname, NULL, WS_VISIBLE|WS_OVERLAPPEDWINDOW,
+        NWin::SRect(NWin::SPoint(CW_USEDEFAULT,CW_USEDEFAULT),
+        NWin::SSize(600,400)), NULL,
+        LoadMenu(hInstance, resWapp), NULL);
 ```
 
-# Функции
+# Выходные параметры функции
 
 ``` java
-    public List<Document> GetDocuments(Customer customer);
-    public List<Customer> FetchCustomers();
-    public List<Order> RetrieveOrders();
-    public List<CustomerData> LoadDetails(Customer customer);
-```
-
-# Флаги - как параметры
-
-``` java
-    public FileStream Open(string path, bool readOnly) {
-    //...
-    }
-```
-
-# Выходные параметры
-
-``` java
-    public static
-    void GetSupportDocFilePath(out string supportDocFilePath) {
+    static void GetSupportDocFilePath(out string supportDocFilePath) {
         supportDocFilePath = new ConfigurationHelper().SupportFilePath;
     }
 
-    public static string GetSupportDocFilePath() {
+    static string GetSupportDocFilePath() {
         return new ConfigurationHelper().SupportFilePath;
     }
 ```
 
 # Убийственная сложность
 
-``` c
+```c
 float _______ ( float number )
 {
   long i;
@@ -299,30 +434,37 @@ float _______ ( float number )
 }
 ```
 
-ftp://ftp.idsoftware.com/idstuff/source/quake3-1.32b-source.zip
+  - Приведена оригинальная версия кода
+  - <ftp://ftp.idsoftware.com/idstuff/source/quake3-1.32b-source.zip>
 
 # Условия
 
-``` java
+```java
     if (splitParameters->projectorVideos == nullptr ||
-    System::String::IsNullOrEmpty(splitParameters->splitSettings) ||
-    splitParameters->projectorWidth <= 0 ||
-    splitParameters->projectorHeight <= 0) {}
+        System::String::IsNullOrEmpty(splitParameters->splitSettings) ||
+        splitParameters->projectorWidth <= 0 ||
+        splitParameters->projectorHeight <= 0)
 
-    if (timer.HasExpired() && !timer.IsRecurrent()) {}
+    if (timer.HasExpired() && !timer.IsRecurrent())
     if (ShouldBeDeleted(timer)) {}
 
     if(isValid == false) {}
     if(!canEditPrice) {}
 ```
 
-# Избегайте коды ошибок
+# Предпочитайте исключения кодам ошибок
 
-``` java
+```java
     public void SendShutDown() {
         var handle = GetHandle(device);
         if (handle != DeviceHandle.INVALID) {
-            ...
+            var err = OpenDevice(handle);
+            if (err == NULL) {
+              //
+            }
+            else {
+              Logger.Log("Can't open device. Error: " + err.ToSting());
+            }
         }
         else {
             Logger.Log("Invalid handle for: " +
@@ -331,45 +473,50 @@ ftp://ftp.idsoftware.com/idstuff/source/quake3-1.32b-source.zip
     }
 ```
 
-# Только одна операция !!!
+# С использованием исключений
 
-``` java
-    public void SendShutDown() {
+```java
+    public void TrySendShutDown() {
         try {
-            TryToShutDown();
+          SendShutDown();
         }
-        catch (DeviceShutDownError e) {
-            logger.Log(e);
-        }
+        catch() {
+        // ...
+      }
     }
-    private void TryToShutDown() {
-        var handle = GetHandle(device);
-        ...
+
+    public void SendShutDown() {
+      var handle = GetHandle(device);
+      OpenDevice(handle);
+      //...
     }
 ```
 
-# Мертвый код
+# Итого. Функции
 
-``` java
-public static bool IsAccountNameExists() {
-  return IsAccountNameExists();
-}
-```
+ - Оптимальная длина функции (один экран ~25-50 строк)
+ - Оптимальное количество параметров
+    - 0 — отлично, 1-2 — хорошо, 3 и более — ужасно
+ - 0/1 выходной параметр
+ - Резюме
+    - Функция должна выполнять только одну операцию.
+    - Она должна выполнять ее хорошо.
+    - И ничего другого она делать не должна.
 
-# Функции: резюме
+# Содержание
 
-> "Functions should do one thing.
-   They should do it well.
-   They should do it only."
-
-Robert Martin
+  - Зачем?
+  - Ключевые понятия
+  - Чистый код
+    - Именование
+    - Функции/методы
+    - __Комментарии__
+    - Форматирование
+  - Заключение
 
 # Комментарии
 
-
-
-# Комментарии
-
+```java
     // When I wrote this, only God and I understood what I was doing
     // Now, God only knows
 
@@ -387,33 +534,29 @@ Robert Martin
 
     ...
 
-    //This code sucks, you know it and I know it.
-    //Move on and call me an idiot later.
-
-    ...
-
     // I am not sure if we need this, but too scared to delete.
+```
 
-``` java
-Catch (Exception e) {
+```java
+catch (Exception e) {
     //who cares?
 }
 ```
 
 # Комментарии
 
-Они полезны?
+  - Неактуальная информация
+  - Устаревший комментарий
+  - Избыточный комментарий
+  - Запутывающий комментарий
+  - Закоментированный код
+  - Дезинформация
 
-  * Неактуальная информация
-  * Устаревшие комментарий
-  * Избыточный комментарий
-  * Плохой комментарий
-  * Закоментированный код
-  * Дезинформация
+__Они полезны?__
 
-# Неактуальная информация, Большой header
+# Большие заголовки
 
-``` java
+```java
     /*---------------------------------------------------------------
     -----------------------
     Created by: NANDA
@@ -432,7 +575,7 @@ Catch (Exception e) {
 
 # Устаревший комментарий
 
-``` java
+```java
     ...
     // Gets the login user id
     // Gets the CRM details
@@ -442,17 +585,17 @@ Catch (Exception e) {
 
 # Избыточный комментарий
 
-``` java
+```java
     // If the server variable is empty, throw the error message
     if (loginUserId == null)
     {
-        throw new Exception(“No User Id”);
+        throw new Exception("No User Id");
     }
 ```
 
-# Плохой комментарий
+# Запутывающий комментарий
 
-``` java
+```java
     public void LoadProperties() {
         try
         {
@@ -470,7 +613,7 @@ Catch (Exception e) {
 
 # Закоментированный код
 
-``` java
+```java
 //#region ShowHyperLink
 ///// <summary>
 ///// Show the hyperlink controls
@@ -489,7 +632,7 @@ Catch (Exception e) {
 
 # Еще хуже
 
-``` java
+```java
 asplblAcceptDeclineDate.Text = contractHistoryList[0].AcceptedDate.ToString();
 if (contractHistoryList[0].IsMultiple)
 {
@@ -515,9 +658,9 @@ asptxtReasonForRejection.Text = string.Empty;
 
 # Дезинформация
 
-* Never rely on a comment ...
+  - Никогда не доверяйте комментариям!
 
-``` java
+```java
 /**
  * Always returns true.
  */
@@ -527,17 +670,16 @@ public boolean isAvailable()
 }
 ```
 
-
 # Позволительные комментарии
 
-* Пояснения в **нетривиальных** случаях
+ - Пояснения в __нетривиальных__ случаях
 
 ``` java
 // format matched kk:mm:ss EEE, MMM dd, yyyy
 Pattern timeMatcher = Pattern.Compile("\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
 ```
 
-* Заметки разработчика (желательно избегать)
+ - Заметки разработчика (желательно избегать)
 
 ``` c
     //TODO: ...
@@ -545,33 +687,63 @@ Pattern timeMatcher = Pattern.Compile("\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
     //HACK, NOTE, WARNING
 ```
 
-* API (doxygen)
+  - API
+    - Doxygen
+    - Javadoc
+    - Doctest (Python)
 
-# Комментарии: резюме
+# Итого. Комментарии
+
+  - Комментарии не компилируются
+    - Корректность комментариев нельзя проверить автоматически / программно
+  - Комментарии должны объяснять "Зачем" что-то делается, а не "Как"
+  - Комментарии считаются одним из признаков плохого кода (code smells)
+\
+\
+
 
 > "Don’t comment bad code — rewrite it!"
 
-B. Kernighan, P. Plauger
-The Elements of Programming Style
+B. Kernighan, P. Plauger "The Elements of Programming Style"
+
+# Содержание
+
+  - Зачем?
+  - Ключевые понятия
+  - Чистый код
+    - Именование
+    - Функции/методы
+    - Комментарии
+    - __Форматирование__
+  - Заключение
 
 # Форматирование
 
-# Horizontal spacing
+![](./images/ioccc-akari-downsampler.jpg)
+
+<http://www.ioccc.org/2011/akari/hint.html>
+
+# Горизонтальное выравнивание
+
+<font color=red>Плохо</font>
+
 ``` java
 customer.CalculateCredit ( fromDate );
 customer.CalculateCredit(fromDate , toDate);
 if ( IsValid ) i ++
 ```
 
+<font color=green>Хорошо</font>
+
 ``` java
 if(customer.IsValid && customer.Credit == 0.0)
 position = new Location(position.x + 10, position.y);
-Return IsValid ? cdd : DateTime.MaxDate;
+return IsValid ? cdd : DateTime.MaxDate;
 ```
 
-# Vertical spacing
+# Вертикальное выравнивание
 
-``` java
+```java
 using MVCS.Diff4Big.Domain.ImageEntities;
 using MVCS.Diff4Big.Domain.Specifications;
 namespace MVCS.Diff4Big.Domain.Comparison.FT {
@@ -590,7 +762,7 @@ namespace MVCS.Diff4Big.Domain.Comparison.FT {
 }
 ```
 
-# Vertical spacing
+# Вертикальное выравнивание
 
 ``` java
 using MVCS.Diff4Big.Domain.ImageEntities;
@@ -618,26 +790,78 @@ namespace MVCS.Diff4Big.Domain.Comparison.FT {
 }
 ```
 
-# Подведение итогов
+# Рекомендация
 
-# What is good and what is bad?
+``` java
+  if (a == 0);
+    a++;
 
-* Hungary notation
-* Global variables
-* Code optimization
-* Assembler language
-* Hacks
-* Comments
+  while(a++ != magic_number);
+    a = a << 2;
+```
+<br><br>
 
-# Tools
+``` java
+  if (a == 0) {
+    a++;
+  }
 
-* Use refactoring tools
+  while(a++ != magic_number) {}
+    a = a << 2;
+```
 
-# Boy Scout Rule
+# Содержание
 
-* "Always leave the campground cleaner than you found it."
+  - Зачем?
+  - Ключевые понятия
+  - Чистый код
+    - Именование
+    - Функции/методы
+    - Комментарии
+    - Форматирование
+  - __Заключение__
 
-![](./images/bs.png)
+# Ключевые принципы (фольклор)
+
+ - DRY: Don't repeat yourself
+    - Не повторяйся
+ - KISS: keep it simple, stupid
+    - Сохраняй это простым и понятным
+ - YAGNI: you aren't gonna need it
+    - Тебе это не понадобится
+ - Say what you mean, simply and directly
+    - Говорите что имеете в виду, просто и прямо
+ - Write clearly — don't be too clever
+    - Пишите просто — не умничайте
+ - Write clearly — don't sacrifice clarity for "efficiency"
+    - Пишите просто — не жертвуйте ясностью во имя эффективности
+
+# Ключевые моменты
+
+ - Некачественный код — окостенение и смерть проекта
+ - Качество кода — это __ответственность разработчика__
+ - Чистка кода — __непрерывная__ активность
+    - Нет смысла делать периодически (нужно делать постоянно)
+    - Закладывается в стоимость задачи
+ - Обязательная проверка кода __до__ момента интеграции
+    - Инспекция кода (peer review)
+    - Автоматическая проверка (continuous integration)
+
+# Заключение: Правило бойскаута
+
+> Всегда оставляй лагерь чище, чем ты его нашел.
+
+![](./images/bs.jpg)
+
+# Контрольные вопросы
+
+ 1. Признаки хорошего и плохого кода
+ 1. Ключевые понятия при разговоре о чистоте кода
+ 1. Рекомендации по
+    - Именованию
+    - Оформлению функций
+ 1. Комментарии и чистый код
+ 1. Ключевые принципы
 
 # Спасибо за внимание!
 
