@@ -24,15 +24,15 @@ do
         echo "ERROR: No *.md file"
         # exit 1
     else
-        echo "Processing $f"
         filename=$(basename "$f")
         filename="${filename%.*}"
         rendered="$rendered_slides_dir/$filename.html"
         if [ $f -nt $rendered ]; then
+            echo "Processing $f"
             echo "Writing to $rendered"
             pandoc -t slidy -c ../style/slidy.css --self-contained -o $rendered $f
-        else
-            echo "Nothing new to generate..."
+        # else
+        #     echo "Nothing new to generate..."
         fi
     fi
 
