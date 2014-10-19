@@ -1,26 +1,11 @@
------
-
- - [Цели](https://github.com/UNN-VMK-Software/agile-development-course/wiki/Lab-2-Model-View-ViewModel#%D0%A6%D0%B5%D0%BB%D0%B8)
- - [Задачи](https://github.com/UNN-VMK-Software/agile-development-course/wiki/Lab-2-Model-View-ViewModel#%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B8)
- - [Инструкции](https://github.com/UNN-VMK-Software/agile-development-course/wiki/Lab-2-Model-View-ViewModel#%D0%98%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D0%B8)
-    - [Предварительная работа](https://github.com/UNN-VMK-Software/agile-development-course/wiki/Lab-2-Model-View-ViewModel#%D0%9F%D1%80%D0%B5%D0%B4%D0%B2%D0%B0%D1%80%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0)
-    - [Реализация](https://github.com/UNN-VMK-Software/agile-development-course/wiki/Lab-2-Model-View-ViewModel#%D0%A0%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F)
-       - [Общий алгоритм](https://github.com/UNN-VMK-Software/agile-development-course/wiki/Lab-2-Model-View-ViewModel#%D0%9E%D0%B1%D1%89%D0%B8%D0%B9-%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC)
-       - [Детальные инструкции](https://github.com/UNN-VMK-Software/agile-development-course/wiki/Lab-2-Model-View-ViewModel#%D0%94%D0%B5%D1%82%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D0%B8)
-          - [Model](https://github.com/UNN-VMK-Software/agile-development-course/wiki/Lab-2-Model-View-ViewModel#model)
-          - [View](https://github.com/UNN-VMK-Software/agile-development-course/wiki/Lab-2-Model-View-ViewModel#view)
-          - [ViewModel](https://github.com/UNN-VMK-Software/agile-development-course/wiki/Lab-2-Model-View-ViewModel#viewmodel)
-          - [View](https://github.com/UNN-VMK-Software/agile-development-course/wiki/Lab-2-Model-View-ViewModel#view-1)
- - [Заключение](https://github.com/UNN-VMK-Software/agile-development-course/wiki/Lab-2-Model-View-ViewModel#%D0%97%D0%B0%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5)
-
------
+# Лабораторная работа #2: Model-View-ViewModel
 
 ## Цели
 
   1. Ознакомиться в паттернами организации GUI на примере MVVM.
   1. Освоить практику реализации логики взаимодействия с пользователем согласно
-     TDD подходу. Другими словами, получить полное покрытие тестами
-     презентационной логики.
+     TDD подходу. Как следствие, получить покрытие тестами презентационной
+     логики.
 
 ## Задачи
 
@@ -43,6 +28,10 @@
      требоваться доработка. Результаты работы следует присылать в виде пулл-
      реквеста, и добиться прохождения всех проверок в системе непрерывной
      интеграции Travis CI.
+
+## Типичные ошибки
+
+TBD
 
 ## Инструкции
 
@@ -133,13 +122,13 @@ $ gradle idea
      этапе нужно будет обновить лишь первые 2 строки в вашей секции.
   1. Затем нужно будет проверить, что по-прежнему все работает, запустив
      следующие команды:
-```
+```bash
 $ cd agile-development-course/code
 $ gradle kirill-kornyakov-Model:check # change the path to yours
 ```
   1. Также на всякий случай стоит проверить, что работает генерация проекта для
      IDEA. Выполняем следующую команду (в той же директории `code`):
-```
+```bash
 $ gradle kirill-kornyakov-Model:idea # change the path to yours
 ```
   1. После этого запускаем IDEA, и пробуем открыть проект в папке `code`, тот же
@@ -324,6 +313,7 @@ sourceSets {
 После этого стоит положить все изменения в Git, и сделать pull request. В
 комментарии просьба оставить упоминание о том, что работа готова к проверке.
 
-<!-- Links -->
+<!-- LINKS -->
+
 [settings.gradle]: <https://github.com/UNN-VMK-Software/agile-development-course/pull/63/files#diff-18>
 [IDEA-GUI-Designer]: <http://www.jetbrains.com/idea/training/demos/GUI_Designer/GUI_Designer.html>
