@@ -42,7 +42,7 @@ TBD
 
   1. Первым делом стоит получить последние коды из репозитория (стоит делать
      это всякий раз перед началом выполнения лабораторной работы).
-```
+```bash
 $ cd agile-development-course
 $ git checkout master
 $ git fetch upstream
@@ -50,7 +50,7 @@ $ git merge upstream/master
 $ git checkout -b lab2-mvvm-SOMETHING
 ```
   1. После этого стоит убедиться, что все компилируется и работает:
-```
+```bash
 $ cd ./code
 $ gradle check
 ```
