@@ -4,12 +4,23 @@
 
 Антон Бевзюк, Кирилл Корняков, Андрей Морозов
 
-Сентябрь 2013
+Октябрь 2014
 
 <!-- TODO
-  - Вставить картинку про рефакторинг набегами
   - Подумать про вывеску, представлять контекст
 -->
+
+# Долги проектирования
+
+![](./images/debt.svg)
+
+# Сокращение долгов
+
+![](./images/refactoring_and_debt.jpg)
+
+# Цель рефакторинга
+
+![](./images/mcconnell-on-refactoring.png)
 
 # Что такое рефакторинг?
 
@@ -18,17 +29,17 @@
 
 М. Фаулер
 
-+-----------------------+------------------------+
-||![](./images/beck.png)|![](./images/fowler.png)|
-+-----------------------+------------------------+
++------------------------+-----------------------+
+|![](./images/fowler.png)||![](./images/beck.png)|
++------------------------+-----------------------+
 
 #
 
 <center>
 ![](./images/tophat.svg)
 
-Джон Томпсон, шляпных дел мастер,
-изготавливает и продает шляпы
+Джон Томпсон, шляпных дел мастер,\
+изготавливает и продает шляпы\
 за наличный расчет
 </center>
 
@@ -37,8 +48,8 @@
 <center>
 ![](./images/tophat.svg)
 
-Джон Томпсон, <strike>шляпных дел мастер,</strike>
-изготавливает и продает шляпы
+Джон Томпсон, <strike>шляпных дел мастер,</strike>\
+изготавливает и продает шляпы\
 за наличный расчет
 </center>
 
@@ -47,8 +58,8 @@
 <center>
 ![](./images/tophat.svg)
 
-Джон Томпсон,
-<strike>изготавливает и</strike> продает шляпы
+Джон Томпсон,\
+<strike>изготавливает и</strike> продает шляпы\
 за наличный расчет
 </center>
 
@@ -57,8 +68,8 @@
 <center>
 ![](./images/tophat.svg)
 
-Джон Томпсон,
-продает шляпы
+Джон Томпсон,\
+продает шляпы\
 <strike>за наличный расчет</strike>
 </center>
 
@@ -67,7 +78,7 @@
 <center>
 ![](./images/tophat.svg)
 
-Джон Томпсон,
+Джон Томпсон,\
 <strike>продает шляпы</strike>
 </center>
 
@@ -84,10 +95,6 @@
   - Упростить добавление нового кода
   - Улучшить дизайн существующего кода
   - Достичь лучшего понимания кода
-
-# Долги проектирования
-
-![](./images/debt.svg)
 
 # Процесс рефакторинга
 
@@ -110,22 +117,20 @@
 
 # Refactorings Catalog
 
-![](./images/refactoring_catalog.png)
+![](./images/refactoring_catalog_2.png)
 
 # Любимые рефакторинги
 
   - Rename Method
+  - Decompose Conditional
   - Extract Method
   - Extract Class
   - Extract Interface
   - Extract Superclass
   - Move Method
-  - Decompose Conditional
 
 
-# unit tests
-
-# unit tests
+# Unit Tests
 
 ``` java
 [TestMethod]
@@ -146,7 +151,7 @@ public void FetchUsingCreatedBySpecification() {
 }
 ```
 
-# unit tests
+# Unit Tests
 
 ``` java
 [TestMethod]
@@ -167,7 +172,7 @@ public void FetchUsingCreatedBySpecification() {
 }
 ```
 
-# unit tests
+# Unit Tests
 
 ``` java
 new DateTime(2009, 11, 12)
@@ -195,7 +200,7 @@ internal static class Oct {
 }
 ```
 
-# unit tests
+# Unit Tests
 
 ``` java
 var customer = new Customer();
@@ -214,7 +219,7 @@ orderItam.Price = 20.50;
 order.Items.Add(orderItem)
 ```
 
-# unit tests
+# Unit Tests
 
 ``` java
 var order = new  OrderBuilder()
@@ -233,9 +238,9 @@ var order = new  OrderBuilder()
 
 # Книги
 
-  - Martin Fowler - Refactoring: Improving the Design of Existing Code
-  - Joshua Kerievsky - Refactoring to Patterns
-  - Martin Fowler - Patterns of Enterprise Application Architecture
+  - Martin Fowler — Refactoring: Improving the Design of Existing Code
+  - Joshua Kerievsky — Refactoring to Patterns
+  - Martin Fowler — Patterns of Enterprise Application Architecture
 
 # Контрольные вопросы
 
