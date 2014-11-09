@@ -46,7 +46,7 @@ TBD
 $ cd agile-development-course
 $ git checkout master
 $ git fetch upstream
-$ git merge upstream/master
+$ git rebase upstream/master
 $ git checkout -b lab2-mvvm-SOMETHING
 ```
   1. После этого стоит убедиться, что все компилируется и работает:
