@@ -52,6 +52,18 @@ TBD
   1. После этого стоит убедиться, что все компилируется и работает:
 
         $ gradle check
+        
+      Если построение завершилось с ошибкой 
+      
+        `Failed to apply plugin [class '...JavaFXPlugin']`,
+        
+      то это верный признак того, что у вас установлена Java седьмой или более старой версии. 
+      В master был добавлен проект-пример, который зависит от javafx, который в свою очередь есть 
+      только в последней джаве.
+      В таком случае необходимо обновить Java до восьмой версии. Сделать это можно [здесь][jdk8].
+      После этого следует добавить в Переменные среды Системную переменную `JAVA_HOME` и указать в ней путь к 
+      каталогу с JDK8, например `C:\Program Files\Java\jdk1.8.0_25`.
+      
 
   1. Все личные проекты должны собраться и запуститься тесты. Стоит обратить
      внимание на папку с примером `kirill-kornyakov-lab2`, в которой находится
@@ -278,3 +290,4 @@ MVVM.
 
 [settings.gradle]: <https://github.com/UNN-VMK-Software/agile-course-practice/pull/63/files#diff-18>
 [IDEA-GUI-Designer]: <http://www.jetbrains.com/idea/training/demos/GUI_Designer/GUI_Designer.html>
+[jdk8]: <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>
