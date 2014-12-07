@@ -50,7 +50,12 @@
 # Layered Architecture
 
 ![](./pix/DDD_Layered_Architecture.png)
-![](./pix/lay_arch.png)
+
+# Layered Architecture
+
++-----------------------+-----------------------------------------+
+|![](./pix/lay_arch.png)|![](./pix/responsibilities-of-layers.png)|
++-----------------------+-----------------------------------------+
 
 # Dependency Inversion
 
@@ -75,6 +80,10 @@ public class Copy{
 # Improved Architecture
 
 ![](./pix/arch.png)
+
+# Elements of DDD
+
+![](./pix/ddd-elements.png)
 
 # Слой Domain
 
@@ -155,9 +164,13 @@ __Связь с другими слоями__
 
  - Создает объекты Presentation, Domain и Infrastructure
 
-# Elements of DDD
+# Preserving Model Integrity
 
-![](./pix/ddd-elements.png)
+![](./pix/model-integrity.png)
+
+# Anticorruption Layer
+
+![](./pix/anticorruption-layer.png)
 
 # Что дает DDD
 
