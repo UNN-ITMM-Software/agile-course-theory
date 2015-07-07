@@ -283,6 +283,11 @@ we value the items on the left more.
       - Общение внутри команды
   - Документация либо не пишется совсем, либо необходимый минимум
 
+<!-- Once you realize that documentation should be laughed at, peed upon, put on fire, and just ridiculed in general, THEN, and only then, have you reached the level where you can safely read it and try to use it to actually implement a driver.
+
+    Torvalds, Linus (2001-01-12). Re: ide.2.4.1-p3.01112001.patch. Retrieved on 2012-06-22.
+-->
+
 # Препятствия при внедрении гибких методик
 
   - Выполнение типовых проектов
