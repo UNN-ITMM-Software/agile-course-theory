@@ -17,13 +17,14 @@
     - Исходный код
     - __Объектно-ориентированный дизайн__
     - Архитектура
-  - Зависимости — корень многих проблем.
   - Три концепции ООП
     - Инкапсуляция (хорошо!)
     - Полиморфизм (хорошо!)
     - Наследование (плохо?!)
 
-# Болезни ООД
+Зависимости — корень многих проблем!
+
+# Болезни дизайна
 
   - Жесткость (Rigidity)
     - Единственное изменение требует каскад изменений в других модулях
@@ -34,18 +35,26 @@
     - Сложность переиспользования кода в других системах / подсистемах
   - Вязкость (Viscosity)
     - Когда неправильное решение дешевле правильного
-    - Вязкость программы и окружения
+    - Существует вязкость программы и окружения
   - Ненужная сложность
   - Ненужные повторения
   - Непрозрачность
 
+# Примеры проблем
+
+  - Долгая компиляция и медленные тесты
+  - Использование глобальных переменных
+  - Класс с несколькими ответственностями
+  - Использование `float` для представления денег при переходе с рублей на доллары
+  - Использование `if/else` вместо полиморфизма
+
 # SOLID principles
 
-  - Single Responsibility Principle
-  - Open/Closed Principle
-  - Liskov Substitution Principle
-  - Interface Segregation Principle
-  - Dependency Inversion Principle
+  - SRP: Single Responsibility Principle
+  - OCP: Open/Closed Principle
+  - LSP: Liskov Substitution Principle
+  - ISP: Interface Segregation Principle
+  - DIP: Dependency Inversion Principle
 
 # Single Responsibility Principle
 
@@ -75,18 +84,18 @@
 
 # Open/Closed Principle
 
-![](./images/ocp.jpg)
-
-# Open/Closed Principle
-
 > "Программные сущности должны быть открыты для расширения,\
-> но закрыты для изменения."
+> но закрыты для модификации."
 
 Б. Мейер, 1988 / Р. Мартин, 1996
 
-# Open/Closed Principle
+Нет ли здесь противоречия? Как этого можно добиться?
+
+# Метафора OCP
 
 ![](./images/e2.png)
+
+<!-- Crazy USB devices: http://www.hightech-edge.com/strange-weird-usb-devices/3904/ -->
 
 # Пример c явной зависимостью
 
@@ -94,33 +103,28 @@
 ReportFormat format = TXT;
 Reporter reporter(format);
 ...
-ReportType type = QUARTERLY;
-reporter.report(type);
+reporter.getAnnualReport();
 ```
 
 ```java
 class Reporter {
-    TxtPrinter txtPrinter;
-    XmlPrinter xmlPrinter;
+    private TxtPrinter txtPrinter;
+    private XmlPrinter xmlPrinter;
 
-    Reporter(ReportFormat) {
+    Reporter(ReportFormat format) {
         if (format == TXT)
             txtPrinter = new TxtPrinter();
         else if (format == XML)
-            xmlPrinter = new TxtPrinter();
+            xmlPrinter = new XmlPrinter();
     }
 
-    void Report(ReportType type) {
-        if (type == QUARTERLY) {
-            QuarterlyReport report = new QuarterlyReport();
+    void getAnnualReport() {
+        AnnualReport report = new AnnualReport();
 
-            if (txtPrinter)
-                txtPrinter.print(report);
-            else if (xmlPrinter)
-                xmlPrinter.print(report);
-        }
-        else if (type == ANNUAL) {
-        ...
+        if (txtPrinter)
+            txtPrinter.print(report);
+        else if (xmlPrinter)
+            xmlPrinter.print(report);
     }
 }
 ```
@@ -129,10 +133,9 @@ class Reporter {
 
 ```java
 IPrinter printer = new TxtPrinter();
-IReport report = new AnnualReport();
-Reporter reporter(printer, report);
+Reporter reporter(printer);
 ...
-reporter.report();
+reporter.getAnnualReport();
 ```
 
 ```java
@@ -143,7 +146,8 @@ class Reporter {
         this.printer = printer;
     }
 
-    void Report(IReport report) {
+    void getAnnualReport() {
+        AnnualReport report = new AnnualReport();
         printer.print(report);
     }
 }
@@ -157,7 +161,8 @@ class Reporter {
 
 # OCP: полезные советы
 
-  - Данные не в public полях
+  - Паттерны Стратегия (Strategy) и Шаблонный Метод (Template Method)
+  - Инкапсуляция: стоит хранить данные в private/protected полях
   - Нет глобальным переменным
   - Скрываем неподдерживаемую функциональность
   - Проверка типов времени исполнения (RTTI) опасна
@@ -484,7 +489,37 @@ void Adjust(Rectangle rect)
 }
 ```
 
-# Применяй SOLID!
+# Следование принципам
+
+  - Принципы используются только при наличии "болезней",\
+    если их нет, принципами не стоит увлекаться
+  - Нужно следовать правилу первой пули.\
+    Интерфейсы вводятся только в том момент, когда они действительно нужны.
+
+# Контрольные вопросы
+
+План ответа про каждый из SOLID принципов:
+
+  1. Формулировка, раскрыть все слова названия.
+  1. Как достигается.
+  1. Негативные последствия нарушения. К каким "болезням" дизайна может привести
+     нарушение принципа?
+
+Вопросы:
+
+  1. Термины: жесткость, хрупкость, неподвижность, вязкость
+  1. SRP
+  1. OCP
+  1. LSP
+  1. ISP
+  1. DIP
+  1. Закон Деметры (что можно, чего нельзя)
+
+# Дополнительные вопросы
+
+  - Как влияет практика TDD на соблюдение принципов SOLID?
+
+# Следуй SOLID!
 
 ![](./images/use_solid.jpg)
 
