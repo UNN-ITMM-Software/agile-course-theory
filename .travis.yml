@@ -6,7 +6,16 @@ addons:
     - pandoc
     - python3
 script:
- - ./slides/slidy-scripts/check.py # check lectures
- - ./slides/slidy-scripts/gen_slides.sh # render HTML slides using Pandoc
+- ./slides/slidy-scripts/check.py
+- ./slides/slidy-scripts/gen_slides.sh
 notifications:
   email: false
+before_install:
+- openssl aes-256-cbc
+  -K $encrypted_753ebdfe5ffa_key
+  -iv $encrypted_753ebdfe5ffa_iv
+  -in config/travisci_rsa.enc
+  -out config/travisci_rsa
+  -d
+- chmod 0600 config/travisci_rsa
+- cp config/travisci_rsa ~/.ssh/id_rsa
