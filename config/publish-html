@@ -4,6 +4,7 @@
 
 # Settings
 REPO_PATH=git@github.com:UNN-VMK-Software/agile-course-theory.git
+WORKING_DIR=../agile-course-theory
 GHPAGES_PATH=agile-course-ghpages
 HTML_PATH=slides
 COMMIT_USER="Slides Generator"
@@ -15,19 +16,18 @@ cd ..
 git clone -b gh-pages "${REPO_PATH}" --single-branch ${GHPAGES_PATH}
 
 # rm all the files through git to prevent stale files.
-cd ${GHPAGES_PATH}/${HTML_PATH}
-git rm -rf .
-
 # Generate the HTML documentation.
-# Kornyakov: in our case it is already generated, so we only copy it
-# make doxygen
-cp ../../agile-course-theory/slides-rendered/* ./
+cd ${GHPAGES_PATH}
+git rm -rf ${HTML_PATH}
+mkdir ${HTML_PATH}
+cp ${WORKING_DIR}/slides-rendered/* ${HTML_PATH}
 
-# Create and commit the documentation repo.
-# cd ${HTML_PATH}
+# Commit the documentation repo.
+cd ${HTML_PATH}
 git add .
 git config user.name "${COMMIT_USER}"
 git config user.email "${COMMIT_EMAIL}"
 git commit -m "Automated slides build for changeset ${CHANGESET}."
 git push origin gh-pages
-# cd -
+
+cd ${WORKING_DIR}
