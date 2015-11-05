@@ -19,3 +19,4 @@ before_install:
   -d
 - chmod 0600 config/travisci_rsa
 - cp config/travisci_rsa ~/.ssh/id_rsa
+- ./config/publish-html
