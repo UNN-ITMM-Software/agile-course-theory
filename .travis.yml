@@ -1,15 +1,5 @@
 language: python
 sudo: false
-addons:
-  apt:
-    packages:
-    - pandoc
-    - python3
-script:
-- ./slides/slidy-scripts/check.py
-- ./slides/slidy-scripts/gen_slides.sh
-notifications:
-  email: false
 before_install:
 - openssl aes-256-cbc
   -K $encrypted_753ebdfe5ffa_key
@@ -19,4 +9,14 @@ before_install:
   -d
 - chmod 0600 config/travisci_rsa
 - cp config/travisci_rsa ~/.ssh/id_rsa
+addons:
+  apt:
+    packages:
+    - pandoc
+    - python3
+script:
+- ./slides/slidy-scripts/check.py
+- ./slides/slidy-scripts/gen_slides.sh
 - ./config/publish-html
+notifications:
+  email: false
