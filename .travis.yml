@@ -15,6 +15,7 @@ addons:
     - pandoc
     - python3
     - ttf-mscorefonts-installer
+    - fonts-liberation
 script:
 - ./slides/slidy-scripts/check.py
 - ./slides/slidy-scripts/gen_slides.sh
