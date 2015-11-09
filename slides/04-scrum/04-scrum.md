@@ -1,9 +1,12 @@
 # Scrum
 
+![](./pix/scrum.jpeg)
+
 Кирилл Корняков\
 Евгений Сорокин
 
 # Содержание
+
   - Разные модные слова
   - Scrum – что, где, когда?
   - Характеристики
@@ -24,11 +27,8 @@
   - Crystal
   - Kanban
 
-# Scrum
-
-![](./pix/scrum.jpeg)
-
 # Истоки Scrum
+
   - Jeff Sutherland (Easel Corp, 1993)
     - IDX and 500+ people doing Scrum
   - Ken Schwaber
