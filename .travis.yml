@@ -1,5 +1,4 @@
 language: python
-sudo: false
 before_install:
 - openssl aes-256-cbc
   -K $encrypted_753ebdfe5ffa_key
@@ -9,11 +8,25 @@ before_install:
   -d
 - chmod 0600 config/travisci_rsa
 - cp config/travisci_rsa ~/.ssh/id_rsa
-addons:
-  apt:
-    packages:
-    - pandoc
-    - python3
+before_script:
+  - "sudo apt-get update"
+  - "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections"
+  - "sudo apt-get install ttf-mscorefonts-installer"
+  - "sudo mkfontdir"
+  - "sudo apt-get install python3"
+  - "sudo apt-get install haskell-platform"
+  - "cabal update"
+  - "cabal install pandoc"
+  - "export PATH=~/.cabal/bin:$PATH"
+  - "pandoc -v"
+# sudo: false
+# addons:
+#   apt:
+#     packages:
+#     - pandoc
+#     - python3
+#     - ttf-mscorefonts-installer
+#     - fonts-liberation
 script:
 - ./slides/slidy-scripts/check.py
 - ./slides/slidy-scripts/gen_slides.sh
