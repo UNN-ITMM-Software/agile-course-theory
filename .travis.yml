@@ -9,6 +9,7 @@ before_install:
 - chmod 0600 config/travisci_rsa
 - cp config/travisci_rsa ~/.ssh/id_rsa
 before_script:
+  - "sudo apt-get update"
   - "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections"
   - "sudo apt-get install ttf-mscorefonts-installer"
   - "sudo mkfontdir"
