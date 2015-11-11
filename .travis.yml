@@ -13,10 +13,10 @@ before_script:
   - "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections"
   - "sudo apt-get install ttf-mscorefonts-installer"
   - "sudo mkfontdir"
-  - "sudo apt-get install pandoc python3"
-  # - "sudo apt-get install haskell-platform"
-  # - "cabal update"
-  # - "cabal install pandoc"
+  - "sudo apt-get install python3"
+  - "sudo apt-get install haskell-platform"
+  - "cabal update"
+  - "cabal install pandoc"
   - "pandoc -v"
 # sudo: false
 # addons:
