@@ -17,6 +17,7 @@ before_script:
   - "sudo apt-get install haskell-platform"
   - "cabal update"
   - "cabal install pandoc"
+  - "export PATH=~/.cabal/bin:$PATH"
   - "pandoc -v"
 # sudo: false
 # addons:
