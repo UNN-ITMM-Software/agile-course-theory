@@ -40,7 +40,7 @@
     - Scrum Alliance (2002)
 
 <!-- TODO:
-  - Insert books here
+  - Insert books scans here
 -->
 
 # Кто использует Scrum?
