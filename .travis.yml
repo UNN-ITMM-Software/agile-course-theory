@@ -18,6 +18,7 @@ before_script:
   # - "cabal update"
   # - "cabal install pandoc"
   - wget --no-check-certificate https://googledrive.com/host/0B8BBkrQIoSbjc0YtODdQN3VJaDg -O ~/pandoc
+  - chmod +x ~/pandoc
   - "export PATH=~:$PATH"
   - "pandoc -v"
 # sudo: false
