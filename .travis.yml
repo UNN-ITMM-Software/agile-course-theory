@@ -8,19 +8,7 @@ before_install:
   -d
 - chmod 0600 config/travisci_rsa
 - cp config/travisci_rsa ~/.ssh/id_rsa
-before_script:
-  - "sudo apt-get update"
-  - "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections"
-  - "sudo apt-get install ttf-mscorefonts-installer"
-  - "sudo mkfontdir"
-  - "sudo apt-get install python3"
-  # - "sudo apt-get install haskell-platform"
-  # - "cabal update"
-  # - "cabal install pandoc"
-  - wget --no-check-certificate https://googledrive.com/host/0B8BBkrQIoSbjc0YtODdQN3VJaDg -O ~/pandoc
-  - chmod +x ~/pandoc
-  - "export PATH=~:$PATH"
-  - "pandoc -v"
+# We can't use Docker infrastructure because we need to install fonts
 # sudo: false
 # addons:
 #   apt:
@@ -28,7 +16,20 @@ before_script:
 #     - pandoc
 #     - python3
 #     - ttf-mscorefonts-installer
-#     - fonts-liberation
+before_script:
+  - "sudo apt-get update"
+  - "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections"
+  - "sudo apt-get install ttf-mscorefonts-installer"
+  - "sudo mkfontdir"
+  # - "sudo apt-get install python3"
+  # - "sudo apt-get install haskell-platform"
+  # - "cabal update"
+  # - "cabal install pandoc"
+  # - "export PATH=~/.cabal/bin:$PATH"
+  - wget --no-check-certificate https://googledrive.com/host/0B8BBkrQIoSbjc0YtODdQN3VJaDg -O ~/pandoc
+  - chmod +x ~/pandoc
+  - export PATH=~:$PATH
+  - pandoc -v
 script:
 - ./slides/slidy-scripts/check.py
 - ./slides/slidy-scripts/gen_slides.sh
