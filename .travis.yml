@@ -14,10 +14,11 @@ before_script:
   - "sudo apt-get install ttf-mscorefonts-installer"
   - "sudo mkfontdir"
   - "sudo apt-get install python3"
-  - "sudo apt-get install haskell-platform"
-  - "cabal update"
-  - "cabal install pandoc"
-  - "export PATH=~/.cabal/bin:$PATH"
+  # - "sudo apt-get install haskell-platform"
+  # - "cabal update"
+  # - "cabal install pandoc"
+  - wget --no-check-certificate https://googledrive.com/host/0B8BBkrQIoSbjc0YtODdQN3VJaDg -O ~/pandoc
+  - "export PATH=~:$PATH"
   - "pandoc -v"
 # sudo: false
 # addons:
