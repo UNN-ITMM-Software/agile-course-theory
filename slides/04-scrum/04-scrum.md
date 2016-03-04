@@ -106,7 +106,7 @@
   - **Роли**
     - Product owner
     - Scrum master
-    - Artifacts
+    - Team
   - Ритуалы
     - Планирование спринтов
     - Ретроспектива
