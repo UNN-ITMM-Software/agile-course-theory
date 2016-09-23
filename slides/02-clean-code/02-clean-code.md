@@ -5,17 +5,23 @@
 Кирилл Корняков, Андрей Морозов
 \
 \
-Сентябрь 2015
+Сентябрь 2016
 
 <!-- TODO
-
-If you need more than 3 levels of indentation, you're screwed anyway, and should fix your program.
-    Linux 1.3.53 CodingStyle documentation (1995). Retrieved on 2011-08-13.
-You know you're brilliant, but maybe you'd like to understand what you did 2 weeks from now.
-    Linux 1.3.53 CodingStyle documentation (1995). Retrieved on 2011-08-13.
-
-Origin: https://en.wikiquote.org/wiki/Linus_Torvalds
+    -
 -->
+
+# Книги
+
+![](./images/books-cc.jpg)
+![](./images/books-eops.jpeg)
+![](./images/books-pp.jpg)
+
+# Главные враги программиста
+
+  - Балласт (жир)
+  - Сложность
+  - Зависимости
 
 # Содержание
 
@@ -56,7 +62,7 @@ Origin: https://en.wikiquote.org/wiki/Linus_Torvalds
 
 > - Руководство (заказчик, менеджер)
   - Коллеги
-  - На самом деле: __Вы__!
+  - __Вы__!
 
 # Как результат...
 
@@ -88,14 +94,37 @@ Origin: https://en.wikiquote.org/wiki/Linus_Torvalds
 |  - Единообразный (стилистически единый) |  - Беспорядочный, пестрый                    |
 +-----------------------------------------+----------------------------------------------+
 
+# Ключевые принципы (фольклор)
+
+  - DRY: Don't repeat yourself
+     - Не повторяйся
+  - KISS: keep it simple, stupid
+     - Сохраняй это простым и понятным
+  - YAGNI: you aren't gonna need it
+     - Тебе это не понадобится
+  - Say what you mean, simply and directly
+     - Говорите что имеете в виду, просто и прямо
+  - Write clearly — don't be too clever
+     - Пишите просто — не умничайте
+  - Write clearly — don't sacrifice clarity for "efficiency"
+     - Пишите просто — не жертвуйте ясностью во имя эффективности
+
+# Линус о чистом коде
+
+> If you need more than 3 levels of indentation, you're screwed anyway, and should fix your program.
+
+> You know you're brilliant, but maybe you'd like to understand what you did 2 weeks from now.
+
+Origin: <https://en.wikiquote.org/wiki/Linus_Torvalds>
+
 # Ключевые понятия
 
- - Дублирование (Duplication)
- - Шум (Noise)
- - Принцип единой ответственности (Single Responsibility Principle - SRP)
- - Ортогональность (Orthogonality)
- - Уровни абстракции (Levels of abstraction)
- - Единообразие (Uniformity)
+  1. Дублирование (Duplication)
+  1. Шум (Noise)
+  1. Принцип единой ответственности (Single Responsibility Principle — SRP)
+  1. Ортогональность (Orthogonality)
+  1. Уровни абстракции (Levels of abstraction)
+  1. Единообразие (Uniformity)
 
 # API — самое важное
 
@@ -118,9 +147,9 @@ customer.customerName = "Bill";
   - Сортируйте члены по важности для пользователя
 
 ```java
-  public void do(); // up
+  public void do(); // move up
 
-  private int i1;   // down
+  private int i1;   // move down
 ```
 
 # Содержание
@@ -134,59 +163,8 @@ customer.customerName = "Bill";
     - Форматирование
   - Заключение
 
-# Важность именования
-
-> Программист не стал выдумывать и назвал детей\
-> новый сын(1) и новый сын(2)
-
-# Небрежное именование
-
-Что делает следующий фрагмент?
-
-```java
-public List<int[]> getThem() {
-  List<int[]> list1 = new ArrayList<int[]>();
-  for (int[] x: theList) {
-    if (x[0] == 4)
-      list1.add(x);
-  }
-  return list1;
-}
-```
 
 # Осмысленные имена
-
-А теперь?
-
-```java
-public List<int[]> getFlaggedCells() {
-  List<int[]> flaggedCells = new ArrayList<int[]>();
-  for (int[] cell: gameBoard) {
-    if (cell[STATUS_VALUE] == FLAGGED)
-      flaggedCells.add(cell);
-  }
-  return flaggedCells;
-}
-```
-> - Это же игра "Сапер"!
-
-# Следим за уровнем абстракции
-
-``` java
-public List<Cell> getFlaggedCells() {
-  List<Cell> flaggedCells = new ArrayList<Cell>();
-
-  for (Cell cell: gameBoard) {
-    if (cell.isFlagged()) {
-      flaggedCells.add(cell);
-    }
-  }
-
-  return flaggedCells;
-}
-```
-
-# Сравним...
 
 ```java
 public List<int[]> getThem() {
@@ -214,7 +192,6 @@ public List<Cell> getFlaggedCells() {
 ```
 
 # Magic numbers
-
 
 ``` java
     int dailyPay = hourlyRate * 8;
@@ -288,7 +265,6 @@ String name = employee.getName();
 customer.setName("Mike");
 if (paycheck.isPosted()) ...
 ```
-
 
 # Именование переменных и членов класса
 
@@ -419,9 +395,17 @@ In a completely uncommented 2000 line method:
         supportDocFilePath = new ConfigurationHelper().SupportFilePath;
     }
 
+    GetSupportDocFilePath(path);
+```
+
+Или лучше так?
+
+``` java
     static string GetSupportDocFilePath() {
         return new ConfigurationHelper().SupportFilePath;
     }
+
+    path = GetSupportDocFilePath();
 ```
 
 # Убийственная сложность
@@ -436,7 +420,7 @@ float _______ ( float number )
   x2 = number * 0.5F;
   y  = number;
   i  = * ( long * ) &y;                       // evil floating point bit level hacking
-  i  = 0x5f3759df - ( i >> 1 );               // what the fuck?
+  i  = 0x5f3759df - ( i >> 1 );               // what the f*ck?
   y  = * ( float * ) &i;
   y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
 //      y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
@@ -502,7 +486,7 @@ float _______ ( float number )
     }
 ```
 
-# Итого. Функции
+# Итого: Функции
 
  - Оптимальная длина функции (один экран ~25-50 строк)
  - Оптимальное количество параметров
@@ -523,6 +507,18 @@ float _______ ( float number )
     - __Комментарии__
     - Форматирование
   - Заключение
+
+# Комментарии
+
+> "Don’t comment bad code — rewrite it!"
+
+B. Kernighan, P. Plauger "The Elements of Programming Style"
+\
+\
+- Комментарии не компилируются
+  - Корректность комментариев нельзя проверить автоматически / программно
+- Комментарии должны объяснять "Зачем" что-то делается, а не "Как"
+- Комментарии считаются одним из признаков плохого кода (code smells)
 
 # Комментарии
 
@@ -702,20 +698,6 @@ Pattern timeMatcher = Pattern.Compile("\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
     - Javadoc
     - Doctest (Python)
 
-# Итого. Комментарии
-
-  - Комментарии не компилируются
-    - Корректность комментариев нельзя проверить автоматически / программно
-  - Комментарии должны объяснять "Зачем" что-то делается, а не "Как"
-  - Комментарии считаются одним из признаков плохого кода (code smells)
-\
-\
-
-
-> "Don’t comment bad code — rewrite it!"
-
-B. Kernighan, P. Plauger "The Elements of Programming Style"
-
 # Содержание
 
   - Зачем?
@@ -830,21 +812,6 @@ namespace MVCS.Diff4Big.Domain.Comparison.FT {
     - Комментарии
     - Форматирование
   - __Заключение__
-
-# Ключевые принципы (фольклор)
-
- - DRY: Don't repeat yourself
-    - Не повторяйся
- - KISS: keep it simple, stupid
-    - Сохраняй это простым и понятным
- - YAGNI: you aren't gonna need it
-    - Тебе это не понадобится
- - Say what you mean, simply and directly
-    - Говорите что имеете в виду, просто и прямо
- - Write clearly — don't be too clever
-    - Пишите просто — не умничайте
- - Write clearly — don't sacrifice clarity for "efficiency"
-    - Пишите просто — не жертвуйте ясностью во имя эффективности
 
 # Ключевые моменты
 
