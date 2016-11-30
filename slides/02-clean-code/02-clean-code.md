@@ -23,6 +23,16 @@
   - Сложность
   - Зависимости
 
+<!-- TODO
+
+If you need more than 3 levels of indentation, you're screwed anyway, and should fix your program.
+    Linux 1.3.53 CodingStyle documentation (1995). Retrieved on 2011-08-13.
+You know you're brilliant, but maybe you'd like to understand what you did 2 weeks from now.
+    Linux 1.3.53 CodingStyle documentation (1995). Retrieved on 2011-08-13.
+
+Origin: https://en.wikiquote.org/wiki/Linus_Torvalds
+-->
+
 # Содержание
 
   - Зачем?
