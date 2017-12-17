@@ -1,8 +1,6 @@
 # Unit Testing
 
-Живая демонстрация:
-
-https://www.youtube.com/watch?v=mbO--6HuBd8
+Живая демонстрация: https://www.youtube.com/watch?v=mbO--6HuBd8
 
 # Контрольные вопросы
 
