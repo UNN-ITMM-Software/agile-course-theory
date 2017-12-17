@@ -14,8 +14,8 @@
 # Книги
 
 ![](./images/books-cc.jpg)
-![](./images/books-eops.jpeg)
 ![](./images/books-pp.jpg)
+![](./images/books-eops.jpeg)
 
 # Главные враги программиста
 
