@@ -14,70 +14,17 @@ TODO
 
 # Содержание
 
-  - Agile сегодня
   - История и предпосылки возникновения
-  - Общая характеристика Agile
-
-# Agile Development
-
-  - Семейство методологий разработки
-  - Относительно молодое
-    - Отдельные методологии появились в середине 90х
-    - Получили широкое распространение в 2000х
-  - Очень успешное и популярное
-    - Применяется практически всеми ведущими компаниями
-    - Фактически стали мейнстримом в разработке ПО
-  - Весьма интересное
-    - "Изобретены" программистами
-    - Легковесные практики
-
-# Центральная идея
-
-![](./images/agile-translation.png)
-
-  - Метафора с угадыванием числа
-
-# Центральная идея
-
-+-----------------------------+------------------------------------------------+
-| ![](./images/shoot-aim.png) | Фокус на адаптируемости вместо предсказуемости |
-|                             |                                                |
-|                             | > - Небольшие и частые релизы                  |
-|                             |   - Непрерывное улучшение                      |
-|                             |   - Готовность к изменениям                    |
-|                             |   - Самоорганизующиеся команды                 |
-+-----------------------------+------------------------------------------------+
-
-# Современное состояние
-
-  - Огромная масса небольших и средних проектов выполняется согласно гибким
-    методологиям.
-  - В том числе в крупных компаниях:
-    - Intel (XP, Scrum)
-    - Microsoft (Agile MSF)
-    - Google (Scrum)
-    - IBM
-  - Имеются успешные опыты внедрения гибких методологий в крупных и
-    распределенных проектах.
-  - _Отдельные практики гибких методологий проникли во все другие методологии._
-
-# Темпы внедрения Agile
-
-![](./images/adoption_rate_of_agile_techniques.png)
-
-Copyright 2008, Scott W. Ambler (<http://www.ambysoft.com/surveys/>)
-
-# Как изменилось качество ПО после внедрения Agile
-
-![](./images/how_have_agile_approaches_affected_the_quality_of_systems_deployed.svg)
-
-Copyright 2008, Scott W. Ambler (<http://www.ambysoft.com/surveys/>)
-
-# Содержание
-
   - Agile сегодня
-  - <font color=red>История и предпосылки возникновения</font>
   - Общая характеристика Agile
+
+# Введение
+
+Software Development: Art, Craft, or Science?
+
+# Немного истории
+
+Кто были первыми профессиональными программистами, и где они работали?
 
 # Предпосылки и история
 
@@ -88,6 +35,20 @@ Copyright 2008, Scott W. Ambler (<http://www.ambysoft.com/surveys/>)
     - Техническая сложность разработки
     - Сложность организации процесса разработки
   - Рождение __Программной инженерии__, направленной на сокращение стоимости ПО
+
+# Немного истории
+
+Факторы, оказавшие влияние на Программную инженерию:
+
+- Другие инженерии
+- Строительство
+- Механика
+- Электроника
+
+Особенности первых проектов:
+
+- Критичность
+- Масштабность
 
 # Каскадная модель
 
@@ -101,10 +62,6 @@ Copyright 2008, Scott W. Ambler (<http://www.ambysoft.com/surveys/>)
 # Стоимость внесения изменений
 
 ![](./images/cost_of_change.svg)
-
-# Стоимость внесения изменений
-
-![](./images/cost_of_change_vs_time.svg)
 
 # Продолжение кризиса
 
@@ -165,6 +122,40 @@ Copyright 2008, Scott W. Ambler (<http://www.ambysoft.com/surveys/>)
 
 __Нет методологии, подходящей сразу для всех проектов.__
 
+# Разнообразие методологий
+
+> "Тот, кто хорошо владеет молотком, везде склонен видеть гвозди"
+
+Абрахам Маслоу
+
+# Содержание методологии
+
+![](./images/volume-of-methodology.png)
+
+# Охват методологии
+
+![](./images/scope-of-methodology.png)
+
+# Эффективность методологии
+
+![](./images/methodology-effectiveness.png)
+
+# Эффективность общения
+
+![](./images/communication-effectiveness.png)
+
+# Сколько нужно людей?
+
+![](./images/number-of-people.png)
+
+# С чем справится команда?
+
+![](./images/team-effectiveness.png)
+
+# Как подобрать методологию?
+
+![](./images/choose-methodology.png)
+
 # Ниша Agile
 
 > Экстремальное программирование — это __упрощенная__ методика организации
@@ -173,6 +164,73 @@ __Нет методологии, подходящей сразу для всех
 меняющихся__ требований.
 
 Кент Бек, Экстремальное программирование
+
+# Стоимость внесения изменений
+
+![](./images/cost_of_change_vs_time.svg)
+
+# Основной тезис
+
+![](./images/main-thesis.png)
+
+# Scrum
+
+![](./images/scrum.png)
+
+# Agile Development
+
+  - Семейство методологий разработки
+  - Относительно молодое
+    - Отдельные методологии появились в середине 90х
+    - Получили широкое распространение в 2000х
+  - Очень успешное и популярное
+    - Применяется практически всеми ведущими компаниями
+    - Фактически стали мейнстримом в разработке ПО
+  - Весьма интересное
+    - "Изобретены" программистами
+    - Легковесные практики
+
+# Центральная идея
+
+![](./images/agile-translation.png)
+
+  - Метафора с угадыванием числа
+
+# Центральная идея
+
++-----------------------------+------------------------------------------------+
+| ![](./images/shoot-aim.png) | Фокус на адаптируемости вместо предсказуемости |
+|                             |                                                |
+|                             | > - Небольшие и частые релизы                  |
+|                             |   - Непрерывное улучшение                      |
+|                             |   - Готовность к изменениям                    |
+|                             |   - Самоорганизующиеся команды                 |
++-----------------------------+------------------------------------------------+
+
+# Современное состояние
+
+  - Огромная масса небольших и средних проектов выполняется согласно гибким
+    методологиям.
+  - В том числе в крупных компаниях:
+    - Intel (XP, Scrum)
+    - Microsoft (Agile MSF)
+    - Google (Scrum)
+    - IBM
+  - Имеются успешные опыты внедрения гибких методологий в крупных и
+    распределенных проектах.
+  - _Отдельные практики гибких методологий проникли во все другие методологии._
+
+# Темпы внедрения Agile
+
+![](./images/adoption_rate_of_agile_techniques.png)
+
+Copyright 2008, Scott W. Ambler (<http://www.ambysoft.com/surveys/>)
+
+# Как изменилось качество ПО после внедрения Agile
+
+![](./images/how_have_agile_approaches_affected_the_quality_of_systems_deployed.svg)
+
+Copyright 2008, Scott W. Ambler (<http://www.ambysoft.com/surveys/>)
 
 # Agile Methodologies
 
@@ -195,8 +253,8 @@ __Нет методологии, подходящей сразу для всех
 
 # Содержание
 
-  - Agile сегодня
   - История и предпосылки возникновения
+  - Agile сегодня
   - <font color=red>Общая характеристика Agile</font>
 
 # Agile Manifesto (2001)
@@ -286,10 +344,22 @@ we value the items on the left more.
       - Общение внутри команды
   - Документация либо не пишется совсем, либо необходимый минимум
 
-<!-- Once you realize that documentation should be laughed at, peed upon, put on fire, and just ridiculed in general, THEN, and only then, have you reached the level where you can safely read it and try to use it to actually implement a driver.
+> Once you realize that documentation should be laughed at, peed upon,
+put on fire, and just ridiculed in general, THEN, and only then,
+have you reached the level where you can safely read it and try to use it
+to actually implement a driver.
 
-    Torvalds, Linus (2001-01-12). Re: ide.2.4.1-p3.01112001.patch. Retrieved on 2012-06-22.
--->
+Torvalds, Linus (2001-01-12). Re: ide.2.4.1-p3.01112001.patch. Retrieved on 2012-06-22.
+
+# 7 properties of highly successful projects from Crystal Clear
+
+1. Frequent delivery
+1. Reflective improvement
+1. Close communication
+1. Personal safety
+1. Focus
+1. Easy access to expert users
+1. A good technical environment
 
 # Препятствия при внедрении гибких методик
 
@@ -340,9 +410,9 @@ we value the items on the left more.
 
 # Ссылки
 
-    1. http://alistair.cockburn.us/Methodology+per+project
-    1. http://www.crisp.se/henrik.kniberg/Kanban-vs-Scrum.pdf
-    1. http://en.wikipedia.org/wiki/Software_development_process
+1. http://alistair.cockburn.us/Methodology+per+project
+1. http://www.crisp.se/henrik.kniberg/Kanban-vs-Scrum.pdf
+1. http://en.wikipedia.org/wiki/Software_development_process
 
 # Спасибо за внимание!
 
@@ -363,16 +433,6 @@ we value the items on the left more.
 1. Пишут ли кандидаты на работу код во время собеседования?
 1. Проводите ли вы коридорное тестирование удобства использования программ?
 
-# 7 properties of highly successful projects from Crystal Clear
-
-1. Frequent delivery
-1. Reflective improvement
-1. Close communication
-1. Personal safety
-1. Focus
-1. Easy access to expert users
-1. A good technical environment
-
 # Книги
 
 1. Стив Макконнелл "Совершенный код"
@@ -382,50 +442,3 @@ we value the items on the left more.
 1. Человеческий фактор http://www.ozon.ru/context/detail/id/2338486/
 1. Экстремальное программирование http://www.ozon.ru/context/detail/id/1099618/
 1. Scrum http://www.ozon.ru/context/detail/id/6241964/
-
-# Часть первая: вводная
-
-Software Development: Art, Craft, or Science?
-
-# Немного истории
-
-Кто был первыми программистами, и на кого они работали?
-
-# Немного истории
-
-Факторы, оказавшие влияние на Программную инженерию:
-    - Другие инженерии
-    - Строительство
-    - Механика
-    - Электроника
-
-Особенности первых проектов
-    - Критичность
-    - Масштабность
-
-# Часть вторая: молоток
-
-> "Тот, кто хорошо владеет молотком, везде склонен видеть гвозди"
-
-Абрахам Маслоу
-
-# Содержание методологии
-
-![](./images/volume-of-methodology.png)
-
-
-Охват методологии
-
-Основной тезис
-
-Эффективность методологии
-
-Эффективность общения
-
-Сколько нужно людей?
-
-С чем справится команда?
-
-Как подобрать методологию?
-
-Scrum
