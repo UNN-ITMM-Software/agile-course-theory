@@ -5,34 +5,7 @@
 Кирилл Корняков, Андрей Морозов
 \
 \
-Сентябрь 2016
-
-<!-- TODO
-    -
--->
-
-# Книги
-
-![](./images/books-cc.jpg)
-![](./images/books-pp.jpg)
-![](./images/books-eops.jpeg)
-
-# Главные враги программиста
-
-  - Балласт (жир)
-  - Сложность
-  - Зависимости
-
-# Содержание
-
-  - Зачем?
-  - Ключевые понятия
-  - Чистый код
-    - Именование
-    - Функции/методы
-    - Комментарии
-    - Форматирование
-  - Заключение
+Сентябрь 2018
 
 # Зачем?
 
@@ -44,33 +17,13 @@
 
 # Преимущества чистого кода
 
-  - Программист в основном не пишет, а читает код
+  - Программист в основном не пишет, а читает код!
   - Быстрое понимание кода => быстрое решение задач
      - Добавление новых возможностей
      - Поиск и устранение проблем
 
-# Откуда берется плохой код?
-
-  - Нехватка времени
-  - Отсутствие стандартов кодирования
-  - Различная квалификация сотрудников
-  - Низкая культура (уход от ответственности)
-  - Унаследованный / сторонний код
-
-\
-Кто же виноват?
-
-> - Руководство (заказчик, менеджер)
-  - Коллеги
-  - __Вы__!
-
-# Как результат...
-
-![](./images/fast_solution.gif)
-
 # Содержание
 
-  - Зачем?
   - __Ключевые понятия__
   - Чистый код
     - Именование
@@ -94,6 +47,25 @@
 |  - Единообразный (стилистически единый) |  - Беспорядочный, пестрый                    |
 +-----------------------------------------+----------------------------------------------+
 
+# Откуда берется плохой код?
+
+  - Нехватка времени
+  - Отсутствие стандартов кодирования
+  - Различная квалификация сотрудников
+  - Низкая культура (уход от ответственности)
+  - Унаследованный / сторонний код
+
+\
+Кто виноват?
+
+> - Руководство (заказчик, менеджер)
+  - Коллеги
+  - __Вы__!
+
+# Как результат...
+
+![](./images/fast_solution.gif)
+
 # Ключевые принципы (фольклор)
 
   - DRY: Don't repeat yourself
@@ -102,28 +74,31 @@
      - Сохраняй это простым и понятным
   - YAGNI: you aren't gonna need it
      - Тебе это не понадобится
-  - Say what you mean, simply and directly
-     - Говорите что имеете в виду, просто и прямо
-  - Write clearly — don't be too clever
-     - Пишите просто — не умничайте
-  - Write clearly — don't sacrifice clarity for "efficiency"
-     - Пишите просто — не жертвуйте ясностью во имя эффективности
+  - Occam's razor (Бритва Оккама)
+     - «Не следует множить сущее без необходимости» (либо «Не следует привлекать новые сущности без крайней на то необходимости».
 
-# Линус о чистом коде
+# Эксперты о чистоте кода
 
 > If you need more than 3 levels of indentation, you're screwed anyway, and should fix your program.
-
 > You know you're brilliant, but maybe you'd like to understand what you did 2 weeks from now.
 
 Origin: <https://en.wikiquote.org/wiki/Linus_Torvalds>
 
+> Say what you mean, simply and directly
+> Write clearly — don't be too clever
+> Write clearly — don't sacrifice clarity for "efficiency"
+
+The Elements of Programming Style (1978)
+
 # Ключевые понятия
 
-  1. Дублирование (Duplication)
-  1. Шум (Noise)
-  1. Принцип единой ответственности (Single Responsibility Principle — SRP)
-  1. Ортогональность (Orthogonality)
-  1. Уровни абстракции (Levels of abstraction)
+  1. Избыточность
+        1. Дублирование (Duplication)
+        1. Шум (Noise)
+  1. Напрасная сложность
+        1. Принцип единой ответственности (Single Responsibility Principle — SRP)
+        1. Ортогональность (Orthogonality)
+        1. Уровни абстракции (Levels of abstraction)
   1. Единообразие (Uniformity)
 
 # API — самое важное
@@ -154,7 +129,6 @@ customer.customerName = "Bill";
 
 # Содержание
 
-  - Зачем?
   - Ключевые понятия
   - Чистый код
     - __Именование__
@@ -233,8 +207,8 @@ public class Part {
 
 # Одно слово для каждой концепции
 
-> - fetch, retrieve, get
-  - read, load
+  - fetch, retrieve, get
+  - read/write, load/upload
   - controller, manager, driver
 
 # Имена классов
@@ -306,7 +280,6 @@ private byte _array;
 
 # Содержание
 
-  - Зачем?
   - Ключевые понятия
   - Чистый код
     - Именование
@@ -365,6 +338,11 @@ In a completely uncommented 2000 line method:
                           IplImage*& imageFullDomeCopy,
                           InterpolationMethod inMethod) // 19
 ```
+
+- Broken modularization
+- SRP violation (Multifaceted abstraction, conceptualization abuse)
+
+<https://en.wikipedia.org/wiki/Design_smell>
 
 # WinApi C++
 
@@ -439,11 +417,11 @@ float _______ ( float number )
         splitParameters->projectorWidth <= 0 ||
         splitParameters->projectorHeight <= 0)
 
-    if (timer.HasExpired() && !timer.IsRecurrent())
-    if (ShouldBeDeleted(timer)) {}
+    if (timer.HasExpired() && !timer.IsRecurrent()) // Bad
+    if (ShouldBeDeleted(timer)) // OK
 
-    if(isValid == false) {}
-    if(!canEditPrice) {}
+    if(isValid == false) // Bad
+    if(!canEditPrice) // OK
 ```
 
 # Предпочитайте исключения кодам ошибок
@@ -499,7 +477,6 @@ float _______ ( float number )
 
 # Содержание
 
-  - Зачем?
   - Ключевые понятия
   - Чистый код
     - Именование
@@ -513,12 +490,20 @@ float _______ ( float number )
 > "Don’t comment bad code — rewrite it!"
 
 B. Kernighan, P. Plauger "The Elements of Programming Style"
+
+> "...the only software documentation that actually seems to satisfy
+  the criteria of an engineering design is the source code listings".
+
+Jack Reeves
 \
 \
-- Комментарии не компилируются
-  - Корректность комментариев нельзя проверить автоматически / программно
-- Комментарии должны объяснять "Зачем" что-то делается, а не "Как"
+
+# Комментарии — это плохо!
+
+- Корректность комментариев нельзя проверить автоматически / программно
+  - Они не компилируются, на них нельзя написать тесты
 - Комментарии считаются одним из признаков плохого кода (code smells)
+- Две метафоры
 
 # Комментарии
 
@@ -678,7 +663,8 @@ public boolean isAvailable()
 
 # Позволительные комментарии
 
- - Пояснения в __нетривиальных__ случаях
+- Комментарии должны объяснять "Зачем" что-то делается, а не "Как"
+- Пояснения в __нетривиальных__ случаях
 
 ``` java
 // format matched kk:mm:ss EEE, MMM dd, yyyy
@@ -700,7 +686,6 @@ Pattern timeMatcher = Pattern.Compile("\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
 
 # Содержание
 
-  - Зачем?
   - Ключевые понятия
   - Чистый код
     - Именование
@@ -804,7 +789,6 @@ namespace MVCS.Diff4Big.Domain.Comparison.FT {
 
 # Содержание
 
-  - Зачем?
   - Ключевые понятия
   - Чистый код
     - Именование
@@ -830,6 +814,12 @@ namespace MVCS.Diff4Big.Domain.Comparison.FT {
 
 ![](./images/bs.jpg)
 
+# Книги
+
+![](./images/books-cc.jpg)
+![](./images/books-pp.jpg)
+![](./images/books-eops.jpeg)
+
 # Контрольные вопросы
 
   1. Признаки хорошего и плохого кода
@@ -838,7 +828,7 @@ namespace MVCS.Diff4Big.Domain.Comparison.FT {
   1. Рекомендации по именованию
   1. Комментарии и чистый код. Примеры плохих комментариев, почему они считаются
      code smell.
-  1. Ключевые принципы
+  1. Ключевые принципы (фольклер)
   1. Почему важно поддерживать код в чистоте
 
 # Спасибо за внимание!
