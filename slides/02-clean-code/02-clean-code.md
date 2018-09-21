@@ -34,6 +34,8 @@
 
 # Что такое качество кода?
 
+# Как измерить качество кода?
+
 ![](./images/quality.jpg)
 
 # Признаки качества кода
@@ -47,13 +49,24 @@
 |  - Единообразный (стилистически единый) |  - Беспорядочный, пестрый                    |
 +-----------------------------------------+----------------------------------------------+
 
+# Ключевые понятия
+
+  1. Избыточность
+        1. Дублирование (Duplication)
+        1. Шум (Noise)
+  1. Напрасная сложность
+        1. Принцип единой ответственности (Single Responsibility Principle — SRP)
+        1. Ортогональность (Orthogonality)
+        1. Уровни абстракции (Levels of abstraction)
+  1. Единообразие (Uniformity)
+
 # Откуда берется плохой код?
 
   - Нехватка времени
+  - Унаследованный / сторонний код
   - Отсутствие стандартов кодирования
   - Различная квалификация сотрудников
   - Низкая культура (уход от ответственности)
-  - Унаследованный / сторонний код
 
 \
 Кто виноват?
@@ -79,27 +92,16 @@
 
 # Эксперты о чистоте кода
 
-> If you need more than 3 levels of indentation, you're screwed anyway, and should fix your program.
-> You know you're brilliant, but maybe you'd like to understand what you did 2 weeks from now.
-
-Origin: <https://en.wikiquote.org/wiki/Linus_Torvalds>
-
-> Say what you mean, simply and directly
-> Write clearly — don't be too clever
+> Say what you mean, simply and directly\
+> Write clearly — don't be too clever\
 > Write clearly — don't sacrifice clarity for "efficiency"
 
 The Elements of Programming Style (1978)
 
-# Ключевые понятия
+> You know you're brilliant, but maybe you'd like to understand what you did 2 weeks from now.
+> If you need more than 3 levels of indentation, you're screwed anyway, and should fix your program.
 
-  1. Избыточность
-        1. Дублирование (Duplication)
-        1. Шум (Noise)
-  1. Напрасная сложность
-        1. Принцип единой ответственности (Single Responsibility Principle — SRP)
-        1. Ортогональность (Orthogonality)
-        1. Уровни абстракции (Levels of abstraction)
-  1. Единообразие (Uniformity)
+<https://en.wikiquote.org/wiki/Linus_Torvalds>
 
 # API — самое важное
 
@@ -108,9 +110,9 @@ The Elements of Programming Style (1978)
   - Интерфейс должен быть понятным
 
 ```java
-Matrix createMatrix(int a1, int a2);
-Matrix createMatrix(int width, int height);
-List<PECustomerDetailsData> retrieveValidateAndConvertCustomerSpecificDataIntoPresentationEntities();
+Matrix createMatrix(int a1, int a2); // Bad
+Matrix createMatrix(int width, int height); // OK
+List<PECustomerDetailsData> retrieveValidateAndConvertCustomerSpecificDataIntoPresentationEntities(); // Bad
 ```
 
   - Избегайте тавтологии
@@ -137,10 +139,10 @@ customer.customerName = "Bill";
     - Форматирование
   - Заключение
 
-
 # Осмысленные имена
 
 ```java
+// Bad
 public List<int[]> getThem() {
   List<int[]> list1 = new ArrayList<int[]>();
   for (int[] x: theList) {
@@ -152,6 +154,7 @@ public List<int[]> getThem() {
 ```
 
 ``` java
+// OK
 public List<Cell> getFlaggedCells() {
   List<Cell> flaggedCells = new ArrayList<Cell>();
 
@@ -343,28 +346,6 @@ In a completely uncommented 2000 line method:
 - SRP violation (Multifaceted abstraction, conceptualization abuse)
 
 <https://en.wikipedia.org/wiki/Design_smell>
-
-# WinApi C++
-
-```cpp
-        hThreadArray[i] = CreateThread(
-            NULL,                   // default security attributes
-            0,                      // use default stack size
-            MyThreadFunction,       // thread function name
-            pDataArray[i],          // argument to thread function
-            0,                      // use default creation flags
-            &dwThreadIdArray[i]);   // returns the thread identifier
-```
-\
-\
-\
-
-``` cpp
-    wnd.CreateWnd(hInstance, wcname, NULL, WS_VISIBLE|WS_OVERLAPPEDWINDOW,
-        NWin::SRect(NWin::SPoint(CW_USEDEFAULT,CW_USEDEFAULT),
-        NWin::SSize(600,400)), NULL,
-        LoadMenu(hInstance, resWapp), NULL);
-```
 
 # Выходные параметры функции
 
@@ -834,3 +815,25 @@ namespace MVCS.Diff4Big.Domain.Comparison.FT {
 # Спасибо за внимание!
 
 Вопросы?
+
+# WinApi C++
+
+```cpp
+        hThreadArray[i] = CreateThread(
+            NULL,                   // default security attributes
+            0,                      // use default stack size
+            MyThreadFunction,       // thread function name
+            pDataArray[i],          // argument to thread function
+            0,                      // use default creation flags
+            &dwThreadIdArray[i]);   // returns the thread identifier
+```
+\
+\
+\
+
+``` cpp
+    wnd.CreateWnd(hInstance, wcname, NULL, WS_VISIBLE|WS_OVERLAPPEDWINDOW,
+        NWin::SRect(NWin::SPoint(CW_USEDEFAULT,CW_USEDEFAULT),
+        NWin::SSize(600,400)), NULL,
+        LoadMenu(hInstance, resWapp), NULL);
+```
