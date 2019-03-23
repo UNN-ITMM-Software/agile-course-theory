@@ -2,8 +2,8 @@
 
 ![](./images/kanban_1.jpg)
 
-Кирилл Корняков (Itseez), Антон Бевзюк (SmartStepGroup)\
-Декабрь 2015
+Кирилл Корняков (Intel), Антон Бевзюк (DODO Pizza)\
+Ноябрь 2018
 
 # Содержание
 
@@ -79,12 +79,12 @@
 
 __Практики Канбан__
 
-  1. __Visualize the workflow__
-  1. __Limit work in progress__ (WIP)
-  1. __Manage flow__ (minimize lead time)
-  1. Make Process Policies Explicit
-  1. Implement Feedback loops
-  1. Improve Collaboratively
+1. Visualize (the work, workflow and business risks)
+1. Limit WIP
+1. Manage Flow
+1. Make Process Explicit
+1. Implement Feedback Loops
+1. Improve Collaboratively, Evolve Experimentally (using models & the scientific method)
 
 # Канбан в трех слайдах (2)
 
