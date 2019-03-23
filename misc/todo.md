@@ -1,3 +1,39 @@
+# 2018
+    - extend list of students
+    - other
+        - проверить контрольные
+        - try VSCode
+    - lab preps
+        - done
+            - ctor
+                + запросить списки групп
+                + найти интеграционных менеджеров
+            + update lab0&lab1 instructions
+                + proper version of Java: https://www.oracle.com/technetwork/java/javafxscenebuilder-1x-archive-2199384.html
+                + написание своего теста (удалить README отовсюду)
+                + требовать локального запуска тестов в нулевой лабе
+                + Требовать включения Тревиса для своего форка и рекомендовать это для других лаб
+            + try import and GUI editor in IDEA
+            + update badges: gitter (only update the year), travis, coveralls
+            + squash history and move to public
+            + delete other modules
+            + setup cache for gradle
+        - good ones
+            - enable appveyor
+            - fix Gradle issue: ConfigurableReport.setDestination(Object)
+            - add tests to get 100% coverage
+        - lab 2&3 guides
+            - add TOCs
+            - switch to soft wrap
+            - cleanup grammar and formatting
+        - use newer dependencies
+        - complete ComplexNumber class implementation according to README
+        - korniakov-kirill => complex-number
+        - ideas
+            - create single Model layer for everybody
+            - переделать лабы на язык Kotlin
+
+
 # Today
 
     - _вставить обложки книг в каждую лекцию (можно на титульные слайды)_
