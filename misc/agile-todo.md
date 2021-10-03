@@ -1,8 +1,37 @@
 # 2019
-  - theory
-    - update README.md
-  - practice
-    - подготовить проект-шаблон для практики (рассмотреть вариант с Python)
+  - проект-шаблон для практики
+    - Вторая лаба
+      - починить/удалить legacy проект с формой в IDEA
+      - почему ViewModel зависит от JavaFX?
+        - scenebuilder 2.0 https://www.oracle.com/technetwork/java/javase/downloads/javafxscenebuilder-info-2157684.html
+        - VM Options: `--module-path /Users/kkornia/Work/unn/agile/javafx-sdk-11.0.2/lib/ --add-modules javafx.fxml,javafx.controls`
+    - optional
+      - good ones
+        - увеличить покрытие
+        - rename kirill-korniakov=>complex-number
+        - почистить и откомментировать build.gradle
+      - есть другой плагин для code coverage (cobertura https://github.com/kt3k/coveralls-gradle-plugin)
+      - CPD должен падать (в случае copy&paste) до запуска unit tests
+
+- Путевые заметки от 2019-10
+  - gold configuration
+    - Gradle 5.1.1 (версия, доступная по умолчанию на Travis)
+    - brew cask java11 on Mac, openjdk11 on Travis
+    - скачать и поставить javafx-sdk-11.0.2, потом установить envvar JFXRT_HOME
+        - $ echo $JFXRT_HOME
+        - /Users/kkornia/Work/unn/agile/agile-course-practice/javafx-sdk-11.0.2/lib
+    - [+] JavaFX
+    - [+] jacoco
+    - [+] CPD
+    - [-] PMD
+  - проект работает с Gradle 4.0.1 и oracle-jdk8, который берется с сайта Oracle (brew его уже не дает)
+  - попытка с новыми зависимостями
+    - brew по умолчанию дает Gradle 5.6.2
+    - travis по умолчанию дает Gradle 5.1.1
+    - пробуем с oracle-jdk, поскольку он приносит меньше изменений
+      - итог: 13я java требует Gradle 6, более старые версии непонятно как скачать
+    - с java11 из openjdk работает, нет только javafx
+    - CPD не работает с Gradle 5.6.2, работает с 5.1.1
 
 # 2018
     - lab preps
@@ -20,6 +49,7 @@
             + squash history and move to public
             + delete other modules
             + setup cache for gradle
+            + define COVERALLS_REPO_TOKEN in Travis UI (get token from Coveralls)
         - good ones
             - enable appveyor
             - fix Gradle issue: ConfigurableReport.setDestination(Object)
